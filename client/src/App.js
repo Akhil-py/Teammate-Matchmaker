@@ -1,9 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
+
+import Navbar from "./Navbar";
+import AboutUs from "./AboutUs";
+import Contact from './Contact';
+import MemberLogin from './Member Login';
+import Team from './Team';
+
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <main>
+      <div className="App">
+        <Navbar />
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<MemberLogin />} />
+            <Route path="/team" element={<Team />} />
+          </Routes>
+      </BrowserRouter>
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,7 +38,9 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+
+      </div>
+    </main>
   );
 }
 
