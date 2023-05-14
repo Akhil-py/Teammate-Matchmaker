@@ -1,12 +1,13 @@
 import './App.css';
 
 import Navbar from "./Navbar";
-import Home from "./Navbar/Home";
+import Home from "./Home";
 import AboutUs from "./Navbar/AboutUs";
 import Contact from './Navbar/Contact';
-import MemberLogin from './Navbar/Member Login';
+import MemberLogin from './Member Login';
 import Team from './Navbar/Team';
 import Profile from './Navbar/Profile';
+import Register from './Register';
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" element={<MemberLogin />} />
             <Route path="/team" element={<Team />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
       </div>
