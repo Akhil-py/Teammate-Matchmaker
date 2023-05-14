@@ -2,10 +2,19 @@ import './App.css';
 import logo from './logo.svg';
 
 import Navbar from "./Navbar";
+<<<<<<< Updated upstream
 import AboutUs from "./AboutUs";
 import Contact from './Contact';
 import MemberLogin from './Member Login';
 import Team from './Team';
+=======
+import Home from "./Navbar/Home";
+import AboutUs from "./Navbar/AboutUs";
+import Contact from './Navbar/Contact';
+import MemberLogin from './Navbar/MemberLogin';
+import Team from './Navbar/Team';
+import Profile from './Navbar/Profile';
+>>>>>>> Stashed changes
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
