@@ -1,8 +1,10 @@
 import React from "react";
 
-function Team() {
+const Team=() => {
     return(
-    <h1>Team Bro</h1>
+        <div>
+            <button>Team Bro</button>
+        </div>
     );
 }
 

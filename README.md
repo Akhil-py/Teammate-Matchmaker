@@ -10,6 +10,8 @@ client and server, respectively.
 - Install `npm` with the command `npm install`
 - Set up a [MongoDB Atlas](https://www.mongodb.com/) instance. See [this video](https://www.youtube.com/watch?v=CcOL5h_ZFJM) for help!
 - Create a `.env` file with a variable called `DB_URL` and paste your MongoDB url:
+- Cd into client and intall `react-router-dom` as well `axios` with `npm install react-router-dom` and `npm install axios`
+- Cd into server and install `express, nodemon, dotenv, and cors` with `npm install express nodemon dotenv cors`
 
 ```bash
 DB_URL=mongodb://mongodburl.example.com:portnumber
