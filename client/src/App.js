@@ -2,15 +2,16 @@ import './App.css';
 import React, { useState } from 'react'
 
 import Navbar from "./Navbar";
-import Home from "./Navbar/Home";
-import AboutUs from "./Navbar/AboutUs";
-import Contact from './Navbar/Contact';
-import MemberLogin from './Navbar/MemberLogin';
-import Team from './Navbar/Team';
-import Profile from './Navbar/Profile';
+import Home from "./Home";
+import AboutUs from "./AboutUs";
+import Contact from './Contact';
+import MemberLogin from './MemberLogin';
+import Team from './Team';
+import Profile from './Profile';
+import Register from './Register';
+import MemberLanding from './Member_Landing';
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Register from './Navbar/Register';
 
 function App() {
 const [isLoggedIn, setLoggedIn] = useState(false);
@@ -34,6 +35,7 @@ const sendData = (data) => {
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/memberlanding" element={<MemberLanding />}/>
           </Routes>
       </BrowserRouter>
      </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import "./login_styles.css";
 
-import gaming from "../../Images/login_img.png"
-import lock from "../../Images/lock.png"
-import person from "../../Images/person_icon.png"
+import gaming from "../Images/login_img.png"
+import lock from "../Images/lock.png"
+import person from "../Images/person_icon.png"
 import { Link } from 'react-router-dom'
 
 function MemberLogin() {
@@ -30,7 +30,9 @@ function MemberLogin() {
                             <input type="password" id="password" name="password" placeholder="Password"></input>
                         </div>
                         <h3>Forgot your password?</h3>
-                        <button type="submit" value="Sign In" class="signin-but">Sign In</button>   
+                        <Link to="/memberlanding">
+                            <button type="submit" value="Sign In" class="signin-but">Sign In</button>   
+                        </Link>
                         <Link to="/register">
                             <button value="Register" class="reg-but">Register</button>
                         </Link>

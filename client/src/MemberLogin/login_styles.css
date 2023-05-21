@@ -5,16 +5,23 @@ body {
     font-family: 'Khand';
 }
 
-h1 {
+.box1 h1 {
+    opacity: 0;
+    animation-name: topDownFade;
+    animation-duration: 1.75s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
     font-size: 3rem;
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
-a {
+.box1 a {
     width: 100%;
     margin-bottom: 10px;
 }
+
 .container {
     display: flex;
     align-items: center;
@@ -54,6 +61,7 @@ a {
     position: absolute;
     top: 0px;
     left: 0;
+    min-wdith: 200px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -108,11 +116,52 @@ a {
     color: #FFFFFF;
 }
 
+@keyframes topDownFade{
+    from {
+        transform: translateY(-300px);
+        opacity: 0;
+    }
+
+    to {
+        transform: transformY(0px);
+        opacity: 1;
+    }
+}
+
 .input-container {
+    opacity: 0;
     position: relative;
     display: flex;
     align-items: center;
     width: 80%;
+    animation-name: topDownFade;
+    animation-duration: 1.75s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.input-container:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.input-container:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.input-container:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.input-container:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+.input-container:nth-child(5) {
+    animation-delay: 1.5s;
+}
+
+.input-container:nth-child(6) {
+    animation-delay: 1.8s;
 }
 
 .input-container img {
@@ -129,7 +178,6 @@ a {
     padding-left: 15px;
     margin-bottom: 15px;
     width: 100%;
-    outline: none;
     font-family: 'Khand';
     font-size: 1.5rem;
 }
