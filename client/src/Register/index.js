@@ -32,16 +32,14 @@ function Register() {
 
     const handleRegister = async (e) => {
         console.log("Register Data: ", registerData);
-        console.log("Clicked!");
+        console.log("event: ", e);
         e.preventDefault();
         const req = e.target;
-        console.log("event: ", e);
         const payload = {
             registerInfo: registerData
         }
         console.log(JSON.stringify(payload.purchase));
-        console.log(req);
-        console.log(e);
+        console.log("Request: ", req);
 
         try {
             await API.sendUserData(payload);

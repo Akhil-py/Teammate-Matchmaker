@@ -8,6 +8,7 @@ const API = {
     },
 
     sendUserData: function(data) {
+        console.log("Sent user data");
         return axios.post(`${serverURL}/api/users`, data);
     }
 

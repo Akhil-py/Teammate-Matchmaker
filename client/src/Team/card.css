@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Inter, sans-serif;
+}
+
+.header{
+    background-color: #1A1B21;
+}
+
+.profileCard{
+    width: 232px;
+    margin: 10px;
+}
+
+.header h1{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.header h4{
+    color: #F3BF99;
+    text-align: center;
+    font-weight: regular;
+    font-size: 12.8px;
+    margin-bottom: 15px;
+}
+
+.header h6{
+    color: white;
+    text-align: center;
+    font-weight: regular;
+    font-size: 12.24px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 8px;
+}
+
+.header button{
+    padding: 9px;
+    width: 115px;
+    height: 34px;
+    border: none;
+    border-radius: 0.5rem;
+    
+}
+
+.main{
+    padding: 36px;
+    background-color: #1A1B21;
+    color: white;   
+}
+
+main p {
+    font-size: 10.24px;
+    color: #DCDCDC;
+    padding: 10px 0;
+}
+
+main h1{
+    font-size: 16px;
+    color: #F5F5F5;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    background-color: #161619;
+    gap: 24px;
+}
+
+footer img{
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	float: left;
+    mix-blend-mode: multiply;
+    align-items: center;
+
+}
+
+.linkedin-button{
+    font-size: 14px;
+    color: white;
+    background-color: #5093E2;
+    height: 16px;
+}
+
+.email-button{
+    font-size: 14px;
+    color: #374151;
+    height: 16px;
+}
+
+header button img[src="linkedin-logo.png"]{
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+header button img[src="email-logo.png"]{
+    width: 24px;
+    height: 16px;
+    margin-right: 2px;
+}
+
+button img,
+button span{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.email-text,
+.linkedin-text {
+    margin-left: 5px;
+}
