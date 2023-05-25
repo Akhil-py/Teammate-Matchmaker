@@ -85,7 +85,7 @@ input, select{
     gap: 20px;
 }
 
-button{
+.buttonContainer button{
     width: 248px;
     height: 43px;
     border-radius: 20px;
@@ -93,6 +93,6 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+.buttonContainer button:hover{
     background-color: #e3e3e3;
 }

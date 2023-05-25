@@ -1,11 +1,11 @@
 .navbar {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     gap: 10px;
-    align-content: flex-end;
-    background: white;
+    background: rgb(105, 101, 101);
   }
   
   .navlinks {
