@@ -26,7 +26,7 @@ function Navbar(values) {
           <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet"></link>
         </head>
         <a href="/">
-          <div class="logo-container">
+          <div className="logo-container">
             <img class="navlogo" src={logo_only} alt="Logo"></img>
             <img class="navname" src={logo} alt="gamed"></img>
           </div>
