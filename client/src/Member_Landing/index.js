@@ -3,6 +3,7 @@ import "./landing_style.css";
 
 import league from "../Images/lol_back.png";
 import valorant from "../Images/valorant.jpg";
+import dota from "../Images/dota.png";
 
 function MemberLanding() {
     return(
@@ -22,6 +23,14 @@ function MemberLanding() {
                     </div>
                     <div class="card-img-container">
                         <img src={league} alt="bruh"></img>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="text-container blue">
+                        <b>DOTA</b>
+                    </div>
+                    <div class="card-img-container">
+                        <img src={dota} alt="bruh"></img>
                     </div>
                 </div>
             </div>
