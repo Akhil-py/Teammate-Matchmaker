@@ -20,6 +20,10 @@ const UserSchema = new mongoose.Schema({
     college: {
         type: String,
         required: true
+    },
+    valorant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Valorant'
     }
 });
 
