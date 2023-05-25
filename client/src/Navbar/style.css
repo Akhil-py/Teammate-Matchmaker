@@ -1,16 +1,124 @@
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    gap: 10px;
-    background: rgb(105, 101, 101);
+  position: sticky;
+  display: flex;
+  top: 0;
+  border-top: 7px solid;
+  border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10;
+  z-index: 100;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  gap: 10px;
+  background: #242a3c;
+  transition: border-image 0.3s ease;
+}
+
+.navbar:hover {
+  animation: borderAnimation 5s infinite linear;
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10;
   }
-  
-  .navlinks {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    text-decoration: none;
+  25% {
+    border-image: linear-gradient(to right, #f98686, #ff0000) 10;
   }
+  50% {
+    border-image: linear-gradient(to right, #fceeb4, #ff9100) 10;
+  }
+  75% {
+    border-image: linear-gradient(to right, #f1f788, #eaff00) 10;
+  }
+  100% {
+    border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10;
+  }
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.navlinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.25rem;
+  text-decoration: none;
+  color: #ACD4E1;
+  font-size: 1.35rem;
+  font-family: "ABeeZee";
+  font-weight: bold;
+}
+
+.underline-hover-effect {
+  font-size: 1.35rem;
+  font-family: "ABeeZee";
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+
+.underline-hover-effect::before {
+  content:"";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #7f9ea8;
+  background-image: linear-gradient(to right, #7f9ea8, #bbeeff);
+  transition: width 0.25s ease;
+}
+
+.underline-hover-effect:hover::before {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
+.navlogo {
+  height: 60px;
+  width: auto;
+  transition: transform 1s ease;
+}
+
+.navlogo:hover {
+  transform: rotate(360deg);
+}
+
+.navname {
+  height: 40px;
+  width: auto;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.navlinks button {
+  width: 210px;
+  height: 40px;
+  font-family: "ABeeZee";
+  font-weight: bold;
+  border: none;
+  background-color: #282828;
+  color: #ACD4E1;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transition: filter 0.3s ease;
+}
+
+.navlinks button:hover {
+  filter:brightness(1.2);
+}
