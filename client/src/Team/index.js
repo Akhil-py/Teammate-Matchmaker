@@ -1,9 +1,19 @@
 import React from "react";
+import Profilecard from "./Profilecard"
+import "./team.css"
 
 const Team=() => {
     return(
         <div>
-            <button>Team Bro</button>
+            <div className="ourTeam"> Our Team </div>
+            <div className="profileCardDisplay">
+                <Profilecard />
+                <Profilecard />
+                <Profilecard />
+                <Profilecard />
+                <Profilecard />
+                <Profilecard />
+            </div>
         </div>
     );
 }

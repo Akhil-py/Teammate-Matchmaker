@@ -20,7 +20,7 @@
 .game-card {
     opacity: 0;
     width: 320px;
-    height: 75%;
+    height: 540px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -42,9 +42,13 @@
     animation-delay:1s;
 }
 
+.game-card:nth-child(3) {
+    animation-delay:1.5s;
+}
+
 .game-card:hover {
     width: 332px;
-    height: 79%;
+    height: 580px;
     border: 3px solid blue;
 }
 
@@ -71,4 +75,8 @@
 
 .yellow {
     color: #BC8D47;
+}
+
+.blue {
+    color: #244f62;
 }
