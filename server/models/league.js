@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
-    username: {
+const LeagueSchema = new mongoose.Schema({
+    userid: {
+        type: String,
+        required: true
+    },
+    lol_username: {
         type: String,
         required: true
     },
@@ -9,13 +13,17 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    discord: {
+    role: {
         type: String,
         required: true
     },
-    position: {
+    region: {
         type: String,
         required: true
+    },
+    bio: {
+        type: String,
+        required: false
     }
 });
 

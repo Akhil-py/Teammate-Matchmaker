@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const ValorantSchema = new mongoose.Schema({
+const DotaSchema = new mongoose.Schema({
     userid: {
         type: String,
         required: true
     },
-    val_username: {
+    dota_username: {
         type: String,
         required: true
     },
@@ -27,6 +27,6 @@ const ValorantSchema = new mongoose.Schema({
     }
 });
 
-const Valorant = mongoose.model('Valorant', ValorantSchema);
+const Dota = mongoose.model('Dota', DotaSchema);
 
-module.exports = Valorant;
+module.exports = Dota;
