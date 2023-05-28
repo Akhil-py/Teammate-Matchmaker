@@ -15,7 +15,16 @@ function AboutUs() {
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [recencyValue, setRecencyValue] = useState(initialRecencyValue); 
     const [ratingValue, setRatingValue] = useState(initialRatingValue); 
+    const [currentPage, setCurrentPage] = useState(1);
   
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+      };
+    
+      const handlePreviousPage = () => {
+        setCurrentPage((prevPage) => prevPage - 1);
+      };
+
     const handleRecommendationChange = (event) => {
       const value = event.target.value;
       setRecommendation(value);
@@ -38,6 +47,29 @@ function AboutUs() {
         setRecencyValue(initialRecencyValue);   
         setRatingValue(initialRatingValue); 
       };
+
+      const playerCards = [
+        <Playercard key={1} name = "Sithu Soe"/>,
+        <Playercard key={2} name = "Akhil"/>,
+        <Playercard key={3} name = "Kane"/>,
+        <Playercard key={4} name = "Shreya"/>,
+        <Playercard key={5} name = "Calvin"/>,
+        <Playercard key={6} name = "Kevin"/>,
+        <Playercard key={7} name = "Sithu Soe 2"/>,
+        <Playercard key={8} name = "Akhil 2"/>,
+        <Playercard key={9} name = "Kane 2"/>,
+        <Playercard key={10} name = "Shreya 2"/>,
+        <Playercard key={11} name = "Calvin 2"/>,
+        <Playercard key={12} name = "Kevin 2"/>,
+        <Playercard key={13} name = "Sithu Soe 3"/>,
+        <Playercard key={14} name = "Akhil 3"/>,
+        <Playercard key={15} name = "Kane 3"/>,
+      ];
+
+      const itemsPerPage = 6;
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+    
 
     return(
         <div>
@@ -98,9 +130,15 @@ function AboutUs() {
                 </div>
             </div>
             <div className="playercard-container">
-                <Playercard />
-                <Playercard />
-                <Playercard />
+                {playerCards.slice(startIndex, endIndex)}
+            </div>
+            <div className="pagination-container">
+                {currentPage > 1 && (
+                <button onClick={handlePreviousPage}>Back</button>
+                )}
+                {endIndex < playerCards.length && (
+                <button onClick={handleNextPage}>Next</button>
+                )}
             </div>
         </div>
     );
