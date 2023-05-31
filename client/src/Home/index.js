@@ -6,6 +6,7 @@ import temo from "../Images/temo.png";
 import val from "../Images/val.png";
 import lol from "../Images/lol.png";
 import yumi from "../Images/yumi.png";
+import dota from "../Images/dota2.png";
 
 // make sure to "npm install aos"
 import AOS from 'aos';
@@ -43,6 +44,10 @@ function Home() {
                     <div class="text-img-box-row" data-aos="fade-right">
                         <h1>League of Legends</h1>
                         <img src={lol} alt="league"></img>
+                    </div>
+                    <div class="text-img-box-row" data-aos="fade-right">
+                        <h1>DOTA</h1>
+                        <img src={dota} alt="dota"></img>
                     </div>
                 </div>       
             </div>

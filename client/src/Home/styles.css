@@ -22,11 +22,16 @@
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
     padding: 30px;
     float: left;
+}
+
+.text-box h1 {
     color: #B0D3E8;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-family: "Khand";
 }
 
 .text-box-2 {
@@ -123,6 +128,13 @@
 .text-img-box {
     display: flex;
     flex-direction: column;
+}
+
+.text-box-2 h1 {
+    font-family: "Khand";
+    color: #282828;
+    font-size: 1.75rem;
+    margin-right: 20px;
 }
 
 .text-img-box-row {

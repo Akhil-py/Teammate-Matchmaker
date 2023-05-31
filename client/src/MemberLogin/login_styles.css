@@ -13,8 +13,20 @@ body {
     animation-timing-function: ease-in-out;
     animation-delay: 0s;
     font-size: 3rem;
-    margin-bottom: 0px;
+    margin-bottom: 30px;
     margin-top: 0px;
+    color: #282828;
+    font-family: 'Khand';
+
+}
+
+.box1 h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    color: #282828;
+    font-family: 'Khand';
 }
 
 .box1 a {
@@ -61,7 +73,7 @@ body {
     position: absolute;
     top: 0px;
     left: 0;
-    min-wdith: 200px;
+    min-width: 200px;
     width: 100%;
     height: 100%;
     object-fit: cover;
