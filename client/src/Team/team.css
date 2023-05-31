@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Khand', sans-serif;
+    background-color: #23252C;
+}
+
+.ourTeam{
+    background-color: #0A1027;
+    color: white;
+    font-weight: bold;
+    height: 222px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    font-size: 54px;
+    padding: 16px;
+}
+
+.profileCardDisplay{
+    display: flex;
+}
+
+

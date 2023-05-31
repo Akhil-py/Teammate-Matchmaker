@@ -8,8 +8,25 @@ const API = {
     },
 
     sendUserData: function(data) {
+        console.log("Sent user data");
         return axios.post(`${serverURL}/api/users`, data);
+    },
+
+    sendLoginData: function(data) {
+        console.log("Data: ", data);
+        return axios.post(`${serverURL}/api/login`, data)
+    },
+
+    searchUser: function(data) {
+        console.log("Data: ", data);
+        const game = data.searchInfo.game
+        const role = data.searchInfo.role
+        const rank =data.searchInfo.rank
+        const region = data.searchInfo.region
+        
+        return axios.get(`${serverURL}/api/players?game=${game}&role=${role}&rank=${rank}&region=${region}`)
     }
+
 
     /*getLeagueData: function() {
         return axios.get(`${serverURL}/api/league`);
