@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Playercard from "./Playercard"
 import "./index.css"
+import API from "../API";
 
 function AboutUs() {
     const initialRankValue = 'rank';
@@ -14,30 +15,68 @@ function AboutUs() {
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [recencyValue, setRecencyValue] = useState(initialRecencyValue); 
-    const [ratingValue, setRatingValue] = useState(initialRatingValue); 
-  
-    const handleRecommendationChange = (event) => {
-      const value = event.target.value;
-      setRecommendation(value);
-      setDisabled(value === 'recommended');
-      if (value === 'recommended') {
-        setRankValue(initialRankValue);
-        setRoleValue(initialRoleValue);
-        setRegionValue(initialRegionValue);
-        setRecencyValue(initialRecencyValue);
-        setRatingValue(initialRatingValue);
-      }
+    const [ratingValue, setRatingValue] = useState(initialRatingValue);
+
+      const initialSearchData = {
+        game: "dota",
+        role: "",
+        rank: "",
+        region: "",
     };
 
-    const handleReset = () => {
-        setRecommendation('recommended');
-        setDisabled(true);
-        setRankValue(initialRankValue);
-        setRoleValue(initialRoleValue);
-        setRegionValue(initialRegionValue);
-        setRecencyValue(initialRecencyValue);   
-        setRatingValue(initialRatingValue); 
+    const [searchData, updateSearchData] = useState(initialSearchData);
+
+    const handleSearch = async (e) => {
+        console.log("Search Data: ", searchData);
+        console.log("event: ", e);
+        e.preventDefault();
+        const req = e.target;
+        const payload = {
+            searchInfo: searchData
+        }
+        console.log(JSON.stringify(payload.searchInfo));
+        console.log("Request: ", req);
+
+        try {
+            const response = await API.searchUser(payload);
+            console.log("response: ", response.data.players);
+            alert("Searched successfully");
+        } catch (error) {
+            console.error(error);
+            alert("An error occurred while trying to search. Please try again later.");
+        }
+    };
+    const handleChange = (e) => {
+        updateSearchData({
+            ...searchData,
+
+            //trim whitespace
+            [e.target.name]: e.target.value.trim()
+        });
+    };
+
+    const handleRecommendationChange = (event) => {
+        const value = event.target.value;
+        setRecommendation(value);
+        setDisabled(value === 'recommended');
+        if (value === 'recommended') {
+          setRankValue(initialRankValue);
+          setRoleValue(initialRoleValue);
+          setRegionValue(initialRegionValue);
+          setRecencyValue(initialRecencyValue);
+          setRatingValue(initialRatingValue);
+        }
       };
+  
+      const handleReset = () => {
+          setRecommendation('recommended');
+          setDisabled(true);
+          setRankValue(initialRankValue);
+          setRoleValue(initialRoleValue);
+          setRegionValue(initialRegionValue);
+          setRecencyValue(initialRecencyValue);   
+          setRatingValue(initialRatingValue); 
+        };
 
     return(
         <div>
@@ -48,7 +87,7 @@ function AboutUs() {
                         <option value="recommended" >Recommended</option>
                         <option value="custom">Custom</option>
                     </select>
-                    <select value={rankValue} disabled={disabled} onChange={(e) => setRankValue(e.target.value)}>
+                    <select value={rankValue} name="rank" disabled={disabled} onChange={handleChange}>
                         <option value="rank" disabled selected>Rank</option>
                         <option value="herald">Herald</option>
                         <option value="guardian">Guardian</option>
@@ -59,7 +98,7 @@ function AboutUs() {
                         <option value="Divine">Divine</option>
                         <option value="Immortal">Immortal</option>
                     </select>
-                    <select value={roleValue} disabled={disabled} onChange={(e) => setRoleValue(e.target.value)}>
+                    <select value={roleValue} name="role" disabled={disabled} onChange={handleChange}>
                         <option value="role" disabled selected>Role</option>
                         <option value="carry">Carry</option>
                         <option value="mid">Mid</option>
@@ -70,20 +109,20 @@ function AboutUs() {
                    
                 </form>
                 <form>
-                    <select value={regionValue} disabled={disabled} onChange={(e) => setRegionValue(e.target.value)}>
+                    <select value={regionValue} name="region" disabled={disabled} onChange={handleChange}>
                         <option value="region" disabled selected>Region</option>
                         <option value="sea">SE Asia</option>
                         <option value="japan">Japan</option>
                         <option value="uswest">US West</option>
                         <option value="useast">US East</option>
                     </select>
-                    <select value={recencyValue} disabled={disabled} onChange={(e) => setRecencyValue(e.target.value)}>
+                    <select value={recencyValue} disabled={disabled} onChange={handleChange}>
                         <option value="recency" disabled selected>Recency</option>
                         <option value="herald">24 hours</option>
                         <option value="guardian">48 hours</option>
                         <option value="crusader">72 hours</option>
                     </select>
-                    <select value={ratingValue} disabled={disabled} onChange={(e) => setRatingValue(e.target.value)}>
+                    <select value={ratingValue} disabled={disabled} onChange={handleChange}>
                         <option value="rating" disabled selected>Rating</option>
                         <option value="100">100%</option>
                         <option value="gt95">&gt; 95%</option>
@@ -93,8 +132,8 @@ function AboutUs() {
                     </select>
                 </form>
                 <div className="btn-container">
-                        <button>Search</button>
-                        <button onClick={handleReset}>Reset</button>
+                        <button onClick={handleSearch}>Search</button>
+                        <button>Reset</button>
                 </div>
             </div>
             <div className="playercard-container">
