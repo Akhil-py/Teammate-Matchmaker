@@ -15,7 +15,7 @@ import Dota from './Dota';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
-const [isLoggedIn, setLoggedIn] = useState(false);
+const [isLoggedIn, setLoggedIn] = useState(true);
 
 const sendData = (data) => {
   setLoggedIn(true);
@@ -34,7 +34,7 @@ const sendData = (data) => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<MemberLogin sendData={sendData}/>} />
             <Route path="/team" element={<Team />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={ isLoggedIn ? <Home  /> : <MemberLanding />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register />} />
             <Route path="/memberlanding" element={<MemberLanding />}/>
