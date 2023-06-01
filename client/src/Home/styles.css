@@ -1,3 +1,5 @@
+
+
 .container-1 {
     height: 100vh;
     background-image: url("../Images/background_home.png");
@@ -30,8 +32,9 @@
     color: #B0D3E8;
     margin-top: 30px;
     margin-bottom: 30px;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: "Khand";
+    font-weight: bold;
 }
 
 .text-box-2 {

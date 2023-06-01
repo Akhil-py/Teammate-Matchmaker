@@ -18,6 +18,7 @@ function Home() {
     }, []); 
     return (
     <div>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
         <div class="container-1">
             <div class="text-box" >
                 <h1 data-aos="fade-down">🎮 Find Gamer Friends at UC San Diego</h1>

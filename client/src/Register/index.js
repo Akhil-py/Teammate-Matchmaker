@@ -44,6 +44,7 @@ function Register() {
         try {
             await API.sendUserData(payload);
             alert("Created successfully");
+            window.location.href = "http://localhost:3000/login";
         } catch (error) {
             console.error(error);
             alert("An error occurred while trying to create the user. Please try again later.");

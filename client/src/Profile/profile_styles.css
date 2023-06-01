@@ -2,6 +2,11 @@
     display: flex;
 }
 
+.circle img{
+    width: 200px;
+    height: auto;
+}
+
 .profile-info {
     text-decoration: none;
     color: white;
