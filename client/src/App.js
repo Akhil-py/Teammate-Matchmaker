@@ -19,7 +19,7 @@ const [isLoggedIn, setLoggedIn] = useState(false);
 
 const sendData = (data) => {
   setLoggedIn(true);
-  console.log(isLoggedIn);
+  console.log("logged in: ", isLoggedIn);
 }
 
   return (

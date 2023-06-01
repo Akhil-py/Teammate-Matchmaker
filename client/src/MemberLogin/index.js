@@ -1,14 +1,13 @@
 import React, {useState} from "react";
 import "./login_styles.css";
 import API from "../API";
-import App from "../App"
 
 import gaming from "../Images/login_img.png"
 import lock from "../Images/lock.png"
 import person from "../Images/person_icon.png"
 import { Link } from 'react-router-dom'
 
-function MemberLogin() {
+function MemberLogin({sendData}) {
     const initialLoginData = {
         username: "",
         password: "",
@@ -45,7 +44,7 @@ function MemberLogin() {
             if(response.data.success){
                 alert("Now logged in");
                 window.location.href = "http://localhost:3000/memberlanding";
-                App.sendData(true);
+                sendData(true);
             }else{
                 alert("Wrong credentials")
             }
