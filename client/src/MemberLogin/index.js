@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./login_styles.css";
 import API from "../API";
+import App from "../App"
 
 import gaming from "../Images/login_img.png"
 import lock from "../Images/lock.png"
@@ -43,6 +44,8 @@ function MemberLogin() {
             //const UID = response.data.userId;
             if(response.data.success){
                 alert("Now logged in");
+                window.location.href = "http://localhost:3000/memberlanding";
+                App.sendData(true);
             }else{
                 alert("Wrong credentials")
             }

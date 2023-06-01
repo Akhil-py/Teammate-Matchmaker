@@ -14,7 +14,9 @@ function MemberLanding() {
                         <b>Valorant</b>
                     </div>
                     <div class="card-img-container">
-                        <img src={valorant} alt="bruh"></img>
+                        <a href="/valorant">
+                            <img src={valorant} alt="bruh"></img>
+                        </a>
                     </div>
                 </div>
                 <div class="game-card">
@@ -22,7 +24,9 @@ function MemberLanding() {
                         <b>League</b>
                     </div>
                     <div class="card-img-container">
-                        <img src={league} alt="bruh"></img>
+                        <a href="/league">
+                            <img src={league} alt="bruh"></img>
+                        </a>
                     </div>
                 </div>
                 <div class="game-card">
@@ -30,7 +34,9 @@ function MemberLanding() {
                         <b>DOTA</b>
                     </div>
                     <div class="card-img-container">
-                        <img src={dota} alt="bruh"></img>
+                        <a href="/dota">
+                            <img src={dota} alt="bruh"></img>
+                        </a>
                     </div>
                 </div>
             </div>
