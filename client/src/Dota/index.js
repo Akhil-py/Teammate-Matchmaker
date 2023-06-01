@@ -138,13 +138,13 @@ function Dota() {
                         <option value="uswest">US West</option>
                         <option value="useast">US East</option>
                     </select>
-                    <select value={recencyValue} disabled={disabled} onChange={handleChange}>
+                    <select value={recencyValue} name="recency" disabled={disabled} onChange={handleChange}>
                         <option value="recency" disabled selected>Recency</option>
                         <option value="herald">24 hours</option>
                         <option value="guardian">48 hours</option>
                         <option value="crusader">72 hours</option>
                     </select>
-                    <select value={ratingValue} disabled={disabled} onChange={handleChange}>
+                    <select value={ratingValue} name="rating" disabled={disabled} onChange={handleChange}>
                         <option value="rating" disabled selected>Rating</option>
                         <option value="100">100%</option>
                         <option value="gt95">&gt; 95%</option>

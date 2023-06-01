@@ -47,12 +47,14 @@ function Navbar(values) {
           </div>
         </a>
         <nav className="nav-container" ref={navRef}>
+
+          {values.values ? <button className="navlinks" onClick={getOut}> Logout</button> : <></>}
+
           <a className="navlinks" href="/about">
             <h2 className="underline-hover-effect">
               About us
             </h2>
           </a>
-          {values.values ? <button onClick={getOut}> Logout</button> : <></>}
           <a className="navlinks" href="/team">
             <h2 className="underline-hover-effect">
               Team
