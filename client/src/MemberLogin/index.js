@@ -90,8 +90,4 @@ function MemberLogin() {
     );
 }
 
-
-//<Link to="/memberlanding">
-//<button type="submit" value="Sign In" class="signin-but">Sign In</button>   
-//</Link>
 export default MemberLogin;

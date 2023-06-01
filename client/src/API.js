@@ -3,10 +3,6 @@ import axios from 'axios';
 const serverURL = "http://localhost:8000";
 
 const API = {
-    getUserData: function() {
-        return axios.get(`${serverURL}/api/users`);
-    },
-
     sendUserData: function(data) {
         console.log("Sent user data");
         return axios.post(`${serverURL}/api/users`, data);
