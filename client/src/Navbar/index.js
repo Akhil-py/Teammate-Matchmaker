@@ -27,8 +27,8 @@ function Navbar(values) {
     navRef.current.classList.toggle('open');
   }
 
-  const getOut = (func) => {
-    values.logout(true);
+  const getOut = () => {
+    values.logout();
     window.location.href = "http://localhost:3000/";
   } 
 
@@ -52,7 +52,7 @@ function Navbar(values) {
               About us
             </h2>
           </a>
-          <button onClick={getOut}> Logout</button>
+          {values.values ? <button onClick={getOut}> Logout</button> : <></>}
           <a className="navlinks" href="/team">
             <h2 className="underline-hover-effect">
               Team

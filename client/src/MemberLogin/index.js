@@ -43,7 +43,7 @@ function MemberLogin({sendData}) {
             //const UID = response.data.userId;
             if(response.data.success){
                 //alert("Now logged in");
-                //window.location.href = "http://localhost:3000/memberlanding";
+                window.location.href = "http://localhost:3000/memberlanding";
                 sendData(response.data.userId);
             }else{
                 alert("Wrong credentials")

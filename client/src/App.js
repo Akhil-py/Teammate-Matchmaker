@@ -17,11 +17,6 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 function App() {
 const [isLoggedIn, setLoggedIn] = useState(false);
 
-const sendData = (data) => {
-  setLoggedIn(true);
-  console.log("logged in: ", isLoggedIn);
-}
-
 useEffect(() =>{
     const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
     if(storedLoggedInStatus){
