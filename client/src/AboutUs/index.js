@@ -91,15 +91,12 @@ function AboutUs() {
                         <option value="Divine">Divine</option>
                         <option value="Immortal">Immortal</option>
                     </select>
-                    <select value={roleValue} disabled={disabled} onChange={(e) => setRoleValue(e.target.value)}>
-                        <option value="role" disabled selected>Role</option>
-                        <option value="carry">Carry</option>
-                        <option value="mid">Mid</option>
-                        <option value="offlane">Offlane</option>
-                        <option value="softsupport">Soft Support</option>
-                        <option value="hardsupport">Hard Support</option>
-                    </select>
-                   
+                    <select value={recencyValue} disabled={disabled} onChange={(e) => setRecencyValue(e.target.value)}>
+                        <option value="recency" disabled selected>Recency</option>
+                        <option value="herald">24 hours</option>
+                        <option value="guardian">48 hours</option>
+                        <option value="crusader">72 hours</option>
+                    </select>                   
                 </form>
                 <form>
                     <select value={regionValue} disabled={disabled} onChange={(e) => setRegionValue(e.target.value)}>
@@ -109,11 +106,13 @@ function AboutUs() {
                         <option value="uswest">US West</option>
                         <option value="useast">US East</option>
                     </select>
-                    <select value={recencyValue} disabled={disabled} onChange={(e) => setRecencyValue(e.target.value)}>
-                        <option value="recency" disabled selected>Recency</option>
-                        <option value="herald">24 hours</option>
-                        <option value="guardian">48 hours</option>
-                        <option value="crusader">72 hours</option>
+                    <select value={roleValue} disabled={disabled} onChange={(e) => setRoleValue(e.target.value)}>
+                        <option value="role" disabled selected>Role</option>
+                        <option value="carry">Carry</option>
+                        <option value="mid">Mid</option>
+                        <option value="offlane">Offlane</option>
+                        <option value="softsupport">Soft Support</option>
+                        <option value="hardsupport">Hard Support</option>
                     </select>
                     <select value={ratingValue} disabled={disabled} onChange={(e) => setRatingValue(e.target.value)}>
                         <option value="rating" disabled selected>Rating</option>

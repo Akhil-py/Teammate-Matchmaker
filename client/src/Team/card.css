@@ -122,3 +122,7 @@ button span{
 .linkedin-text {
     margin-left: 5px;
 }
+
+.profileImage {
+    object-fit: cover;
+}
