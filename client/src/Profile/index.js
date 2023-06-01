@@ -1,12 +1,14 @@
 import React from "react";
 import "./profile_styles.css";
 
+import pikachu from "../Images/surprised.webp";
+
 function Profile() {
     return(
     <div class="profile">
         <div class="left-panel">
             <div class="circle">
-                <img></img>
+                <img src={pikachu}></img>
             </div>
             <div class="profile-info">
                 <li>Username</li>
@@ -18,8 +20,8 @@ function Profile() {
         </div>
         <div class="right-panel">
             My Cards
-            <div>
-                
+            <div card-collection>
+                <button>Create a Card!</button>
             </div>
         </div>
     </div>
