@@ -18,12 +18,19 @@ const loginOrProfile = (isLoggedIn) => {
 }
 
 function Navbar(values) {
-
+  console.log("l: ", values.logout);
+  console.log("v: ", values.values);
   const navRef = useRef();
   const showNavBar = () => {
     console.log("ono");
     navRef.current.classList.toggle('open');
   }
+
+  const getOut = (func) => {
+    values.logout(true);
+    window.location.href = "http://localhost:3000/";
+  } 
+
   
     return(
       <div class="navbar">
@@ -44,6 +51,7 @@ function Navbar(values) {
               About us
             </h2>
           </a>
+          <button onClick={getOut}> Logout</button>
           <a className="navlinks" href="/team">
             <h2 className="underline-hover-effect">
               Team

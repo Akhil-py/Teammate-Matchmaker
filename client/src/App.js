@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Navbar from "./Navbar";
 import Home from "./Home";
@@ -22,16 +22,33 @@ const sendData = (data) => {
   console.log("logged in: ", isLoggedIn);
 }
 
+useEffect(() =>{
+    const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
+    if(storedLoggedInStatus){
+      setLoggedIn(JSON.parse(storedLoggedInStatus));
+    }
+}, []);
+
+const handleLogin = () => {
+  setLoggedIn(true);
+  localStorage.setItem('isLoggedIn', true);
+};
+
+const handleLogout = () => {
+  setLoggedIn(false);
+  localStorage.removeItem('isLoggedIn');
+}
+
   return (
     <main>
       <div className="App">
-        <Navbar values={isLoggedIn}/>
+        <Navbar values={isLoggedIn} logout={handleLogout}/>
 
         <BrowserRouter>
           <Routes>
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<MemberLogin sendData={sendData}/>} />
+            <Route path="/login" element={<MemberLogin sendData={handleLogin}/>} />
             <Route path="/team" element={<Team />} />
             <Route path="/" element={ isLoggedIn ? <MemberLanding  /> : <Home />} />
             <Route path="/profile" element={<Profile />} />

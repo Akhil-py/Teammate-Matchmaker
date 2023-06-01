@@ -42,7 +42,7 @@ function MemberLogin({sendData}) {
             console.log("userID: ", response.data.userId);
             //const UID = response.data.userId;
             if(response.data.success){
-                alert("Now logged in");
+                //alert("Now logged in");
                 window.location.href = "http://localhost:3000/memberlanding";
                 sendData(true);
             }else{
