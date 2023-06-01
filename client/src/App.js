@@ -29,6 +29,7 @@ const sendData = (data) => {
 
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<MemberLogin sendData={sendData}/>} />
