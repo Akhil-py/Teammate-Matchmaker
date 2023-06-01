@@ -10,6 +10,7 @@ import Team from './Team';
 import Profile from './Profile';
 import Register from './Register';
 import MemberLanding from './Member_Landing';
+import Dota from './Dota';
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -36,6 +37,7 @@ const sendData = (data) => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register />} />
             <Route path="/memberlanding" element={<MemberLanding />}/>
+            <Route path="/dota" element={<Dota />} />
           </Routes>
       </BrowserRouter>
      </div>
