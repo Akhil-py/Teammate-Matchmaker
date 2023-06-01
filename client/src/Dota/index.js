@@ -47,12 +47,34 @@ function Dota() {
         }
     };
     const handleChange = (e) => {
-        updateSearchData({
-            ...searchData,
+        if(e.target.name === "rank" ||
+            e.target.name === "role" || 
+            e.target.name === "region"){
+                updateSearchData({
+                    ...searchData,
+        
+                    //trim whitespace
+                    [e.target.name]: e.target.value.trim()
+                });
+            }
 
-            //trim whitespace
-            [e.target.name]: e.target.value.trim()
-        });
+        console.log("event: " , e.target.name);
+
+        if(e.target.name === "rank"){
+            setRankValue(e.target.value);
+        }
+        else if(e.target.name === "role"){
+            setRoleValue(e.target.value);
+        }
+        else if(e.target.name === "region"){
+            setRegionValue(e.target.value);
+        }
+        else if(e.target.name === "recency"){
+            setRecencyValue(e.target.value);
+        }
+        else if(e.target.name === "rating"){
+            setRatingValue(e.target.value); 
+        }
     };
 
     const handleRecommendationChange = (event) => {
@@ -87,7 +109,7 @@ function Dota() {
                         <option value="recommended" >Recommended</option>
                         <option value="custom">Custom</option>
                     </select>
-                    <select name="rank" disabled={disabled} onChange={handleChange}>
+                    <select value={rankValue} name="rank" disabled={disabled} onChange={handleChange}>
                         <option value="rank" disabled selected>Rank</option>
                         <option value="herald">Herald</option>
                         <option value="guardian">Guardian</option>
@@ -98,7 +120,7 @@ function Dota() {
                         <option value="Divine">Divine</option>
                         <option value="Immortal">Immortal</option>
                     </select>
-                    <select name="role" disabled={disabled} onChange={handleChange}>
+                    <select value={roleValue} name="role" disabled={disabled} onChange={handleChange}>
                         <option value="role" disabled selected>Role</option>
                         <option value="carry">Carry</option>
                         <option value="mid">Mid</option>
@@ -109,20 +131,20 @@ function Dota() {
                    
                 </form>
                 <form>
-                    <select name="region" disabled={disabled} onChange={handleChange}>
+                    <select value={regionValue} name="region" disabled={disabled} onChange={handleChange}>
                         <option value="region" disabled selected>Region</option>
                         <option value="sea">SE Asia</option>
                         <option value="japan">Japan</option>
                         <option value="uswest">US West</option>
                         <option value="useast">US East</option>
                     </select>
-                    <select disabled={disabled} onChange={handleChange}>
+                    <select value={recencyValue} disabled={disabled} onChange={handleChange}>
                         <option value="recency" disabled selected>Recency</option>
                         <option value="herald">24 hours</option>
                         <option value="guardian">48 hours</option>
                         <option value="crusader">72 hours</option>
                     </select>
-                    <select disabled={disabled} onChange={handleChange}>
+                    <select value={ratingValue} disabled={disabled} onChange={handleChange}>
                         <option value="rating" disabled selected>Rating</option>
                         <option value="100">100%</option>
                         <option value="gt95">&gt; 95%</option>
