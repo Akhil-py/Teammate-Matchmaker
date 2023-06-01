@@ -29,14 +29,17 @@ useEffect(() =>{
     }
 }, []);
 
-const handleLogin = () => {
+const handleLogin = (user_id) => {
   setLoggedIn(true);
   localStorage.setItem('isLoggedIn', true);
+  console.log('stored user id: ', user_id)
+  localStorage.setItem('userid', user_id);
 };
 
 const handleLogout = () => {
   setLoggedIn(false);
   localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userid')
 }
 
   return (

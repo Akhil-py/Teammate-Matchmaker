@@ -20,6 +20,7 @@ const loginOrProfile = (isLoggedIn) => {
 function Navbar(values) {
   console.log("l: ", values.logout);
   console.log("v: ", values.values);
+  console.log('nav_user_id:', localStorage.getItem('userid'));
   const navRef = useRef();
   const showNavBar = () => {
     console.log("ono");
