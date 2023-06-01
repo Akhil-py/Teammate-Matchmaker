@@ -90,13 +90,7 @@ function AboutUs() {
                         <option value="ancient">Ancient</option>
                         <option value="Divine">Divine</option>
                         <option value="Immortal">Immortal</option>
-                    </select>
-                    <select value={recencyValue} disabled={disabled} onChange={(e) => setRecencyValue(e.target.value)}>
-                        <option value="recency" disabled selected>Recency</option>
-                        <option value="herald">24 hours</option>
-                        <option value="guardian">48 hours</option>
-                        <option value="crusader">72 hours</option>
-                    </select>                   
+                    </select>                
                 </form>
                 <form>
                     <select value={regionValue} disabled={disabled} onChange={(e) => setRegionValue(e.target.value)}>
@@ -113,7 +107,13 @@ function AboutUs() {
                         <option value="offlane">Offlane</option>
                         <option value="softsupport">Soft Support</option>
                         <option value="hardsupport">Hard Support</option>
-                    </select>
+                    </select>  
+                    {/* <select value={recencyValue} disabled={disabled} onChange={(e) => setRecencyValue(e.target.value)}>
+                        <option value="recency" disabled selected>Recency</option>
+                        <option value="herald">24 hours</option>
+                        <option value="guardian">48 hours</option>
+                        <option value="crusader">72 hours</option>
+                    </select> 
                     <select value={ratingValue} disabled={disabled} onChange={(e) => setRatingValue(e.target.value)}>
                         <option value="rating" disabled selected>Rating</option>
                         <option value="100">100%</option>
@@ -121,7 +121,7 @@ function AboutUs() {
                         <option value="gt90">&gt; 90%</option>
                         <option value="gt85">&gt; 85%</option>
                         <option value="gt80">&gt; 80%</option>
-                    </select>
+                    </select> */}
                 </form>
                 <div className="btn-container">
                         <button>Search</button>

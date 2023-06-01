@@ -17,6 +17,10 @@
     padding-top: 10px;
 }
 
+.filter-container form{
+    margin-top: 28px;
+    width: 800px;
+}
 .dota-img{
     width: 195px;
     height: 180px;
