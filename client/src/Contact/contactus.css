@@ -96,3 +96,18 @@ input, select{
 .buttonContainer button:hover{
     background-color: #e3e3e3;
 }
+
+@keyframes swipeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .container{
+    animation: swipeIn 1s ease-out;
+  }

@@ -26,4 +26,17 @@ html{
     display: flex;
 }
 
+@keyframes swipeIn {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
+  .profileCard{
+    animation: swipeIn 0.5s ease-out;
+  }
