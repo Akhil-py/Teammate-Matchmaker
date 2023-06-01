@@ -16,6 +16,10 @@ const API = {
         console.log("Data: ", data);
         return axios.post(`${serverURL}/api/login`, data)
     },
+    getUserData: function(user_id) {
+        console.log("user_id: ", user_id);
+        return axios.get(`${serverURL}/api/users?user_id=${user_id}`)
+    },
 
     searchUser: function(data) {
         console.log("Data: ", data);

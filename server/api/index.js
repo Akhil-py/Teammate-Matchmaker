@@ -121,7 +121,7 @@ async function comparePasswords(password, hashedPassword) {
 
 // Login endpoint
 router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password } = req.body.loginInfo;
 
     try {
         const user = await User.findOne({ username });
