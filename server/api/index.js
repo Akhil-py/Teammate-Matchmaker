@@ -193,14 +193,14 @@ router.get('/players', async (req, res) => {
         region: region
         }
         if (game === 'league-of-legends') {
-            const players = await League.find(query).select('user_id lol_username');
+            const players = await League.find(query).select('userid lol_username');
             res.status(200).json({ status: 'ok', players });
         }
         else if (game == 'valorant'){
-            const players = await Valorant.find(query).select('user_id val_username');
+            const players = await Valorant.find(query).select('userid val_username');
             res.status(200).json({ status: 'ok', players });
         } else if (game == 'dota'){
-            const players = await Dota.find(query).select('user_id dota_username');
+            const players = await Dota.find(query).select('userid dota_username');
             res.status(200).json({ status: 'ok', players });
         } else {
             return res.status(400).json({ status: 'error', error: 'Invalid game specified!' });

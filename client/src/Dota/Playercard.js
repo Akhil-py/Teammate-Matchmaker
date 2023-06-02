@@ -1,12 +1,12 @@
 import "./Playercard.css"
-export default function Playercard(){
+export default function Playercard(props){
     return (
         <div>
             <div className="player-container">
                 <div className="profile-card">
-                    <img src={require("./Images/dotabg.jpeg")} className="cover-pic" alt="damn"></img>
-                    <img src={require("./Images/heroicon.jpeg")} className="profile-pic" alt="damn"></img>
-                    <h1 className="name">Sithu Soe</h1>
+                    <img src={require("./Images/dotabg.jpeg")} className="cover-pic"></img>
+                    <img src={require("./Images/heroicon.jpeg")} className="profile-pic"></img>
+                    <h1 className="name">{props.name}</h1>
                     <p>San Diego, California, United States</p>
                     <div className="row">
                         <div>
