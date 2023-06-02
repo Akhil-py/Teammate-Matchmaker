@@ -44,7 +44,7 @@ function MemberLogin({sendData}) {
             if(response.data.success){
                 //alert("Now logged in");
                 window.location.href = "http://localhost:3000/memberlanding";
-                sendData(true);
+                sendData(response.data.userId);
             }else{
                 alert("Wrong credentials")
             }

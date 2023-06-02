@@ -17,11 +17,6 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 function App() {
 const [isLoggedIn, setLoggedIn] = useState(false);
 
-const sendData = (data) => {
-  setLoggedIn(true);
-  console.log("logged in: ", isLoggedIn);
-}
-
 useEffect(() =>{
     const storedLoggedInStatus = localStorage.getItem('isLoggedIn');
     if(storedLoggedInStatus){
@@ -29,14 +24,17 @@ useEffect(() =>{
     }
 }, []);
 
-const handleLogin = () => {
+const handleLogin = (user_id) => {
   setLoggedIn(true);
   localStorage.setItem('isLoggedIn', true);
+  console.log('stored user id: ', user_id)
+  localStorage.setItem('userid', user_id);
 };
 
 const handleLogout = () => {
   setLoggedIn(false);
   localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userid')
 }
 
   return (
