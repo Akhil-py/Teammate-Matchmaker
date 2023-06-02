@@ -5,18 +5,6 @@ import logo from "../Images/logo.png";
 import logo_only from "../Images/logo_only.png";
 import hamburger from "../Images/hamburger.png"
 
-const loginOrProfile = (isLoggedIn) => {
-  console.log("isLoggedIn ", isLoggedIn);
-  if(isLoggedIn.values){
-    return <a class="navlinks" href="/profile">Profile</a>
-  }
-  return <a class="navlinks" href="/login">
-    <h2 class="underline-hover-effect">
-      Login
-    </h2>
-  </a>;
-}
-
 function Navbar(values) {
   console.log("l: ", values.logout);
   console.log("v: ", values.values);
@@ -65,7 +53,9 @@ function Navbar(values) {
               Contact
             </h2>
           </a>
-          {loginOrProfile(values)}
+
+          {values.values ? <a class="navlinks" href="/profile">Profile</a> : <a class="navlinks" href="/login">Login</a>}
+          
         </nav>
         <button className="hamburger-btn" onClick={showNavBar}>
             <img className="hamburger" src={hamburger} alt="more"></img>
