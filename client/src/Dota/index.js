@@ -7,8 +7,6 @@ function Dota() {
     const initialRankValue = 'rank';
     const initialRoleValue = 'role';
     const initialRegionValue = 'region';
-    const initialRecencyValue = 'recency';
-    const initialRatingValue = 'rating';
     const [recommendation, setRecommendation] = useState('recommended');
     const [disabled, setDisabled] = useState(true);
     const [rankValue, setRankValue] = useState(initialRankValue); 
