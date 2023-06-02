@@ -103,7 +103,7 @@ function Valorant() {
     return(
         <div>
             <div className="filter-container">
-                <img className='dota-img' alt="damn" src={require("./Images/dota2.png")}></img>
+                <img className='dota-img' alt="damn" src={require("./Images/valorant.png")}></img>
                 <form>
                     <select value={recommendation} onChange={handleRecommendationChange}>
                         <option value="recommended" >Recommended</option>

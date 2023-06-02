@@ -4,8 +4,8 @@ export default function Playercard(){
         <div>
             <div className="player-container">
                 <div className="profile-card">
-                    <img src={require("./Images/dotabg.jpeg")} className="cover-pic" alt="damn"></img>
-                    <img src={require("./Images/heroicon.jpeg")} className="profile-pic" alt="damn"></img>
+                    <img src={require("./Images/valorantbg.jpeg")} className="cover-pic" alt="damn"></img>
+                    <img src={require("./Images/valoranticon.jpeg")} className="profile-pic" alt="damn"></img>
                     <h1 className="name">Sithu Soe</h1>
                     <p>San Diego, California, United States</p>
                     <div className="row">
