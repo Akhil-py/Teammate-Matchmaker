@@ -13,7 +13,7 @@ function Dota() {
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [currentPage, setCurrentPage] = useState(1);
-    const [playerData, setPlayerData] = useState(<Playercard></Playercard>);
+    const [playerData, setPlayerData] = useState([]);
     
     const initialSearchData = {
         game: "dota",
@@ -125,6 +125,7 @@ function Dota() {
         setRankValue(initialRankValue);
         setRoleValue(initialRoleValue);
         setRegionValue(initialRegionValue);
+        setPlayerData([]);
     };
     /*const playerCards = [
         <Playercard></Playercard>
