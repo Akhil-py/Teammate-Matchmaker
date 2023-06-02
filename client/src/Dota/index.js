@@ -120,7 +120,11 @@ function Dota() {
                         <option value="Divine">Divine</option>
                         <option value="Immortal">Immortal</option>
                     </select>
-                    <select value={roleValue} name="role" disabled={disabled} onChange={handleChange}>
+
+                   
+                </form>
+                <form>
+                <select value={roleValue} name="role" disabled={disabled} onChange={handleChange}>
                         <option value="role" disabled selected>Role</option>
                         <option value="carry">Carry</option>
                         <option value="mid">Mid</option>
@@ -128,29 +132,12 @@ function Dota() {
                         <option value="softsupport">Soft Support</option>
                         <option value="hardsupport">Hard Support</option>
                     </select>
-                   
-                </form>
-                <form>
                     <select value={regionValue} name="region" disabled={disabled} onChange={handleChange}>
                         <option value="region" disabled selected>Region</option>
                         <option value="sea">SE Asia</option>
                         <option value="japan">Japan</option>
                         <option value="uswest">US West</option>
                         <option value="useast">US East</option>
-                    </select>
-                    <select value={recencyValue} name="recency" disabled={disabled} onChange={handleChange}>
-                        <option value="recency" disabled selected>Recency</option>
-                        <option value="herald">24 hours</option>
-                        <option value="guardian">48 hours</option>
-                        <option value="crusader">72 hours</option>
-                    </select>
-                    <select value={ratingValue} name="rating" disabled={disabled} onChange={handleChange}>
-                        <option value="rating" disabled selected>Rating</option>
-                        <option value="100">100%</option>
-                        <option value="gt95">&gt; 95%</option>
-                        <option value="gt90">&gt; 90%</option>
-                        <option value="gt85">&gt; 85%</option>
-                        <option value="gt80">&gt; 80%</option>
                     </select>
                 </form>
                 <div className="btn-container">
