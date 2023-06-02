@@ -11,6 +11,8 @@ import Profile from './Profile';
 import Register from './Register';
 import MemberLanding from './Member_Landing';
 import Dota from './Dota';
+import Valorant from './Valorant';
+import League from './League';
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -53,6 +55,8 @@ const handleLogout = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/memberlanding" element={<MemberLanding />}/>
             <Route path="/dota" element={<Dota />} />
+            <Route path="/valorant" element={<Valorant />} />
+            <Route path="/league" element={<League />} />
           </Routes>
       </BrowserRouter>
      </div>
