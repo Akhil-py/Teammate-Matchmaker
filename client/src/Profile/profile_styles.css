@@ -88,6 +88,24 @@
     display: none;
 }
 
-.valorant-show{
+.show{
     display: block;
+}
+
+.pop-up-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.pop-up-card button {
+    padding: 5px;
+    width: 70%;
+    border:none;
+    margin-bottom: 10px;
+    border-radius: 40px;
+    font-size: 30px;
+    font-family: 'Khand';
+    background-color: #ACD4E1;
+    color: #282828;
 }
