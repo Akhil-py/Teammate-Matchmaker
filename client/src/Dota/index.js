@@ -13,6 +13,7 @@ function Dota() {
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [currentPage, setCurrentPage] = useState(1);
+    const [playerData, setPlayerData] = useState(<Playercard></Playercard>);
     
     const initialSearchData = {
         game: "dota",
@@ -62,7 +63,9 @@ function Dota() {
                 console.log('added player')
                 player_info_array.push(player_info);
             }
-            console.log(player_info_array)
+            console.log("playerinfoarr: ", player_info_array)
+            setPlayerData(player_info_array);
+            console.log("playerData: ", playerData)
 
             // Now you have an array containing the information of all players
 
@@ -123,23 +126,20 @@ function Dota() {
         setRoleValue(initialRoleValue);
         setRegionValue(initialRegionValue);
     };
-    const playerCards = [
-        <Playercard key={1} name = "Sithu Soe"/>,
-        <Playercard key={2} name = "Akhil"/>,
-        <Playercard key={3} name = "Kane"/>,
-        <Playercard key={4} name = "Shreya"/>,
-        <Playercard key={5} name = "Calvin"/>,
-        <Playercard key={6} name = "Kevin"/>,
-        <Playercard key={7} name = "Sithu Soe 2"/>,
-        <Playercard key={8} name = "Akhil 2"/>,
-        <Playercard key={9} name = "Kane 2"/>,
-        <Playercard key={10} name = "Shreya 2"/>,
-        <Playercard key={11} name = "Calvin 2"/>,
-        <Playercard key={12} name = "Kevin 2"/>,
-        <Playercard key={13} name = "Sithu Soe 3"/>,
-        <Playercard key={14} name = "Akhil 3"/>,
-        <Playercard key={15} name = "Kane 3"/>,
-    ];
+    /*const playerCards = [
+        <Playercard></Playercard>
+    ];*/
+
+    const playerCards = playerData.map((player, index) => (
+        <Playercard
+          key={index}
+          dotaUsername={player.dota_username}
+          siteUsername={player.site_username}
+          rank={player.rank}
+          role={player.role}
+          region={player.region}
+        />
+      ));
 
     const itemsPerPage = 6;
     const startIndex = (currentPage - 1) * itemsPerPage;
