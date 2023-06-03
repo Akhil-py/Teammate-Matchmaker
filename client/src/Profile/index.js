@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import API from "../API";
 import "./profile_styles.css";
 
 import pikachu from "../Images/surprised.webp";
@@ -11,8 +12,11 @@ function Profile() {
     const [rankValue, setRankValue] = useState(initialRankValue); 
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
+    const user_id = localStorage.getItem('userid');
 
     const initialGameData = {
+        user_id: user_id,
+        username: "",
         game: "",
         role: "",
         rank: "",
@@ -50,10 +54,13 @@ function Profile() {
         const payload = {
             gameInfo: gameData
         }
-        console.log(JSON.stringify(payload.searchInfo));
+        JSON.stringify(payload.gameInfo);
+        console.log("Payload: ", payload.gameInfo);
         console.log("Request: ", req);
         try {
-            
+            await API.sendGameData(payload);
+            //console.log("Response: ", response);
+            alert("Made successfully");
         } catch(error) {
             console.error(error);
             alert("An error occurred while trying to search. Please try again later.");
@@ -108,7 +115,7 @@ function Profile() {
         if (selectedValue === "valorant") {
             valorantR('show');
        }
-        else if (selectedValue === "league") {
+        else if (selectedValue === "league-of-legends") {
             lolR('show');
         }
         else if (selectedValue === "dota" ){
@@ -139,11 +146,14 @@ function Profile() {
             <div class="card-collection">
                 <button>Create a Card!</button>
             </div>
+            <div className="input-container">
+                            <input type="text" id="username" name="username" placeholder="Username" onChange={handleGameChange}></input>
+                        </div>
             <div class="pop-up-card">
                 <select name="game" onChange={handleOptionChange} class="select-chosen">
                     <option value="game">Game</option>
                     <option value="valorant">Valorant</option>
-                    <option value="league">League of Legends</option>
+                    <option value="league-of-legends">League of Legends</option>
                     <option value="dota">DOTA 2</option>
                 </select>
                 <div className="hide" ref={valRef}>

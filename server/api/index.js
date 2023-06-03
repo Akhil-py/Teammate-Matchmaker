@@ -34,16 +34,18 @@ router.post('/users', async (req, res) => {
 
 router.post('/users/league-of-legends', async (req, res) => {
     try {
-        const { user_id, username, rank, role, region } = req.body;
+        const player = req.body;
+        console.log("request: ", req.body);
+        const { userid, username, rank, role, region } = player;
 
         // This checks if this user has already made a league of legends data card
-        const existingLeagueOfLegendsData = await League.findOne({ userid: user_id });
+        const existingLeagueOfLegendsData = await League.findOne({ userid: userid });
         if (existingLeagueOfLegendsData) {
-        return res.status(400).json({ status: 'error', error: 'League of Legends data already exists for the user!' });
+            return res.status(400).json({ status: 'error', error: 'League of Legends data already exists for the user!' });
         }
 
         const leagueOfLegendsData = {
-            userid: user_id,
+            userid: userid,
             lol_username: username,
             rank: rank,
             role: role,
@@ -60,22 +62,23 @@ router.post('/users/league-of-legends', async (req, res) => {
 
 router.post('/users/valorant', async (req, res) => {
     try {
-        const { user_id, username, rank, role, region} = req.body;
+        console.log("request gameInfo: ", req.body)
+        const { userid, username, rank, role, region} = req.body;
 
         // Check if Valorant data already exists for the given user_id
-        const existingValorantData = await Valorant.findOne({ userid: user_id });
+        const existingValorantData = await Valorant.findOne({ userid: userid });
         if (existingValorantData) {
             return res.status(400).json({ status: 'error', error: 'Valorant data already exists for the user!' });
         }
 
         const valorantData = {
-            userid: user_id,
+            userid: userid,
             val_username: username,
             rank: rank,
             role: role,
             region: region
         };
-        console.log(valorantData)
+        console.log("Val data: ", valorantData)
         const newValorantData = await Valorant.create(valorantData);
         res.status(200).json({ status: 'Successfully created'});
     } catch (err) {
@@ -85,16 +88,16 @@ router.post('/users/valorant', async (req, res) => {
 });
 router.post('/users/dota', async (req, res) => {
     try {
-        const { user_id, username, rank, role, region } = req.body;
+        const { userid, username, rank, role, region } = req.body;
 
         // Check if Dota data already exists for the given user_id
-        const existingDotaData = await Dota.findOne({ userid: user_id });
+        const existingDotaData = await Dota.findOne({ userid: userid });
         if (existingDotaData) {
             return res.status(400).json({ status: 'error', error: 'Dota data already exists for the user!' });
         }
 
         const dotaData = {
-            userid: user_id,
+            userid: userid,
             dota_username: username,
             rank: rank,
             role: role,
