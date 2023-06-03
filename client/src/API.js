@@ -18,7 +18,7 @@ const API = {
     },
 
     sendGameData: function(data) {
-        console.log("Data: ", data.gameInfo.game);
+        console.log("DatagameInfo: ", data.gameInfo);
         return axios.post(`${serverURL}/api/users/${data.gameInfo.game}`, data.gameInfo)
     },
 

@@ -161,8 +161,8 @@ function Dota() {
                         <option value="archon">Archon</option>
                         <option value="legend">Legend</option>
                         <option value="ancient">Ancient</option>
-                        <option value="Divine">Divine</option>
-                        <option value="Immortal">Immortal</option>
+                        <option value="divine">Divine</option>
+                        <option value="immortal">Immortal</option>
                     </select>                
                 </form>
                 <form>

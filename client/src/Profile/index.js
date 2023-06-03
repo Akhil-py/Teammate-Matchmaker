@@ -139,6 +139,7 @@ function Profile() {
                 <li>Email</li>
                 <li>Discord Tag</li>
                 <li>College</li>
+                <li>Only one profile card per game for an account!</li>
             </div>
         </div>
         <div class="right-panel">
@@ -146,10 +147,10 @@ function Profile() {
             <div class="card-collection">
                 <button>Create a Card!</button>
             </div>
-            <div className="input-container">
-                            <input type="text" id="username" name="username" placeholder="Username" onChange={handleGameChange}></input>
-                        </div>
             <div class="pop-up-card">
+                <div className="input-container">
+                    <input type="text" id="username" name="username" placeholder="Username" onChange={handleGameChange}></input>
+                </div>
                 <select name="game" onChange={handleOptionChange} class="select-chosen">
                     <option value="game">Game</option>
                     <option value="valorant">Valorant</option>
@@ -218,8 +219,8 @@ function Profile() {
                         <option value="carry">Carry</option>
                         <option value="mid">Mid</option>
                         <option value="offlane">Offlane</option>
-                        <option value="soft support">Soft Support</option>
-                        <option value="hard support">Hard Support</option>
+                        <option value="softsupport">Soft Support</option>
+                        <option value="hardsupport">Hard Support</option>
                     </select>
                     <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen">
                         <option value="rank">Rank</option>
