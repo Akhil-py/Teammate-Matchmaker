@@ -5,13 +5,72 @@ import pikachu from "../Images/surprised.webp";
 
 
 function Profile() {
+    const initialRankValue = 'rank';
+    const initialRoleValue = 'role';
+    const initialRegionValue = 'region';
+    const [rankValue, setRankValue] = useState(initialRankValue); 
+    const [roleValue, setRoleValue] = useState(initialRoleValue); 
+    const [regionValue, setRegionValue] = useState(initialRegionValue); 
+
+    const initialGameData = {
+        game: "",
+        role: "",
+        rank: "",
+        region: "",
+    };
+
+    const [gameData, updateGameData] = useState(initialGameData);
+
+    const handleGameChange = (e) => {
+        updateGameData({
+            ...gameData,
+
+            //trim whitespace
+            [e.target.name]: e.target.value.trim()
+        });
+
+        console.log("targetname: ", e.target.value);
+
+        if(e.target.name === "rank"){
+            setRankValue(e.target.value);
+        }
+        else if(e.target.name === "role"){
+            setRoleValue(e.target.value);
+        }
+        else if(e.target.name === "region"){
+            setRegionValue(e.target.value);
+        }
+    };
+
+    const handleGameSubmit = async (e) => {
+        console.log("Game Data: ", gameData);
+        console.log("event: ", e);
+        e.preventDefault();
+        const req = e.target;
+        const payload = {
+            gameInfo: gameData
+        }
+        console.log(JSON.stringify(payload.searchInfo));
+        console.log("Request: ", req);
+        try {
+            
+        } catch(error) {
+            console.error(error);
+            alert("An error occurred while trying to search. Please try again later.");
+        }
+    };
+
+    const handleReset = () => {
+        setRankValue(initialRankValue);
+        setRoleValue(initialRoleValue);
+        setRegionValue(initialRegionValue);
+    };
 
     const valRef = useRef();
     const lolRef = useRef();
     const dotaRef = useRef();
     const submitRef = useRef();
 
-    const [selectedOption, setSelectedOption] = useState('');
     const valorantR = (e) => {
         console.log("ve: ", e);
         valRef.current.classList.add(e);
@@ -44,21 +103,22 @@ function Profile() {
     }
     const handleOptionChange = (event) => {
         const selectedValue = event.target.value;
-        setSelectedOption(selectedValue);
         // Perform additional actions based on the selected option
         console.log(selectedValue)
-        if (selectedValue === "Valorant") {
+        if (selectedValue === "valorant") {
             valorantR('show');
        }
-        else if (selectedValue === "League of Legends") {
+        else if (selectedValue === "league") {
             lolR('show');
         }
-        else if (selectedValue === "DOTA 2") {
+        else if (selectedValue === "dota" ){
             dotaR('show');
         }
-        else if (selectedValue ==="Game") {
+        else if (selectedValue ==="game") {
             gameR('show');
         }
+        handleGameChange(event);
+        handleReset();
       };
 
     return(
@@ -80,94 +140,97 @@ function Profile() {
                 <button>Create a Card!</button>
             </div>
             <div class="pop-up-card">
-                <select onChange={handleOptionChange} class="select-chosen">
-                    <option value="Game">Game</option>
-                    <option value="Valorant">Valorant</option>
-                    <option value="League of Legends">League of Legends</option>
-                    <option value="DOTA 2">DOTA 2</option>
+                <select name="game" onChange={handleOptionChange} class="select-chosen">
+                    <option value="game">Game</option>
+                    <option value="valorant">Valorant</option>
+                    <option value="league">League of Legends</option>
+                    <option value="dota">DOTA 2</option>
                 </select>
                 <div className="hide" ref={valRef}>
-                    <select className="select-chosen" ref={valRef}>
-                        <option value="Role">Role</option>
-                        <option value="Controller">Controller</option>
-                        <option value="Duelist">Duelist</option>
-                        <option value="Initiator">Initiator</option>
-                        <option value="Sentinel">Sentinel</option>
+                    <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={valRef}>
+                        <option value="role">Role</option>
+                        <option value="controller">Controller</option>
+                        <option value="duelist">Duelist</option>
+                        <option value="initiator">Initiator</option>
+                        <option value="sentinel">Sentinel</option>
                     </select>
-                    <select className="select-chosen" ref={valRef}>
-                        <option value="Rank">Rank</option>
-                        <option value="Iron">Iron</option>
-                        <option value="Bronze">Bronze</option>
-                        <option value="Gold">Gold</option>
-                        <option value="Platinum">Platinum</option>
-                        <option value="Diamond">Diamond</option>
-                        <option value="Ascendant">Ascendant</option>
-                        <option value="Immortal">Immortal</option>
-                        <option value="Radiant">Radiant</option>
+                    <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen" ref={valRef}>
+                        <option value="rank">Rank</option>
+                        <option value="iron">Iron</option>
+                        <option value="bronze">Bronze</option>
+                        <option value="gold">Gold</option>
+                        <option value="platinum">Platinum</option>
+                        <option value="diamond">Diamond</option>
+                        <option value="ascendant">Ascendant</option>
+                        <option value="immortal">Immortal</option>
+                        <option value="radiant">Radiant</option>
                     </select>
-                    <select className="select-chosen" ref={valRef}>
-                        <option value="Region">Region</option>
-                        <option value="NA">NA</option>
-                        <option value="EU">EU</option>
-                        <option value="BR">BR</option>
+                    <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen" ref={valRef}>
+                        <option value="region">Region</option>
+                        <option value="sea">SE Asia</option>
+                        <option value="japan">Japan</option>
+                        <option value="uswest">US West</option>
+                        <option value="useast">US East</option>
                     </select>
                 </div>
                 <div className="hide" ref={lolRef}>
-                    <select className="select-chosen" ref={lolRef}>
-                        <option value="Role">Role</option>
-                        <option value="Controller">Top</option>
-                        <option value="Duelist">Jungle</option>
-                        <option value="Initiator">Mid</option>
-                        <option value="Sentinel">ADC</option>
-                        <option value="Sentinel">Support</option>
+                    <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={lolRef}>
+                        <option value="role">Role</option>
+                        <option value="top">Top</option>
+                        <option value="jungle">Jungle</option>
+                        <option value="mid">Mid</option>
+                        <option value="adc">ADC</option>
+                        <option value="support">Support</option>
                     </select>
-                    <select className="select-chosen" ref={lolRef}>
-                        <option value="Rank">Rank</option>
-                        <option value="Iron">Iron</option>
-                        <option value="Bronze">Bronze</option>
-                        <option value="Gold">Gold</option>
-                        <option value="Platinum">Platinum</option>
-                        <option value="Diamond">Diamond</option>
-                        <option value="Ascendant">Master</option>
-                        <option value="Immortal">Grandmaster</option>
-                        <option value="Radiant">Challenger</option>
+                    <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen" ref={lolRef}>
+                        <option value="rank">Rank</option>
+                        <option value="iron">Iron</option>
+                        <option value="bronze">Bronze</option>
+                        <option value="gold">Gold</option>
+                        <option value="platinum">Platinum</option>
+                        <option value="diamond">Diamond</option>
+                        <option value="master">Master</option>
+                        <option value="grandmaster">Grandmaster</option>
+                        <option value="challenger">Challenger</option>
                     </select>
-                    <select className="select-chosen" ref={lolRef}>
-                        <option value="Region">Region</option>
-                        <option value="NA">NA</option>
-                        <option value="EU">EU</option>
-                        <option value="BR">BR</option>
+                    <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen" ref={lolRef}>
+                        <option value="region">Region</option>
+                        <option value="sea">SE Asia</option>
+                        <option value="japan">Japan</option>
+                        <option value="uswest">US West</option>
+                        <option value="useast">US East</option>
                     </select>
                 </div>
 
                 <div className="hide" ref={dotaRef}>
-                    <select className="select-chosen">
-                        <option value="Role">Role</option>
-                        <option value="Controller">Carry</option>
-                        <option value="Duelist">Mid</option>
-                        <option value="Initiator">Offlane</option>
-                        <option value="Sentinel">Soft Support</option>
-                        <option value="Sentinel">Hard Support</option>
+                    <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen">
+                        <option value="role">Role</option>
+                        <option value="carry">Carry</option>
+                        <option value="mid">Mid</option>
+                        <option value="offlane">Offlane</option>
+                        <option value="soft support">Soft Support</option>
+                        <option value="hard support">Hard Support</option>
                     </select>
-                    <select className="select-chosen">
-                        <option value="Rank">Rank</option>
-                        <option value="Iron">Herald</option>
-                        <option value="Bronze">Guardian</option>
-                        <option value="Gold">Crusader</option>
-                        <option value="Platinum">Archon</option>
-                        <option value="Diamond">Legend</option>
-                        <option value="Ascendant">Ancient</option>
-                        <option value="Immortal">Divine</option>
-                        <option value="Radiant">Immortal</option>
+                    <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen">
+                        <option value="rank">Rank</option>
+                        <option value="herald">Herald</option>
+                        <option value="guardian">Guardian</option>
+                        <option value="crusader">Crusader</option>
+                        <option value="archon">Archon</option>
+                        <option value="legend">Legend</option>
+                        <option value="ancient">Ancient</option>
+                        <option value="divine">Divine</option>
+                        <option value="immortal">Immortal</option>
                     </select>
-                    <select className="select-chosen">
-                        <option value="Region">Region</option>
-                        <option value="NA">NA</option>
-                        <option value="EU">EU</option>
-                        <option value="BR">BR</option>
+                    <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen">
+                        <option value="region">Region</option>
+                        <option value="sea">SE Asia</option>
+                        <option value="japan">Japan</option>
+                        <option value="uswest">US West</option>
+                        <option value="useast">US East</option>
                     </select>
                 </div>
-                <button className="hide" ref={submitRef} type="submit">Submit</button>
+                <button className="hide" onClick={handleGameSubmit} ref={submitRef} type="submit">Submit</button>
             </div>
         </div>
     </div>

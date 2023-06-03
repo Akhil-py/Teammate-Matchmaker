@@ -127,9 +127,6 @@ function Dota() {
         setRegionValue(initialRegionValue);
         setPlayerData([]);
     };
-    /*const playerCards = [
-        <Playercard></Playercard>
-    ];*/
 
     const playerCards = playerData.map((player, index) => (
         <Playercard
