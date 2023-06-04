@@ -77,9 +77,12 @@ function Profile() {
     const lolRef = useRef();
     const dotaRef = useRef();
     const submitRef = useRef();
+    const cardRef = useRef();
+    // add usernames and profile info
+    // const site_player_data = (API.getUserData(localStorage.getItem('userid'))).data.userData; 
+    // const username = site_player_data.username;
 
     const valorantR = (e) => {
-        console.log("ve: ", e);
         valRef.current.classList.add(e);
         lolRef.current.classList.remove(e);
         dotaRef.current.classList.remove(e);
@@ -127,6 +130,9 @@ function Profile() {
         handleGameChange(event);
         handleReset();
       };
+    const createNewCard = () => {
+        valRef.current.classList.toggle("hide");
+    }
 
     return(
     <div class="profile">
@@ -145,17 +151,14 @@ function Profile() {
         <div class="right-panel">
             My Cards
             <div class="card-collection">
-                <button>Create a Card!</button>
+                <button onClick={createNewCard}>Create a Card!</button>
             </div>
             <div class="pop-up-card">
-                <div className="input-container">
-                    <input type="text" id="username" name="username" placeholder="Username" onChange={handleGameChange}></input>
-                </div>
-                <select name="game" onChange={handleOptionChange} class="select-chosen">
-                    <option value="game">Game</option>
-                    <option value="valorant">Valorant</option>
-                    <option value="league-of-legends">League of Legends</option>
-                    <option value="dota">DOTA 2</option>
+                <select onChange={handleOptionChange} class="select-chosen">
+                    <option value="Game">Game</option>
+                    <option value="Valorant">Valorant</option>
+                    <option value="League of Legends">League of Legends</option>
+                    <option value="DOTA 2">DOTA 2</option>
                 </select>
                 <div className="hide" ref={valRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={valRef}>
