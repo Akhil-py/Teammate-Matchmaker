@@ -36,8 +36,8 @@ function Navbar(values) {
         </a>
         <nav className="nav-container" ref={navRef}>
 
-          {values.values ? <button className="navlinks" onClick={getOut}> Logout</button> : <></>}
-
+          {/* {values.values ? <button className="navlinks"  onClick={getOut}> Logout</button> : <></>} */}
+          {values.values ? <a className="navlinks" href="/about" onClick={getOut}><h2 className="underline-hover-effect">Logout</h2></a>:<></>}
           <a className="navlinks" href="/about">
             <h2 className="underline-hover-effect">
               About us
