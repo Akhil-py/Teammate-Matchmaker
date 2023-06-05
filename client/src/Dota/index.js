@@ -187,7 +187,7 @@ function Dota() {
                         <button onClick={handleReset}>Reset</button>
                 </div>
             </div>
-            <div className="playercard-container">
+            <div className="playercard-container2">
                 {playerCards.slice(startIndex, endIndex)}
             </div>
             <div className="pagination-container">
