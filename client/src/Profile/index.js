@@ -58,7 +58,8 @@ const Profile = () => {
     
     const displayUserInfo = async () => {
         try {
-            console.log("hiiiiiiiii");
+            console.log("hiiiii");
+            console.log('bruh pls');
             const user_info = (await API.getUserData(user_id)).data.userData; 
             console.log("bruhhhhhh" + user_info);
             const username1 = user_info.username;
