@@ -100,6 +100,8 @@ const Profile = () => {
     const submitRef = useRef();
     const cardRef = useRef();
     const inputRef = useRef();
+    const fileInputRef = useRef(null);
+
 
     const valorantR = (e) => {
         valRef.current.classList.add(e);
@@ -173,12 +175,23 @@ const Profile = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []); // Run once on component mount
     
+      const handleFileSelection = (event) => {
+        const selectedFile = event.target.files[0];
+        // Perform actions with the selected file
+        console.log("Selected file:", selectedFile);
+      };
+
+      const openFilePicker = () => {
+        fileInputRef.current.click();
+      };
     //console.log("bruhhhhh111h end" + username2);
     return(
     <div class="profile">
         <div class="left-panel">
             <div class="circle">
                 <img src={pikachu} alt="pikachu"></img>
+                <input type="file" ref={fileInputRef} onChange={handleFileSelection}></input>
+                <button class="change-button" onClick={openFilePicker}>Change Profile Picture</button>
             </div>
             <div class="profile-info">
             {userInfo && (

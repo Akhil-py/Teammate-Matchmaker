@@ -11,6 +11,8 @@
     height: 300px; /* Set the desired height */
     overflow: hidden; /* Hide any overflow */
     border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10;
+    display: inline-block;
+
 }
 
 .circle img{
@@ -186,4 +188,24 @@
     outline: none; 
     background-color: #242a3c;
     color: white;
+  }
+
+  .change-button {
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 80%;
+    height: 30%;
+    font-size: 1.5rem;
+    background-color: #242a3c;
+    color: white;
+    border-radius: 10px;
+    border: 5px solid #ACD4E1;
+  }
+
+  .change-button:hover {
+    opacity: 1;
   }
