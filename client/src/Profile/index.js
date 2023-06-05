@@ -17,6 +17,7 @@ const Profile = () => {
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [userInfo, setUserInfo] = useState(null);
+    const [gameArray, setGameArray] = useState([]);
     const user_id = localStorage.getItem('userid');
 
     const initialGameData = {
@@ -61,6 +62,14 @@ const Profile = () => {
             const college1 = user_info.college;
             const dota1 = user_dota_data;
             console.log(user_dota_data)
+
+            //Make array of player games
+            var player_game_array = [];
+            player_game_array.push(user_info.valorant);
+            player_game_array.push(user_info.leagueOfLegends);
+            player_game_array.push(user_info.dota);
+            console.log("Player game array: ", player_game_array);
+            setGameArray(player_game_array);
             return {username1, email1, discord_tag1, college1, dota1}
         } catch(error) {
             console.log(error);
@@ -82,6 +91,7 @@ const Profile = () => {
             await API.sendGameData(payload);
             //console.log("Response: ", response);
             alert("Made successfully");
+            displayUserInfo();
         } catch(error) {
             console.error(error);
             alert("An error occurred while trying to search. Please try again later.");
@@ -100,6 +110,8 @@ const Profile = () => {
     const submitRef = useRef();
     const cardRef = useRef();
     const inputRef = useRef();
+    const fileInputRef = useRef(null);
+
 
     const valorantR = (e) => {
         valRef.current.classList.add(e);
@@ -156,6 +168,31 @@ const Profile = () => {
         cardRef.current.classList.toggle("hide");
     }
 
+    const profileCards = gameArray.map((player, index) => {
+        var gameImage;
+        if(index === 0){
+            gameImage = val_logo;
+        }
+        else if(index === 1){
+            gameImage = lol_logo;
+        }
+        else{
+            gameImage = dota_logo;
+        }
+
+        if(player !== null) {
+          return <ProfCard
+          key={index}
+          image={gameImage}
+          rank={player.rank}
+          role={player.role}
+          region={player.region}
+          />
+        }
+
+        return null;
+    });
+
     useEffect(() => {
         async function fetchUserInfo() {
           try {
@@ -173,12 +210,24 @@ const Profile = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []); // Run once on component mount
     
+      const handleFileSelection = (event) => {
+        const selectedFile = event.target.files[0];
+        // Perform actions with the selected file
+        console.log("Selected file:", selectedFile);
+      };
+
+      const openFilePicker = () => {
+        fileInputRef.current.click();
+      };
     //console.log("bruhhhhh111h end" + username2);
     return(
     <div class="profile">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
         <div class="left-panel">
             <div class="circle">
                 <img src={pikachu} alt="pikachu"></img>
+                <input type="file" ref={fileInputRef} onChange={handleFileSelection}></input>
+                <button class="change-button" onClick={openFilePicker}>Change Profile Picture</button>
             </div>
             <div class="profile-info">
             {userInfo && (
@@ -197,9 +246,7 @@ const Profile = () => {
             <div class="card-collection">
                 <button onClick={createNewCard}>Create a Card!</button>
             </div>
-            <ProfCard image={val_logo} role="Controller" rank="Gold" region="US-West"/>
-            <ProfCard image={lol_logo} role="Mid" rank="Gold" region="US-West"/>
-            <ProfCard image={dota_logo} role="Buh" rank="Gold" region="Asia-Korea"/>
+            {profileCards}
             <div className="pop-up-card hide" ref={cardRef}>
                 <select name="game" onChange={handleOptionChange} class="select-chosen">
                     <option value="game">Game</option>
