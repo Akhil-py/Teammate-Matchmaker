@@ -222,6 +222,7 @@ const Profile = () => {
     //console.log("bruhhhhh111h end" + username2);
     return(
     <div class="profile">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
         <div class="left-panel">
             <div class="circle">
                 <img src={pikachu} alt="pikachu"></img>

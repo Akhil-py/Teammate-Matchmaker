@@ -146,6 +146,7 @@ function Dota() {
 
     return(
         <div>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
             <div className="filter-container">
                 <img className='dota-img' src={require("./Images/dota2.png")}></img>
                 <form>
