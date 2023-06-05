@@ -1,3 +1,7 @@
+*{
+    font-family: 'Khand', sans-serif;
+}
+
 .background {
     display: flex;
     align-items: center;
@@ -67,6 +71,7 @@
     width: 100%;
     font-size: 3rem;
     font-family: 'Khand';
+    font-weight: 500px;
 }
 
 .red {

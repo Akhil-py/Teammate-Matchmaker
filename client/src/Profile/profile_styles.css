@@ -1,3 +1,6 @@
+*{
+    font-family: "Khand", "san-serif";
+}
 .profile {
     display: flex;
 }
@@ -7,14 +10,19 @@
     width: 300px; /* Set the desired width */
     height: 300px; /* Set the desired height */
     overflow: hidden; /* Hide any overflow */
-    border: 10px solid #a9e7f2;
-    border-radius: 50%;
+    border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10;
 }
 
 .circle img{
     width: 100%;
     height: 100%;
-    object-fit: cover
+    border: 10px solid #c1f5ff;
+    border-image-slice: 50%;
+    border-image-repeat: stretch;
+    border-image-outset: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10; */
 }
 
 .profile-info {

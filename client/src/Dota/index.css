@@ -12,15 +12,20 @@
 
 .filter-container{
     background-color: black;
-    height: 200px;
+    height: 210px;
     display: flex;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .filter-container form{
-    margin-top: 28px;
+    margin-top: 10px;
     width: 800px;
 }
+
+.filter-container select {
+  border-radius: 10px;
+}
+
 .dota-img{
     width: 195px;
     height: 180px;
@@ -45,7 +50,14 @@
     cursor: pointer;
     background-color: #3A444A;
     color: #FFFFFF;
+    font-size: 1.5rem;
     font-weight: bold;
+    transition: background-color 0.5s;
+}
+
+.btn-container button:hover {
+  background-color: #c1f5ff;
+  color: #242a3c;
 }
 
 .pagination-container {
