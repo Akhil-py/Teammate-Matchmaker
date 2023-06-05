@@ -27,7 +27,7 @@ const Team = () => {
        image={require("./images/calvinprofilepic.jpg")}
        name="Calvin"
        role="Frontend Developer"
-       website="kevin.website"
+       website="calvin.website"
        email="calviinnguyenn@gmail.com"
        linkedin="https://www.linkedin.com/in/calvin-nguyen-1089b51a1/"
        about="I am a data science major, and I worked as a front end engineer for this project! I am seeking to learn more about software engineering! I have a keen interest in software engineering, machine learning, and computer vision."

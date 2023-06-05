@@ -29,7 +29,7 @@ export default function Profilecard(props){
        </main>
        <footer className="footer">
            <button><a href={props.linkedin}><img src={require("./images/linkedin-icon.png")} alt="linkedin-logo" width="25px" height="25px"/></a></button>
-           <button><a href={props.email}><img src={require("./images/fb-icon.png")} alt="facebook-logo" width="25px" height="25px"/></a></button>
+           <button><a href={props.facebook}><img src={require("./images/fb-icon.png")} alt="facebook-logo" width="25px" height="25px"/></a></button>
            <button><a href={props.instagram}><img src={require("./images/instagram-icon.png")} alt="instagram-logo" width="25px" height="25px"/></a></button>
            <button><a href={props.github}><img src={require("./images/github-icon.png")} alt="github-logo" width="25px" height="25px"/></a></button>
        </footer>
