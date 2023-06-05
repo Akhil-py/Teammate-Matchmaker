@@ -3,6 +3,7 @@ import API from "../API";
 import "./profile_styles.css";
 
 import pikachu from "../Images/surprised.webp";
+import val_logo from "../Images/val.png";
 
 
 function Profile() {
@@ -78,9 +79,6 @@ function Profile() {
     const dotaRef = useRef();
     const submitRef = useRef();
     const cardRef = useRef();
-    // add usernames and profile info
-    // const site_player_data = (API.getUserData(localStorage.getItem('userid'))).data.userData; 
-    // const username = site_player_data.username;
 
     const valorantR = (e) => {
         valRef.current.classList.add(e);
@@ -131,7 +129,7 @@ function Profile() {
         handleReset();
       };
     const createNewCard = () => {
-        valRef.current.classList.toggle("hide");
+        cardRef.current.classList.toggle("hide");
     }
 
     return(
@@ -153,12 +151,25 @@ function Profile() {
             <div class="card-collection">
                 <button onClick={createNewCard}>Create a Card!</button>
             </div>
-            <div class="pop-up-card">
+            <div class="profile-card-profile">
+                <img src={val_logo} alt=""></img>
+                <div class="card-row left">
+                    <span>Role:</span>
+                    <span>Rank:</span>
+                    <span>Region:</span>
+                </div>
+                <div class="card-row right">
+                    <span>Controller</span>
+                    <span>Gold</span>
+                    <span>Oceania</span>
+                </div>
+            </div>
+            <div className="pop-up-card hide" ref={cardRef}>
                 <select onChange={handleOptionChange} class="select-chosen">
-                    <option value="Game">Game</option>
-                    <option value="Valorant">Valorant</option>
-                    <option value="League of Legends">League of Legends</option>
-                    <option value="DOTA 2">DOTA 2</option>
+                    <option value="game">Game</option>
+                    <option value="valorant">Valorant</option>
+                    <option value="league-of-legends">League of Legends</option>
+                    <option value="dota">DOTA 2</option>
                 </select>
                 <div className="hide" ref={valRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={valRef}>
@@ -215,7 +226,6 @@ function Profile() {
                         <option value="useast">US East</option>
                     </select>
                 </div>
-
                 <div className="hide" ref={dotaRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen">
                         <option value="role">Role</option>

@@ -60,7 +60,13 @@
 
 .pop-up-card {
     display: flex;
+    position: fixed;
+    z-index: 100;
+    top: 30%;
+    left: 50%;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     width: 500px;
     height: 500px;
     background-color:white;
@@ -92,12 +98,6 @@
     display: block;
 }
 
-.pop-up-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
 .pop-up-card button {
     padding: 5px;
     width: 70%;
@@ -108,4 +108,41 @@
     font-family: 'Khand';
     background-color: #ACD4E1;
     color: #282828;
+}
+
+.profile-card-profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+    height: 300px;
+    border-radius: 40px;
+    border: 4px solid #a9e7f2;
+    
+}
+
+.profile-card-profile img {
+    width: 250px;
+    height: auto;
+}
+
+.card-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    height: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.card-row span {
+    padding: 5px;
 }
