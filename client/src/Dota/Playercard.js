@@ -1,7 +1,5 @@
 import "./Playercard.css"
 export default function Playercard(values){
-    console.log("values: " , values.dotaUsername);
-
     return (
         <div>
             <div className="player-container">

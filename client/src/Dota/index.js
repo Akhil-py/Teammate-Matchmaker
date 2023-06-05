@@ -14,6 +14,7 @@ function Dota() {
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [currentPage, setCurrentPage] = useState(1);
     const [playerData, setPlayerData] = useState([]);
+    const [recommendedPage, setRecommendedPage] = useState(false);
     
     const initialSearchData = {
         game: "dota",
@@ -34,13 +35,15 @@ function Dota() {
         }
         console.log(JSON.stringify(payload.searchInfo));
         console.log("Request: ", req);
-
         try {
+            if(recommendedPage === false){
+                throw new Error('No Player Card for game created, please create one in profile for recommended options');
+            }
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
-            var response_data =  response;
+            var response_data = response;
             console.log(response.data)
-
+            
             // Extract the 'players' array from the response
             var players = response_data.data.players;
 
@@ -72,8 +75,9 @@ function Dota() {
             alert("Searched successfully");
         } catch (error) {
             console.error(error);
-            alert("An error occurred while trying to search. Please try again later.");
+            alert(error);
         }
+        
     };
     const handleNextPage = () => {
         setCurrentPage((prevPage) => prevPage + 1);
@@ -108,23 +112,44 @@ function Dota() {
         }
     };
 
-    const handleRecommendationChange = (event) => {
+    const handleRecommendationChange = async (event) => {
         const value = event.target.value;
         setRecommendation(value);
         setDisabled(value === 'recommended');
         if (value === 'recommended') {
-          setRankValue(initialRankValue);
-          setRoleValue(initialRoleValue);
-          setRegionValue(initialRegionValue);
+            try{
+                const response = await API.getUserData(localStorage.getItem('userid'));
+                const userData = response.data.userData;
+                setRankValue(userData.dota.rank);
+                setRegionValue(userData.dota.region);
+                if (typeof userData.dota !== 'undefined') {
+                    setRecommendedPage(false); // Update the state variable
+                } else {
+                    setRecommendedPage(true); // Update the state variable
+                }
+                updateSearchData((prevSearchData) => ({
+                    ...prevSearchData,
+                    role: userData.dota.role,
+                    rank: userData.dota.rank
+                }));
+                console.log('Updated searchData:', searchData); // Log the updated searchData
+            } catch (error) {
+                console.error('Failed to fetch user data:', error);
+            }
+        } else {
+            setRecommendedPage(true);
+            console.log(recommendedPage);
         }
-      };
+    };
   
     const handleReset = () => {
         setRecommendation('recommended');
         setDisabled(true);
+        handleRecommendationChange();
         setRankValue(initialRankValue);
         setRoleValue(initialRoleValue);
         setRegionValue(initialRegionValue);
+        updateSearchData(initialSearchData);
         setPlayerData([]);
     };
 
