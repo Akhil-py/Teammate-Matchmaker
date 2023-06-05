@@ -37,7 +37,6 @@ function Navbar(values) {
         <nav className="nav-container" ref={navRef}>
 
           {/* {values.values ? <button className="navlinks"  onClick={getOut}> Logout</button> : <></>} */}
-          {values.values ? <a className="navlinks" href="/about" onClick={getOut}><h2 className="underline-hover-effect">Logout</h2></a>:<></>}
           <a className="navlinks" href="/about">
             <h2 className="underline-hover-effect">
               About us
@@ -54,8 +53,8 @@ function Navbar(values) {
             </h2>
           </a>
 
-          {values.values ? <a class="navlinks" href="/profile">Profile</a> : <a class="navlinks" href="/login">Login</a>}
-          
+          {values.values ? <a class="navlinks underline-hover-effect" href="/profile">Profile</a> : <a class="navlinks underline-hover-effect" href="/login">Login</a>}
+          {values.values ? <a className="navlinks" href="/about" onClick={getOut}><h2 className="underline-hover-effect">Logout</h2></a>:<></>}
         </nav>
         <button className="hamburger-btn" onClick={showNavBar}>
             <img className="hamburger" src={hamburger} alt="more"></img>

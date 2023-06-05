@@ -1,12 +1,15 @@
 import React, { useRef, useState } from "react";
 import API from "../API";
 import "./profile_styles.css";
+import ProfCard from "./profCard";
+
 
 import pikachu from "../Images/surprised.webp";
 import val_logo from "../Images/val.png";
+import lol_logo from "../Images/lol.png";
+import dota_logo from "../Images/dota2.png";
 
-
-function Profile() {
+const Profile = () => {
     const initialRankValue = 'rank';
     const initialRoleValue = 'role';
     const initialRegionValue = 'region';
@@ -132,6 +135,8 @@ function Profile() {
         cardRef.current.classList.toggle("hide");
     }
 
+    
+
     return(
     <div class="profile">
         <div class="left-panel">
@@ -151,19 +156,9 @@ function Profile() {
             <div class="card-collection">
                 <button onClick={createNewCard}>Create a Card!</button>
             </div>
-            <div class="profile-card-profile">
-                <img src={val_logo} alt=""></img>
-                <div class="card-row left">
-                    <span>Role:</span>
-                    <span>Rank:</span>
-                    <span>Region:</span>
-                </div>
-                <div class="card-row right">
-                    <span>Controller</span>
-                    <span>Gold</span>
-                    <span>Oceania</span>
-                </div>
-            </div>
+            <ProfCard image={val_logo} role="Controller" rank="Gold" region="US-West"/>
+            <ProfCard image={lol_logo} role="Mid" rank="Gold" region="US-West"/>
+            <ProfCard image={dota_logo} role="Buh" rank="Gold" region="Asia-Korea"/>
             <div className="pop-up-card hide" ref={cardRef}>
                 <div className="input-container">
                     <input type="text" id="username" name="username" placeholder="Username" onChange={handleGameChange}></input>
