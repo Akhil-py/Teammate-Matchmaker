@@ -193,13 +193,21 @@ router.get('/users', async (req, res) => {
 router.get('/players', async (req, res) => {
     try {
         const { game, role, rank, region } = req.query;
+       
         let query = {};
-    
-        query = {
-        role: role,
-        rank: rank,
-        region: region
+
+        if (typeof rank !== 'undefined' && rank !== '') {
+          query.rank = rank;
         }
+        
+        if (typeof role !== 'undefined' && role !== '') {
+          query.role = role;
+        }
+        
+        if (typeof region !== 'undefined' && region !== '') {
+          query.region = region;
+        }
+        
         if (game === 'league-of-legends') {
             const players = await League.find(query).select('userid lol_username');
             res.status(200).json({ status: 'ok', players });
