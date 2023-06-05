@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import API from "../API";
 import "./profile_styles.css";
 import ProfCard from "./profCard";
@@ -16,6 +16,7 @@ const Profile = () => {
     const [rankValue, setRankValue] = useState(initialRankValue); 
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
+    const [userInfo, setUserInfo] = useState(null);
     const user_id = localStorage.getItem('userid');
 
     const initialGameData = {
@@ -50,12 +51,6 @@ const Profile = () => {
         }
     };
 
-    // const user_data = API.getUserData(user_id)
-    // const username = user_data.username;
-    // const discord_tag1 = user_data.discord_tag;
-    // const email1 = user_data.email;
-    // const college1= user_data.college;
-    
     const displayUserInfo = async () => {
         try {
             console.log("hiiiii");
@@ -63,9 +58,11 @@ const Profile = () => {
             const user_info = (await API.getUserData(user_id)).data.userData; 
             console.log("bruhhhhhh" + user_info);
             const username1 = user_info.username;
+            console.log("bruhhhhh111h" + username1);
             const email1 = user_info.email;
-            const discord_tag1 = user_info.discord_tag;
+            const discord_tag1 = user_info.discord;
             const college1 = user_info.college;
+            return {username1, email1, discord_tag1, college1}
         } catch(error) {
             console.log(error);
         }
@@ -156,8 +153,22 @@ const Profile = () => {
         cardRef.current.classList.toggle("hide");
     }
 
-    displayUserInfo();
-
+    useEffect(() => {
+        async function fetchUserInfo() {
+          try {
+            const userInfo11 = await displayUserInfo();
+            const { username1, email1, discord_tag1, college1 } = userInfo11;
+            setUserInfo({ username1, email1, discord_tag1, college1 });
+          } catch (error) {
+            console.error(error);
+          }
+        }
+    
+        fetchUserInfo();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []); // Run once on component mount
+    
+    //console.log("bruhhhhh111h end" + username2);
     return(
     <div class="profile">
         <div class="left-panel">
@@ -165,11 +176,15 @@ const Profile = () => {
                 <img src={pikachu} alt="pikachu"></img>
             </div>
             <div class="profile-info">
-                {/* <li>{username1}</li>
-                <li>{email1}</li>
-                <li>{discord_tag1}</li>
-                <li>{college1}</li> */}
+            {userInfo && (
+                <>
+                <li>{userInfo.username1}</li>
+                <li>{userInfo.email1}</li>
+                <li>{userInfo.discord_tag1}</li>
+                <li>{userInfo.college1}</li>
                 <li>Only one profile card per game for an account!</li>
+                </>
+            )}
             </div>
         </div>
         <div class="right-panel">
