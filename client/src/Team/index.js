@@ -51,21 +51,21 @@ const Team = () => {
         image={require("./images/sithuprofilepic.png")}
         name="Akhil"
         role="Backend Developer"
-        website="kevin.website"
-        email="kevin@ucsd.edu"
-        linkedin="www.google.com"
-        about="I am a frontend developer with a particular interest in creating and developing new features. I have fallen in love with the art of programming and coding. I feel grateful to be able to pursue my passion in college and life."
-        interests="Soccer. Wrestling. Programming. Sleeping. Talking to friends. Playing Dota 2. Learning and exploring new things."
-        facebook = "https://www.facebook.com/profile.php?id=100009305797500"
-        instagram = "https://www.instagram.com/calvinn.fornia/"
-        github = "https://github.com/Neniflight"/>
+        website="akhil.website"
+        email="aramshankar@ucsd.edu"
+        linkedin="https://www.linkedin.com/in/akhil-ramshankar/"
+        about="Hi! My name is Akhil and I'm a first-year international studednt from Sri Lanka. I'm majoring in math-cs at Muir with hopes of becoming a software engineer in the future which fueled my motivation to participate in ACM Hack."
+        interests="Snorkeling, cycling, gaming, and binging TV shows"
+        facebook = ""
+        instagram = "https://www.instagram.com/akhil_ramshankar/"
+        github = "https://github.com/Akhil-py"/>
        <Profilecard
-        image={require("./images/sithuprofilepic.png")}
+        image={require("./images/kaneprofilepic.png")}
         name="Kane"
         role="Fullstack Developer"
         website="kane.website"
         email="kal036@ucsd.edu"
-        linkedin="linkedin.com/in/kane-li-b5153125b"
+        linkedin="https://linkedin.com/in/kane-li-b5153125b"
         about="I am a first-year Computer Science major and work as this team's full-stack developer.  I enjoy creating and being a part of projects which not only hone my skills but also help me to contribute to the world. With a beginner's mindset, I seek to always be learning."
         interests="Swimming, Journaling, Playing brawl stars, Playing taiko, and Traveling"
         facebook = "https://www.facebook.com/profile.php?id=100015210068746&mibextid=ZbWKwL"
@@ -76,13 +76,13 @@ const Team = () => {
         name="Kevin"
         role="Fullstack Developer"
         website="kevin.website"
-        email="kevin@ucsd.edu"
-        linkedin="www.google.com"
-        about="I am a frontend developer with a particular interest in creating and developing new features. I have fallen in love with the art of programming and coding. I feel grateful to be able to pursue my passion in college and life."
-        interests="Soccer. Wrestling. Programming. Sleeping. Talking to friends. Playing Dota 2. Learning and exploring new things."
-        facebook = "https://www.facebook.com/profile.php?id=100009305797500"
-        instagram = "https://www.instagram.com/calvinn.fornia/"
-        github = "https://github.com/Neniflight"/>
+        email="kec021@ucsd.edu"
+        linkedin="https://www.linkedin.com/in/kevin-chan-a832b9255/"
+        about="I am a 2nd-year data science major working as a full-stack engineer for this project.  I feel excited to be working on a project that is so close to what I love.  I'm always open to work on things related to gaming, software engineering, or machine learning!"
+        interests="Food, Programming, Playing League of Legends, Gaming, Sleeping"
+        facebook = ""
+        instagram = "https://www.instagram.com/k_chachan/"
+        github = "https://github.com/kchan2203"/>
      </div>
    </div>
  );
