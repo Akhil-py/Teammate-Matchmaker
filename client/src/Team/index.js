@@ -72,7 +72,7 @@ const Team = () => {
         instagram = "https://www.instagram.com/kane.nak/"
         github = " https://github.com/Li-Kane"/>
        <Profilecard
-        image={require("./images/sithuprofilepic.png")}
+        image={require("./images/kevinprofilepic.jpeg")}
         name="Kevin"
         role="Fullstack Developer"
         website="kevin.website"
@@ -90,3 +90,4 @@ const Team = () => {
 
 
 export default Team;
+
