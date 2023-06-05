@@ -50,6 +50,26 @@ const Profile = () => {
         }
     };
 
+    // const user_data = API.getUserData(user_id)
+    // const username = user_data.username;
+    // const discord_tag1 = user_data.discord_tag;
+    // const email1 = user_data.email;
+    // const college1= user_data.college;
+    
+    const displayUserInfo = async () => {
+        try {
+            console.log("hiiiiiiiii");
+            const user_info = (await API.getUserData(user_id)).data.userData; 
+            console.log("bruhhhhhh" + user_info);
+            const username1 = user_info.username;
+            const email1 = user_info.email;
+            const discord_tag1 = user_info.discord_tag;
+            const college1 = user_info.college;
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
     const handleGameSubmit = async (e) => {
         console.log("Game Data: ", gameData);
         console.log("event: ", e);
@@ -135,7 +155,7 @@ const Profile = () => {
         cardRef.current.classList.toggle("hide");
     }
 
-    
+    displayUserInfo();
 
     return(
     <div class="profile">
@@ -144,10 +164,10 @@ const Profile = () => {
                 <img src={pikachu} alt="pikachu"></img>
             </div>
             <div class="profile-info">
-                <li>Username</li>
-                <li>Email</li>
-                <li>Discord Tag</li>
-                <li>College</li>
+                {/* <li>{username1}</li>
+                <li>{email1}</li>
+                <li>{discord_tag1}</li>
+                <li>{college1}</li> */}
                 <li>Only one profile card per game for an account!</li>
             </div>
         </div>
