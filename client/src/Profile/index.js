@@ -17,6 +17,7 @@ const Profile = () => {
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [userInfo, setUserInfo] = useState(null);
+    const [gameArray, setGameArray] = useState([]);
     const user_id = localStorage.getItem('userid');
 
     const initialGameData = {
@@ -61,6 +62,14 @@ const Profile = () => {
             const college1 = user_info.college;
             const dota1 = user_dota_data;
             console.log(user_dota_data)
+
+            //Make array of player games
+            var player_game_array = [];
+            player_game_array.push(user_info.valorant);
+            player_game_array.push(user_info.leagueOfLegends);
+            player_game_array.push(user_info.dota);
+            console.log("Player game array: ", player_game_array);
+            setGameArray(player_game_array);
             return {username1, email1, discord_tag1, college1, dota1}
         } catch(error) {
             console.log(error);
@@ -82,6 +91,7 @@ const Profile = () => {
             await API.sendGameData(payload);
             //console.log("Response: ", response);
             alert("Made successfully");
+            displayUserInfo();
         } catch(error) {
             console.error(error);
             alert("An error occurred while trying to search. Please try again later.");
@@ -158,6 +168,31 @@ const Profile = () => {
         cardRef.current.classList.toggle("hide");
     }
 
+    const profileCards = gameArray.map((player, index) => {
+        var gameImage;
+        if(index === 0){
+            gameImage = val_logo;
+        }
+        else if(index === 1){
+            gameImage = lol_logo;
+        }
+        else{
+            gameImage = dota_logo;
+        }
+
+        if(player !== null) {
+          return <ProfCard
+          key={index}
+          image={gameImage}
+          rank={player.rank}
+          role={player.role}
+          region={player.region}
+          />
+        }
+
+        return null;
+    });
+
     useEffect(() => {
         async function fetchUserInfo() {
           try {
@@ -210,9 +245,7 @@ const Profile = () => {
             <div class="card-collection">
                 <button onClick={createNewCard}>Create a Card!</button>
             </div>
-            <ProfCard image={val_logo} role="Controller" rank="Gold" region="US-West"/>
-            <ProfCard image={lol_logo} role="Mid" rank="Gold" region="US-West"/>
-            <ProfCard image={dota_logo} role="Buh" rank="Gold" region="Asia-Korea"/>
+            {profileCards}
             <div className="pop-up-card hide" ref={cardRef}>
                 <select name="game" onChange={handleOptionChange} class="select-chosen">
                     <option value="game">Game</option>
