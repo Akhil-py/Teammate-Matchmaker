@@ -165,7 +165,10 @@ function Profile() {
                 </div>
             </div>
             <div className="pop-up-card hide" ref={cardRef}>
-                <select onChange={handleOptionChange} class="select-chosen">
+                <div className="input-container">
+                    <input type="text" id="username" name="username" placeholder="Username" onChange={handleGameChange}></input>
+                </div>
+                <select name="game" onChange={handleOptionChange} class="select-chosen">
                     <option value="game">Game</option>
                     <option value="valorant">Valorant</option>
                     <option value="league-of-legends">League of Legends</option>
