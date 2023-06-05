@@ -53,16 +53,15 @@ const Profile = () => {
 
     const displayUserInfo = async () => {
         try {
-            console.log("hiiiii");
-            console.log('bruh pls');
             const user_info = (await API.getUserData(user_id)).data.userData; 
-            console.log("bruhhhhhh" + user_info);
+            const user_dota_data = (await API.getUserData(user_id)).data.dotaData;
             const username1 = user_info.username;
-            console.log("bruhhhhh111h" + username1);
             const email1 = user_info.email;
             const discord_tag1 = user_info.discord;
             const college1 = user_info.college;
-            return {username1, email1, discord_tag1, college1}
+            const dota1 = user_dota_data;
+            console.log(user_dota_data)
+            return {username1, email1, discord_tag1, college1, dota1}
         } catch(error) {
             console.log(error);
         }
@@ -100,13 +99,14 @@ const Profile = () => {
     const dotaRef = useRef();
     const submitRef = useRef();
     const cardRef = useRef();
+    const inputRef = useRef();
 
     const valorantR = (e) => {
         valRef.current.classList.add(e);
         lolRef.current.classList.remove(e);
         dotaRef.current.classList.remove(e);
         submitRef.current.classList.add(e);
-        
+        inputRef.current.classList.add(e);
     }
     const lolR = (e) => {
         console.log("le: ", e);
@@ -114,6 +114,7 @@ const Profile = () => {
         valRef.current.classList.remove(e);
         dotaRef.current.classList.remove(e);
         submitRef.current.classList.add(e);
+        inputRef.current.classList.add(e);
     }
     const dotaR = (e) => {
         console.log("de: ", e);
@@ -121,6 +122,7 @@ const Profile = () => {
         lolRef.current.classList.remove(e);
         valRef.current.classList.remove(e);
         submitRef.current.classList.add(e);
+        inputRef.current.classList.add(e);
     }
 
     const gameR = (e) => {
@@ -129,6 +131,7 @@ const Profile = () => {
         lolRef.current.classList.remove(e);
         valRef.current.classList.remove(e);
         submitRef.current.classList.remove(e);
+        inputRef.current.classList.remove(e);
     }
     const handleOptionChange = (event) => {
         const selectedValue = event.target.value;
@@ -157,8 +160,10 @@ const Profile = () => {
         async function fetchUserInfo() {
           try {
             const userInfo11 = await displayUserInfo();
-            const { username1, email1, discord_tag1, college1 } = userInfo11;
-            setUserInfo({ username1, email1, discord_tag1, college1 });
+            console.log(userInfo11);
+            const { username1, email1, discord_tag1, college1, dota1 } = userInfo11;
+            console.log(dota1);
+            setUserInfo({ username1, email1, discord_tag1, college1, dota1 });
           } catch (error) {
             console.error(error);
           }
@@ -178,10 +183,10 @@ const Profile = () => {
             <div class="profile-info">
             {userInfo && (
                 <>
-                <li>{userInfo.username1}</li>
-                <li>{userInfo.email1}</li>
-                <li>{userInfo.discord_tag1}</li>
-                <li>{userInfo.college1}</li>
+                <li>Username: {userInfo.username1}</li>
+                <li>Email: {userInfo.email1}</li>
+                <li>Discord Tag: {userInfo.discord_tag1}</li>
+                <li>College: {userInfo.college1}</li>
                 <li>Only one profile card per game for an account!</li>
                 </>
             )}
@@ -196,15 +201,15 @@ const Profile = () => {
             <ProfCard image={lol_logo} role="Mid" rank="Gold" region="US-West"/>
             <ProfCard image={dota_logo} role="Buh" rank="Gold" region="Asia-Korea"/>
             <div className="pop-up-card hide" ref={cardRef}>
-                <div className="input-container">
-                    <input type="text" id="username" name="username" placeholder="Username" onChange={handleGameChange}></input>
-                </div>
                 <select name="game" onChange={handleOptionChange} class="select-chosen">
                     <option value="game">Game</option>
                     <option value="valorant">Valorant</option>
                     <option value="league-of-legends">League of Legends</option>
                     <option value="dota">DOTA 2</option>
                 </select>
+                <div className="username-input hide" ref={inputRef}>
+                    <input type="text" id="username" name="username" placeholder="In-Game Username" onChange={handleGameChange}></input>
+                </div>
                 <div className="hide" ref={valRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={valRef}>
                         <option value="role">Role</option>

@@ -29,8 +29,10 @@
     text-decoration: none;
     color: white;
     list-style-type: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 20px;
+    text-align: left;
+
 }
 
 .left-panel {
@@ -86,18 +88,21 @@
     align-items: center;
     width: 500px;
     height: 500px;
-    background-color:white;
-    border: 5px solid #3d28ff;
+    background-color: #242a3c;
+    border: 5px solid #a9e7f2;
     border-radius: 30px;
 }
 
 .select-chosen {
     outline: none;
-    border-top: #282828;
+    border-bottom: 5px solid #a9e7f2;
+    border-top: white;
     border-left: white;
     border-right: white;
+    background-color: #242a3c;
+    color: white;
     font-size:1.5rem;
-    padding-left: 15px;
+    padding-left: 35px;
     margin-top: 10px;
     width: 80%;
     height: 70px;
@@ -167,3 +172,18 @@
 .card-row span {
     padding: 5px;
 }
+
+.username-input {
+    border-bottom: 3px solid #a9e7f2;
+    padding-bottom: 5px;
+    border-radius: 8px;
+    color: white;
+    width: 80%;
+}
+
+.username-input input {
+    border: none; 
+    outline: none; 
+    background-color: #242a3c;
+    color: white;
+  }
