@@ -70,7 +70,7 @@
 .text-container {
     width: 100%;
     font-size: 3rem;
-    font-family: 'Khand';
+    font-family: "Khand", "san-serif";
     font-weight: 500px;
 }
 
@@ -87,5 +87,6 @@
 }
 
 .text-container b {
-    font-family: 'Khand'
+    font-family: "Khand", "san-serif";
+    font-weight: 1500px;
 }

@@ -12,7 +12,7 @@ function MemberLanding() {
             <div class="background">
                 <div class="game-card">
                     <div class="text-container red">
-                        <strong>Valorant</strong>
+                        <b>Valorant</b>
                     </div>
                     <div class="card-img-container">
                         <a href="/valorant">
