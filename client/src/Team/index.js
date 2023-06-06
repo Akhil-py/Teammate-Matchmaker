@@ -12,14 +12,14 @@ const Team = () => {
      <div className="ourTeam"> Our Team </div>
      <div className="profileCardDisplay">
        <Profilecard
-       image={require("./images/sithuprofilepic.png")}
+       image={require("./images/sithuprofilepic2.jpeg")}
        name="Sithu Soe"
        role="Frontend Developer"
        website="sithusoe.website"
        email="ssoe@ucsd.edu"
        linkedin="https://www.linkedin.com/in/sithu-soe-86ba34219/?originalSubdomain=mm"
        about="I am a frontend developer with a particular interest in creating and developing new features. I hope to learn more about back-end development this summer so that I can be a full-stack engineer. I feel grateful to be able to pursue my passion in college and life."
-       interests="Soccer. Wrestling. Programming. Sleeping. Talking to friends. Playing Dota 2. Learning and exploring new things."
+       interests="Soccer. Wrestling. Programming. Sleeping. Talking to friends. Playing Dota 2."
        facebook = "https://www.facebook.com/si.thusoe.125"
        instagram = "https://www.instagram.com/sithusoe04/"
        github = "https://github.com/SithuSoe04"/>
@@ -35,7 +35,7 @@ const Team = () => {
        facebook = "https://www.facebook.com/profile.php?id=100009305797500"
        instagram = "https://www.instagram.com/calvinn.fornia/"
        github = "https://github.com/Neniflight"/>
-       <Profilecard
+       {/* <Profilecard
         image={require("./images/sithuprofilepic.png")}
         name="Shreya"
         role="Back-end Developer"
@@ -46,9 +46,9 @@ const Team = () => {
         interests="Soccer. Wrestling. Programming. Sleeping. Talking to friends. Playing Dota 2. Learning and exploring new things."
         facebook = "https://www.facebook.com/profile.php?id=100009305797500"
         instagram = "https://www.instagram.com/calvinn.fornia/"
-        github = "https://github.com/Neniflight"/>
+        github = "https://github.com/Neniflight"/> */}
        <Profilecard
-        image={require("./images/sithuprofilepic.png")}
+        image={require("./images/akhilprofilepic.jpg")}
         name="Akhil"
         role="Backend Developer"
         website="akhil.website"
