@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Playercard from "./Playercard"
+import LoadingAnimation from "../Profile/loading.jsx";
 import "./index.css"
 import API from "../API";
 
@@ -7,14 +8,16 @@ function Dota() {
     const initialRankValue = 'rank';
     const initialRoleValue = 'role';
     const initialRegionValue = 'region';
-    const initialRecencyValue = 'recency';
-    const initialRatingValue = 'rating';
     const [recommendation, setRecommendation] = useState('recommended');
     const [disabled, setDisabled] = useState(true);
     const [rankValue, setRankValue] = useState(initialRankValue); 
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
     const [currentPage, setCurrentPage] = useState(1);
+    const [playerData, setPlayerData] = useState([]);
+    const [recommendedPage, setRecommendedPage] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
     
     const initialSearchData = {
         game: "dota",
@@ -29,19 +32,22 @@ function Dota() {
         console.log("Search Data: ", searchData);
         console.log("event: ", e);
         e.preventDefault();
+        setIsLoading(true);
         const req = e.target;
         const payload = {
             searchInfo: searchData
         }
         console.log(JSON.stringify(payload.searchInfo));
         console.log("Request: ", req);
-
         try {
+            if(recommendedPage === false){
+                throw new Error('No Player Card for game created, please create one in profile for recommended options');
+            }
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
-            var response_data =  response;
+            var response_data = response;
             console.log(response.data)
-
+            
             // Extract the 'players' array from the response
             var players = response_data.data.players;
 
@@ -59,27 +65,37 @@ function Dota() {
                     rank: site_player_data.dota.rank,
                     role: site_player_data.dota.role,
                     region: site_player_data.dota.region
-                    // Add more fields as needed
                 };
                 console.log('added player')
                 player_info_array.push(player_info);
             }
-            console.log(player_info_array)
+            console.log("playerinfoarr: ", player_info_array)
+            setPlayerData(player_info_array);
+            console.log("playerData: ", playerData)
 
             // Now you have an array containing the information of all players
 
             alert("Searched successfully");
         } catch (error) {
             console.error(error);
-            alert("An error occurred while trying to search. Please try again later.");
+            alert(error);
         }
+        setIsLoading(false);
     };
     const handleNextPage = () => {
         setCurrentPage((prevPage) => prevPage + 1);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+          });
     };
     
     const handlePreviousPage = () => {
         setCurrentPage((prevPage) => prevPage - 1);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+          });
     };
 
     const handleChange = (e) => {
@@ -107,54 +123,78 @@ function Dota() {
         }
     };
 
-    const handleRecommendationChange = (event) => {
+    const handleRecommendationChange = async (event = { target: { value: 'recommended' } }) => {
         const value = event.target.value;
         setRecommendation(value);
         setDisabled(value === 'recommended');
         if (value === 'recommended') {
-          setRankValue(initialRankValue);
-          setRoleValue(initialRoleValue);
-          setRegionValue(initialRegionValue);
+            try{
+                const response = await API.getUserData(localStorage.getItem('userid'));
+                const userData = response.data.userData;
+                console.log(userData.dota)
+                if (typeof userData.dota == 'undefined') {
+                    setRecommendedPage(false); // Update the state variable
+                } else {
+                    setRecommendedPage(true); // Update the state variable
+                    const response1 = await API.getUserData(localStorage.getItem('userid'));
+                    const userData = response1.data.userData;
+                    updateSearchData({
+                        ...initialSearchData,
+                        region: userData.dota.region,
+                        rank: userData.dota.rank
+                        
+                    });
+                    console.log('Updated searchData:', searchData); // Log the updated searchData
+                }
+            } catch (error) {
+                console.error('Failed to fetch user data:', error);
+            }
+        } else {
+            setRecommendedPage(true);
+            updateSearchData(initialSearchData);
         }
-      };
+    };
   
     const handleReset = () => {
         setRecommendation('recommended');
         setDisabled(true);
+        handleRecommendationChange();
         setRankValue(initialRankValue);
         setRoleValue(initialRoleValue);
         setRegionValue(initialRegionValue);
+        updateSearchData(initialSearchData);
+        setPlayerData([]);
     };
-    const playerCards = [
-        <Playercard key={1} name = "Sithu Soe"/>,
-        <Playercard key={2} name = "Akhil"/>,
-        <Playercard key={3} name = "Kane"/>,
-        <Playercard key={4} name = "Shreya"/>,
-        <Playercard key={5} name = "Calvin"/>,
-        <Playercard key={6} name = "Kevin"/>,
-        <Playercard key={7} name = "Sithu Soe 2"/>,
-        <Playercard key={8} name = "Akhil 2"/>,
-        <Playercard key={9} name = "Kane 2"/>,
-        <Playercard key={10} name = "Shreya 2"/>,
-        <Playercard key={11} name = "Calvin 2"/>,
-        <Playercard key={12} name = "Kevin 2"/>,
-        <Playercard key={13} name = "Sithu Soe 3"/>,
-        <Playercard key={14} name = "Akhil 3"/>,
-        <Playercard key={15} name = "Kane 3"/>,
-    ];
+
+    const playerCards = playerData.map((player, index) => (
+        <Playercard
+          key={index}
+          dotaUsername={player.dota_username}
+          siteUsername={player.site_username}
+          rank={player.rank}
+          role={player.role}
+          region={player.region}
+        />
+      ));
 
     const itemsPerPage = 6;
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     
-
+    useEffect(() => {
+        handleReset();
+      }, []);    
     return(
         <div>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
+            <div>
+                {isLoading && (<LoadingAnimation/>)}
+            </div>
             <div className="filter-container">
-                <img className='dota-img' src={require("./Images/dota2.png")}></img>
+                <img className='dota-img' alt="" src={require("./Images/dota2.png")}></img>
                 <form>
                     <select value={recommendation} onChange={handleRecommendationChange}>
-                        <option value="recommended" >Recommended</option>
+                        <option value="recommended">Recommended</option>
                         <option value="custom">Custom</option>
                     </select>
                     <select value={rankValue} name = "rank" disabled={disabled} onChange={handleChange}>
@@ -165,8 +205,8 @@ function Dota() {
                         <option value="archon">Archon</option>
                         <option value="legend">Legend</option>
                         <option value="ancient">Ancient</option>
-                        <option value="Divine">Divine</option>
-                        <option value="Immortal">Immortal</option>
+                        <option value="divine">Divine</option>
+                        <option value="immortal">Immortal</option>
                     </select>                
                 </form>
                 <form>
@@ -191,7 +231,7 @@ function Dota() {
                         <button onClick={handleReset}>Reset</button>
                 </div>
             </div>
-            <div className="playercard-container">
+            <div className="playercard-container2">
                 {playerCards.slice(startIndex, endIndex)}
             </div>
             <div className="pagination-container">

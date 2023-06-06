@@ -17,6 +17,11 @@ const API = {
         return axios.get(`${serverURL}/api/users?user_id=${user_id}`)
     },
 
+    sendGameData: function(data) {
+        console.log("DatagameInfo: ", data.gameInfo);
+        return axios.post(`${serverURL}/api/users/${data.gameInfo.game}`, data.gameInfo)
+    },
+
     searchUser: function(data) {
         console.log("Data: ", data);
         const game = data.searchInfo.game

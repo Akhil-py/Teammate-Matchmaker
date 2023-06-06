@@ -19,6 +19,7 @@
     text-align: center;
     background: #1A1B21;
     color: white;
+    border-radius: 50px;
 }
 
 .cover-pic{
@@ -27,6 +28,8 @@
     height: 400px;
     object-fit: cover;
     object-position: center;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
 
 .profile-pic{
@@ -114,4 +117,3 @@
   .player-container {
     animation: fadeIn 1s ease-in-out;
   }
-  

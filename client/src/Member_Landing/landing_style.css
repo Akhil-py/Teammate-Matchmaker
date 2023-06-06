@@ -1,3 +1,7 @@
+*{
+    font-family: 'Khand', sans-serif;
+}
+
 .background {
     display: flex;
     align-items: center;
@@ -66,7 +70,8 @@
 .text-container {
     width: 100%;
     font-size: 3rem;
-    font-family: 'Khand';
+    font-family: "Khand", "san-serif";
+    font-weight: 500px;
 }
 
 .red {
@@ -82,5 +87,6 @@
 }
 
 .text-container b {
-    font-family: 'Khand'
+    font-family: "Khand";
+    font-weight: bold;
 }

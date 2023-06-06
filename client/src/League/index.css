@@ -1,44 +1,99 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Khand', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Khand', sans-serif;
 }
 
-.playercard-container{
-    display: flex;
+.playercard-container2{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .filter-container{
-    background-color: black;
-    height: 200px;
-    display: flex;
-    padding-top: 10px;
+  background-color: black;
+  height: 210px;
+  display: flex;
+  padding-top: 5px;
 }
 
-.dota-img{
-    width: 195px;
-    height: 180px;
+.filter-container form{
+  margin-top: 10px;
+  width: 800px;
+}
+
+.filter-container select {
+border-radius: 10px;
+font-family: "Khand", sans-serif;
+}
+
+.league-img{
+  width: 195px;
+  height: 180px;
 }
 
 .filter-container form select{
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .btn-container{
-    display: vertical;
-    justify-content: space-between;
-    margin: 20px;
+  display: vertical;
+  justify-content: space-between;
+  margin: 20px;
 }
 
 .btn-container button{
-    width: 170px;
-    height: 50px;
-    margin-top: 15px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    background-color: #3A444A;
-    color: #FFFFFF;
-    font-weight: bold;
+  width: 170px;
+  height: 50px;
+  margin-top: 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #3A444A;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: background-color 0.5s;
+}
+
+.btn-container button:hover {
+background-color: #c1f5ff;
+color: #242a3c;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-container button {
+  width: 100px;
+  height: 40px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3A444A;
+  color: #FFFFFF;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pagination-container button:hover {
+  background-color: #2D343A;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filter-container{
+  animation: fadeIn 1s ease-out;
 }

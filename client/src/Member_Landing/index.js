@@ -8,6 +8,7 @@ import dota from "../Images/dota.png";
 function MemberLanding() {
     return(
         <div>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
             <div class="background">
                 <div class="game-card">
                     <div class="text-container red">

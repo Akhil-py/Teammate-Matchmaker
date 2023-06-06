@@ -1,0 +1,36 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* overflow: hidden; */
+  }
+  
+  .container {
+    display: flex;
+    height: 100%;
+  }
+  
+  .description {
+    flex: 1;
+    padding: 20px;
+    background-color: #282828;
+    overflow-y: auto;
+  }
+
+  .text{
+    font-size: 20px;
+  }
+  
+  .slides {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282828;
+  }
+  
+  .slides iframe {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
