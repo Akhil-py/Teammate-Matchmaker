@@ -7,30 +7,65 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
-router.post('/users', async (req, res) => {
+const multer = require('multer');
+
+// Create a storage engine using Multer
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+router.post('/users', upload.single('profilePicture'), async (req, res) => {
     const user = req.body.registerInfo;
-    const { username, email, password, discord, college } = user;
+    const { username, email, password, discord, college, profilePicture } = user;
 
-    if (!username || !email || !password || !discord || !college) {
+    if (!username || !email || !password || !discord || !college || !profilePicture) {
         res.status(400).json({ error: 'Invalid Input!' });
-    } else {
+      } else {
         try {
-            const existingUser = await User.findOne({
-                $or: [{ username }, { email }, { discord }],
+          const existingUser = await User.findOne({
+            $or: [{ username }, { email }, { discord }],
+          });
+      
+          if (existingUser) {
+            // Duplicate username, email, or discord found
+            res.status(400).json({
+              status: 'error',
+              error: 'Duplicate username, email, or discord',
             });
-
-            if (existingUser) {
-                // Duplicate username, email, or discord found
-                res.status(400).json({ status: 'error', error: 'Duplicate username, email, or discord' });
-            } else {
-                const newUser = await User.create(user);
-                res.status(200).json({ status: 'ok', userId: newUser._id });
-            }
+          } else {
+            
+            const newUser = await User.create({
+              ...user,
+              profilePicture: Buffer.from(profilePicture, 'base64')
+            });
+            res.status(200).json({ status: 'ok', userId: newUser._id });
+          }
         } catch (err) {
-            res.status(500).json({ status: 'error', error: 'Server error' });
+          res.status(500).json({ status: 'error', error: 'Server error' });
         }
-    }
+      }
 });
+
+router.put('/users/profilePicture', upload.single('profilePicture'), async (req, res) => {
+    try {
+        const { user_id, profilePicture } = req.body;
+
+        // This checks if this user exists
+        const existingUser = await User.findById(user_id);
+        if (!existingUser) {
+        return res.status(400).json({ status: 'error', error: 'User does not exist!' });
+        }
+
+        const buffer = Buffer.from(profilePicture, 'base64');
+        existingUser.profilePicture = buffer;
+        await existingUser.save();
+        
+        //const newUser = await User.create(newUserData);
+        res.status(200).json({ status: 'ok', userId: existingUser._id });
+    } catch (err) {
+        console.log(err)
+        res.status(400).json({ status: 'error', error: 'Failed to update user!' });
+    }
+  });
 
 router.post('/users/league-of-legends', async (req, res) => {
     try {
@@ -212,4 +247,4 @@ router.get('/players', async (req, res) => {
   });
   
 
-module.exports = router;
+module.exports = router;    

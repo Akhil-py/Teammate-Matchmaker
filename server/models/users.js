@@ -21,6 +21,10 @@ const UserSchema = new mongoose.Schema({
     college: {
         type: String,
         required: true
+    },
+    profilePicture: {
+        type: Buffer,
+        required: true
     }
 });
 
