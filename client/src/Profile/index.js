@@ -264,53 +264,53 @@ const Profile = () => {
                 </div>
                 <div className="hide" ref={valRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={valRef}>
-                        <option value="role">Role</option>
-                        <option value="controller">Controller</option>
-                        <option value="duelist">Duelist</option>
-                        <option value="initiator">Initiator</option>
-                        <option value="sentinel">Sentinel</option>
+                        <option value="Role">Role</option>
+                        <option value="Controller">Controller</option>
+                        <option value="Duelist">Duelist</option>
+                        <option value="Initiator">Initiator</option>
+                        <option value="Sentinel">Sentinel</option>
                     </select>
                     <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen" ref={valRef}>
-                        <option value="rank">Rank</option>
-                        <option value="iron">Iron</option>
-                        <option value="bronze">Bronze</option>
-                        <option value="gold">Gold</option>
-                        <option value="platinum">Platinum</option>
-                        <option value="diamond">Diamond</option>
-                        <option value="ascendant">Ascendant</option>
-                        <option value="immortal">Immortal</option>
-                        <option value="radiant">Radiant</option>
+                        <option value="Rank">Rank</option>
+                        <option value="Iron">Iron</option>
+                        <option value="Bronze">Bronze</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Diamond">Diamond</option>
+                        <option value="Ascendant">Ascendant</option>
+                        <option value="Immortal">Immortal</option>
+                        <option value="Radiant">Radiant</option>
                     </select>
                     <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen" ref={valRef}>
-                        <option value="region">Region</option>
-                        <option value="sea">SE Asia</option>
-                        <option value="japan">Japan</option>
-                        <option value="uswest">US West</option>
-                        <option value="useast">US East</option>
+                        <option value="Region">Region</option>
+                        <option value="SEA">SE Asia</option>
+                        <option value="Japan">Japan</option>
+                        <option value="USWest">US West</option>
+                        <option value="USEast">US East</option>
                     </select>
                 </div>
                 <div className="hide" ref={lolRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={lolRef}>
-                        <option value="role">Role</option>
-                        <option value="top">Top</option>
-                        <option value="jungle">Jungle</option>
-                        <option value="mid">Mid</option>
-                        <option value="adc">ADC</option>
-                        <option value="support">Support</option>
+                        <option value="Role">Role</option>
+                        <option value="Top">Top</option>
+                        <option value="Jungle">Jungle</option>
+                        <option value="Mid">Mid</option>
+                        <option value="ADC">ADC</option>
+                        <option value="Support">Support</option>
                     </select>
                     <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen" ref={lolRef}>
-                        <option value="rank">Rank</option>
-                        <option value="iron">Iron</option>
-                        <option value="bronze">Bronze</option>
-                        <option value="gold">Gold</option>
-                        <option value="platinum">Platinum</option>
-                        <option value="diamond">Diamond</option>
-                        <option value="master">Master</option>
-                        <option value="grandmaster">Grandmaster</option>
-                        <option value="challenger">Challenger</option>
+                        <option value="Rank">Rank</option>
+                        <option value="Iron">Iron</option>
+                        <option value="Bronze">Bronze</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Diamond">Diamond</option>
+                        <option value="Master">Master</option>
+                        <option value="Grandmaster">Grandmaster</option>
+                        <option value="Challenger">Challenger</option>
                     </select>
                     <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen" ref={lolRef}>
-                        <option value="region">Region</option>
+                        <option value="Region">Region</option>
                         <option value="NA">NA</option>
                         <option value="EUW">EU West</option>
                         <option value="EUE">EU East</option>
@@ -320,30 +320,30 @@ const Profile = () => {
                 </div>
                 <div className="hide" ref={dotaRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen">
-                        <option value="role">Role</option>
-                        <option value="carry">Carry</option>
-                        <option value="mid">Mid</option>
-                        <option value="offlane">Offlane</option>
-                        <option value="softsupport">Soft Support</option>
-                        <option value="hardsupport">Hard Support</option>
+                        <option value="Role">Role</option>
+                        <option value="Carry">Carry</option>
+                        <option value="Mid">Mid</option>
+                        <option value="Offlane">Offlane</option>
+                        <option value="Soft Support">Soft Support</option>
+                        <option value="Hard Support">Hard Support</option>
                     </select>
                     <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen">
-                        <option value="rank">Rank</option>
-                        <option value="herald">Herald</option>
-                        <option value="guardian">Guardian</option>
-                        <option value="crusader">Crusader</option>
-                        <option value="archon">Archon</option>
-                        <option value="legend">Legend</option>
-                        <option value="ancient">Ancient</option>
-                        <option value="divine">Divine</option>
-                        <option value="immortal">Immortal</option>
+                        <option value="Rank">Rank</option>
+                        <option value="Herald">Herald</option>
+                        <option value="Guardian">Guardian</option>
+                        <option value="Crusader">Crusader</option>
+                        <option value="Archon">Archon</option>
+                        <option value="Legend">Legend</option>
+                        <option value="Ancient">Ancient</option>
+                        <option value="Divine">Divine</option>
+                        <option value="Immortal">Immortal</option>
                     </select>
                     <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen">
-                        <option value="region">Region</option>
-                        <option value="sea">SE Asia</option>
-                        <option value="japan">Japan</option>
-                        <option value="uswest">US West</option>
-                        <option value="useast">US East</option>
+                        <option value="Region">Region</option>
+                        <option value="SEA">SE Asia</option>
+                        <option value="Japan">Japan</option>
+                        <option value="USWest">US West</option>
+                        <option value="USEast">US East</option>
                     </select>
                 </div>
                 <button className="hide" onClick={handleGameSubmit} ref={submitRef} type="submit">Submit</button>
