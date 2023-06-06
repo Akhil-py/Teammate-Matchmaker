@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import API from "../API";
+import LoadingAnimation from "./loading.jsx";
 import "./profile_styles.css";
 import ProfCard from "./profCard";
-
 
 import pikachu from "../Images/surprised.webp";
 import val_logo from "../Images/val.png";
@@ -19,6 +19,8 @@ const Profile = () => {
     const [userInfo, setUserInfo] = useState(null);
     const [gameArray, setGameArray] = useState([]);
     const user_id = localStorage.getItem('userid');
+    const [isLoading, setIsLoading] = useState(true);
+
 
     const initialGameData = {
         user_id: user_id,
@@ -89,6 +91,7 @@ const Profile = () => {
         console.log("Request: ", req);
         try {
             await API.sendGameData(payload);
+            cardRef.current.classList.toggle("hide");
             //console.log("Response: ", response);
             alert("Made successfully");
             displayUserInfo();
@@ -204,6 +207,7 @@ const Profile = () => {
           } catch (error) {
             console.error(error);
           }
+          setIsLoading(false);
         }
     
         fetchUserInfo();
@@ -219,6 +223,7 @@ const Profile = () => {
       const openFilePicker = () => {
         fileInputRef.current.click();
       };
+      
     //console.log("bruhhhhh111h end" + username2);
     return(
     <div class="profile">
@@ -230,7 +235,7 @@ const Profile = () => {
                 <button class="change-button" onClick={openFilePicker}>Change Profile Picture</button>
             </div>
             <div class="profile-info">
-            {userInfo && (
+            {isLoading ? (<LoadingAnimation />): userInfo && (
                 <>
                 <li>Username: {userInfo.username1}</li>
                 <li>Email: {userInfo.email1}</li>
@@ -306,10 +311,11 @@ const Profile = () => {
                     </select>
                     <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen" ref={lolRef}>
                         <option value="region">Region</option>
-                        <option value="sea">SE Asia</option>
-                        <option value="japan">Japan</option>
-                        <option value="uswest">US West</option>
-                        <option value="useast">US East</option>
+                        <option value="NA">NA</option>
+                        <option value="EUW">EU West</option>
+                        <option value="EUE">EU East</option>
+                        <option value="Korea">Korea</option>
+                        <option value="OCE">Oceania</option>
                     </select>
                 </div>
                 <div className="hide" ref={dotaRef}>
