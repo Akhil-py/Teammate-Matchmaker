@@ -1,36 +1,73 @@
-body, html {
+   body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* overflow: hidden; */
+    background-color: #1c1c1c;
   }
   
-  .container {
+  .aboutus-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
+    margin-top: 20px;
+  }
+  
+  h1 {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 20px;
   }
   
   .description {
-    flex: 1;
+    max-width: 800px;
     padding: 20px;
-    background-color: #282828;
-    overflow-y: auto;
+    background-color: #333333;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
   }
-
-  .text{
+  
+  .text {
     font-size: 20px;
+    color: #ffffff;
   }
   
-  .slides {
-    flex: 1;
+  .features {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    background-color: #282828;
+    gap: 20px;
+    max-width: 960px;
   }
   
-  .slides iframe {
+  .feature {
+    width: 300px;
+    background-color: #333333;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .feature h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-top: 10px;
+  }
+  
+  .feature p {
+    color: #c7c7c7;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .feature-image {
     max-width: 100%;
-    max-height: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    height: 190px;
   }
   
