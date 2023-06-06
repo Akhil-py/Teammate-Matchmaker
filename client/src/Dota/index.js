@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Playercard from "./Playercard"
 import "./index.css"
 import API from "../API";
@@ -38,6 +38,15 @@ function Dota() {
         try {
             if(recommendedPage === false){
                 throw new Error('No Player Card for game created, please create one in profile for recommended options');
+            }
+            if(recommendation === "recommended"){
+                const response1 = await API.getUserData(localStorage.getItem('userid'));
+                const userData = response1.data.userData;
+                updateSearchData((prevSearchData) => ({
+                    ...prevSearchData,
+                    region: userData.dota.region,
+                    rank: userData.dota.rank
+                }));
             }
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
@@ -120,26 +129,19 @@ function Dota() {
             try{
                 const response = await API.getUserData(localStorage.getItem('userid'));
                 const userData = response.data.userData;
-                setRankValue(userData.dota.rank);
-                setRegionValue(userData.dota.region);
                 console.log(userData.dota)
                 if (typeof userData.dota == 'undefined') {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
                 }
-                updateSearchData((prevSearchData) => ({
-                    ...prevSearchData,
-                    region: userData.dota.region,
-                    rank: userData.dota.rank
-                }));
                 console.log('Updated searchData:', searchData); // Log the updated searchData
             } catch (error) {
                 console.error('Failed to fetch user data:', error);
             }
         } else {
             setRecommendedPage(true);
-            console.log(recommendedPage);
+            updateSearchData(initialSearchData);
         }
     };
   
@@ -169,6 +171,9 @@ function Dota() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     
+    useEffect(() => {
+        handleReset();
+      }, []);    
     return(
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
