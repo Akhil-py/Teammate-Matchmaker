@@ -17,7 +17,7 @@ function Valorant() {
     const [recommendedPage, setRecommendedPage] = useState(false);
     
     const initialSearchData = {
-        game: "dota",
+        game: "valorant",
         role: "",
         rank: "",
         region: "",
@@ -29,25 +29,17 @@ function Valorant() {
         console.log("Search Data: ", searchData);
         console.log("event: ", e);
         e.preventDefault();
-        const req = e.target;
-        const payload = {
-            searchInfo: searchData
-        }
-        console.log(JSON.stringify(payload.searchInfo));
-        console.log("Request: ", req);
         try {
             if(recommendedPage === false){
                 throw new Error('No Player Card for game created, please create one in profile for recommended options');
             }
-            if(recommendation === "recommended"){
-                const response1 = await API.getUserData(localStorage.getItem('userid'));
-                const userData = response1.data.userData;
-                updateSearchData((prevSearchData) => ({
-                    ...prevSearchData,
-                    region: userData.dota.region,
-                    rank: userData.dota.rank
-                }));
+            console.log("recommendation!!", recommendation)
+            const payload = {
+                searchInfo: searchData
             }
+            const req = e.target;
+            console.log("Request: ", req);
+            console.log(JSON.stringify(payload.searchInfo));
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
             var response_data = response;
@@ -65,14 +57,13 @@ function Valorant() {
                 const site_player_data = (await API.getUserData(player.userid)).data.userData; 
                 //console.log(site_player_data)
                 var player_info = {
-                    dota_username: player.dota_username,
+                    val_username: player.val_username,
                     site_username: site_player_data.username,
-                    rank: site_player_data.dota.rank,
-                    role: site_player_data.dota.role,
-                    region: site_player_data.dota.region
+                    rank: site_player_data.valorant.rank,
+                    role: site_player_data.valorant.role,
+                    region: site_player_data.valorant.region
                     // Add more fields as needed
                 };
-                console.log('added player')
                 player_info_array.push(player_info);
             }
             console.log("playerinfoarr: ", player_info_array)
@@ -80,7 +71,6 @@ function Valorant() {
             console.log("playerData: ", playerData)
 
             // Now you have an array containing the information of all players
-
             alert("Searched successfully");
         } catch (error) {
             console.error(error);
@@ -129,13 +119,22 @@ function Valorant() {
             try{
                 const response = await API.getUserData(localStorage.getItem('userid'));
                 const userData = response.data.userData;
-                console.log(userData.dota)
-                if (typeof userData.dota == 'undefined') {
+                if (typeof userData.valorant == 'undefined') {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
+                    const response1 = await API.getUserData(localStorage.getItem('userid'));
+                    const userData = response1.data.userData;
+                    console.log(userData.valorant.region);
+    
+                    updateSearchData({
+                        ...initialSearchData,
+                        region: userData.valorant.region,
+                        rank: userData.valorant.rank
+                    });;
+                    console.log('Updated searchData:', userData.valorant); // Log the updated searchData
+
                 }
-                console.log('Updated searchData:', searchData); // Log the updated searchData
             } catch (error) {
                 console.error('Failed to fetch user data:', error);
             }
@@ -186,30 +185,31 @@ function Valorant() {
                     </select>
                     <select value={rankValue} name = "rank" disabled={disabled} onChange={handleChange}>
                         <option value="rank" disabled selected>Rank</option>
-                        <option value="iron">Iron</option>
-                        <option value="bronze">Bronze</option>
-                        <option value="silver">Silver</option>
-                        <option value="gold">Gold</option>
-                        <option value="platinum">Platinum</option>
-                        <option value="diamond">Diamond</option>
-                        <option value="ascendant">Ascendant</option>
-                        <option value="immortal">Immortal</option>
+                        <option value="Iron">Iron</option>
+                        <option value="Bronze">Bronze</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Diamond">Diamond</option>
+                        <option value="Ascendent">Ascendent</option>
+                        <option value="Immortal">Immortal</option>
+                        <option value="Radiant">Radiant</option>
                     </select>                
                 </form>
                 <form>
                     <select value={regionValue} name = "region" disabled={disabled} onChange={handleChange}>
                         <option value="region" disabled selected>Region</option>
-                        <option value="sea">SE Asia</option>
-                        <option value="japan">Japan</option>
-                        <option value="uswest">US West</option>
-                        <option value="useast">US East</option>
+                        <option value="NAWest">NA West</option>
+                        <option value="NAEast">NA East</option>
+                        <option value="Japan">Japan</option>
+                        <option value="SEA">SE Asia</option>
                     </select>
                     <select value={roleValue} name = "role" disabled={disabled} onChange={handleChange}>
                         <option value="role" disabled selected>Role</option>
-                        <option value="sentinel">Sentinel</option>
-                        <option value="duelist">Duelist</option>
-                        <option value="controller">Controller</option>
-                        <option value="initiator">Initiator</option>
+                        <option value="Controller">Controller</option>
+                        <option value="Duelist">Duelist</option>
+                        <option value="Initiator">Initiator</option>
+                        <option value="Sentinel">Sentinel</option>
                     </select>  
                 </form>
                 <div className="btn-container">
