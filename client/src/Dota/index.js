@@ -124,11 +124,9 @@ function Dota() {
                 setRegionValue(userData.dota.region);
                 console.log(userData.dota)
                 if (typeof userData.dota == 'undefined') {
-                    console.log('helplee')
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
-                    console.log('atk')
                 }
                 updateSearchData((prevSearchData) => ({
                     ...prevSearchData,
