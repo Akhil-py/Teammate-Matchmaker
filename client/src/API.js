@@ -19,7 +19,7 @@ const API = {
 
     sendGameData: function(data) {
         console.log("DatagameInfo: ", data.gameInfo);
-        return axios.post(`${serverURL}/api/users/${data.gameInfo.game}`, data.gameInfo)
+        return axios.post(`${serverURL}/api/users/${data.gameInfo.game}`, data.gameInfo);
     },
 
     searchUser: function(data) {
@@ -30,9 +30,11 @@ const API = {
         const region = data.searchInfo.region
         
         return axios.get(`${serverURL}/api/players?game=${game}&role=${role}&rank=${rank}&region=${region}`)
+    },
+
+    uploadProfilePicture: function(data){
+        return axios.put(`${serverURL}/api/profilePicture`,data);
     }
-
-
     /*getLeagueData: function() {
         return axios.get(`${serverURL}/api/league`);
     },

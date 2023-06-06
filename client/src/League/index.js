@@ -193,7 +193,7 @@ function League() {
     }, []);  
 
     return(
-        <div>
+        <div className="background-for-games">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
             <div>
                 {isLoading && (<LoadingAnimation/>)}
