@@ -158,7 +158,7 @@ function Valorant() {
     const playerCards = playerData.map((player, index) => (
         <Playercard
           key={index}
-          dotaUsername={player.dota_username}
+          valUsername={player.val_username}
           siteUsername={player.site_username}
           rank={player.rank}
           role={player.role}
