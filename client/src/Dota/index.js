@@ -112,7 +112,7 @@ function Dota() {
         }
     };
 
-    const handleRecommendationChange = async (event) => {
+    const handleRecommendationChange = async (event = { target: { value: 'recommended' } }) => {
         const value = event.target.value;
         setRecommendation(value);
         setDisabled(value === 'recommended');
@@ -122,14 +122,17 @@ function Dota() {
                 const userData = response.data.userData;
                 setRankValue(userData.dota.rank);
                 setRegionValue(userData.dota.region);
-                if (typeof userData.dota !== 'undefined') {
+                console.log(userData.dota)
+                if (typeof userData.dota == 'undefined') {
+                    console.log('helplee')
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
+                    console.log('atk')
                 }
                 updateSearchData((prevSearchData) => ({
                     ...prevSearchData,
-                    role: userData.dota.role,
+                    region: userData.dota.region,
                     rank: userData.dota.rank
                 }));
                 console.log('Updated searchData:', searchData); // Log the updated searchData
@@ -168,7 +171,6 @@ function Dota() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     
-
     return(
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
@@ -176,7 +178,7 @@ function Dota() {
                 <img className='dota-img' src={require("./Images/dota2.png")}></img>
                 <form>
                     <select value={recommendation} onChange={handleRecommendationChange}>
-                        <option value="recommended" >Recommended</option>
+                        <option value="recommended">Recommended</option>
                         <option value="custom">Custom</option>
                     </select>
                     <select value={rankValue} name = "rank" disabled={disabled} onChange={handleChange}>
