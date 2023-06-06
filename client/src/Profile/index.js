@@ -57,13 +57,10 @@ const Profile = () => {
     const displayUserInfo = async () => {
         try {
             const user_info = (await API.getUserData(user_id)).data.userData; 
-            const user_dota_data = (await API.getUserData(user_id)).data.dotaData;
             const username1 = user_info.username;
             const email1 = user_info.email;
             const discord_tag1 = user_info.discord;
             const college1 = user_info.college;
-            const dota1 = user_dota_data;
-            console.log(user_dota_data)
 
             //Make array of player games
             var player_game_array = [];
@@ -72,7 +69,7 @@ const Profile = () => {
             player_game_array.push(user_info.dota);
             console.log("Player game array: ", player_game_array);
             setGameArray(player_game_array);
-            return {username1, email1, discord_tag1, college1, dota1}
+            return {username1, email1, discord_tag1, college1}
         } catch(error) {
             console.log(error);
         }
@@ -173,20 +170,26 @@ const Profile = () => {
 
     const profileCards = gameArray.map((player, index) => {
         var gameImage;
+        var gameUsername;
         if(index === 0){
             gameImage = val_logo;
+            gameUsername = player.val_username;
         }
         else if(index === 1){
             gameImage = lol_logo;
+            gameUsername = player.lol_username;
         }
         else{
             gameImage = dota_logo;
+            gameUsername = player.dota_username;
         }
+        console.log("GameUsername: " + gameUsername);
 
         if(player !== null) {
           return <ProfCard
           key={index}
           image={gameImage}
+          in_game_username={gameUsername}
           rank={player.rank}
           role={player.role}
           region={player.region}
@@ -216,6 +219,13 @@ const Profile = () => {
     
       const handleFileSelection = (event) => {
         const selectedFile = event.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const base64String = reader.result;
+            console.log(base64String);
+          };
+        const base64content = reader.readAsDataURL(selectedFile);
+        console.log(base64content);
         // Perform actions with the selected file
         console.log("Selected file:", selectedFile);
       };
