@@ -39,15 +39,6 @@ function Dota() {
             if(recommendedPage === false){
                 throw new Error('No Player Card for game created, please create one in profile for recommended options');
             }
-            if(recommendation === "recommended"){
-                const response1 = await API.getUserData(localStorage.getItem('userid'));
-                const userData = response1.data.userData;
-                updateSearchData((prevSearchData) => ({
-                    ...prevSearchData,
-                    region: userData.dota.region,
-                    rank: userData.dota.rank
-                }));
-            }
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
             var response_data = response;
@@ -70,7 +61,6 @@ function Dota() {
                     rank: site_player_data.dota.rank,
                     role: site_player_data.dota.role,
                     region: site_player_data.dota.region
-                    // Add more fields as needed
                 };
                 console.log('added player')
                 player_info_array.push(player_info);
@@ -134,8 +124,16 @@ function Dota() {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
+                    const response1 = await API.getUserData(localStorage.getItem('userid'));
+                    const userData = response1.data.userData;
+                    updateSearchData({
+                        ...initialSearchData,
+                        region: userData.dota.region,
+                        rank: userData.dota.rank
+                        
+                    });
+                    console.log('Updated searchData:', searchData); // Log the updated searchData
                 }
-                console.log('Updated searchData:', searchData); // Log the updated searchData
             } catch (error) {
                 console.error('Failed to fetch user data:', error);
             }

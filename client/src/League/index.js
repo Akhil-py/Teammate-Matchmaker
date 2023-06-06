@@ -36,15 +36,7 @@ function League() {
             console.log("recommendation!!", recommendation)
             if(recommendation === "recommended"){
                 console.log("UPDATING SEARCH DATA TO RECOMMENDED")
-                const response1 = await API.getUserData(localStorage.getItem('userid'));
-                const userData = response1.data.userData;
-                console.log(userData.leagueOfLegends.region);
 
-                await updateSearchData((prevSearchData) => ({
-                    ...prevSearchData,
-                    region: userData.leagueOfLegends.region,
-                    rank: userData.leagueOfLegends.rank
-                }));;
                 console.log(searchData);
             }
             const payload = {
@@ -137,8 +129,18 @@ function League() {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
+                    const response1 = await API.getUserData(localStorage.getItem('userid'));
+                    const userData = response1.data.userData;
+                    console.log(userData.leagueOfLegends.region);
+    
+                    updateSearchData({
+                        ...initialSearchData,
+                        region: userData.leagueOfLegends.region,
+                        rank: userData.leagueOfLegends.rank
+                    });;
+                    console.log('Updated searchData:', userData.leagueOfLegends); // Log the updated searchData
+
                 }
-                console.log('Updated searchData:', userData.leagueOfLegends); // Log the updated searchData
             } catch (error) {
                 console.error('Failed to fetch user data:', error);
             }
