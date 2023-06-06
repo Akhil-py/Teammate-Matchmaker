@@ -47,7 +47,7 @@ router.post('/users', upload.single('profilePicture'), async (req, res) => {
 
 router.put('/users/profilePicture', upload.single('profilePicture'), async (req, res) => {
     try {
-        const { user_id, profilePicture } = req.body;
+        const { user_id, profilePicture } = req.body.profilePictureData;
 
         // This checks if this user exists
         const existingUser = await User.findById(user_id);
@@ -207,12 +207,17 @@ router.get('/users', async (req, res) => {
         // Retrieve the Valorant data for the user
         const dotaData = await Dota.findOne({ userid: user_id });
     
+        // Convert profilePicture from BinData to Base64
+        const profilePicture = user.profilePicture.toString('base64');
+
+
         // Prepare the response JSON
         const userData = {
             username: user.username,
             email: user.email,
             discord: user.discord,
             college: user.college,
+            profilePicture: profilePicture,
             leagueOfLegends: leagueOfLegendsData,
             valorant: valorantData,
             dota: dotaData
