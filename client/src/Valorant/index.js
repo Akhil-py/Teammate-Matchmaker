@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Playercard from "./Playercard"
+import LoadingAnimation from "../Profile/loading.jsx";
 import "./index.css"
 import API from "../API";
 
@@ -15,6 +16,7 @@ function Valorant() {
     const [currentPage, setCurrentPage] = useState(1);
     const [playerData, setPlayerData] = useState([]);
     const [recommendedPage, setRecommendedPage] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     
     const initialSearchData = {
         game: "valorant",
@@ -29,6 +31,7 @@ function Valorant() {
         console.log("Search Data: ", searchData);
         console.log("event: ", e);
         e.preventDefault();
+        setIsLoading(true);
         try {
             if(recommendedPage === false){
                 throw new Error('No Player Card for game created, please create one in profile for recommended options');
@@ -71,6 +74,7 @@ function Valorant() {
             console.log("playerData: ", playerData)
 
             // Now you have an array containing the information of all players
+            setIsLoading(false);
             alert("Searched successfully");
         } catch (error) {
             console.error(error);
@@ -176,8 +180,11 @@ function Valorant() {
     return(
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
+            <div>
+                {isLoading && (<LoadingAnimation/>)}
+            </div>
             <div className="filter-container">
-                <img className='valorant-img' src={require("./Images/valorant.png")}></img>
+                <img className='valorant-img' alt="" src={require("./Images/valorant.png")}></img>
                 <form>
                     <select value={recommendation} onChange={handleRecommendationChange}>
                         <option value="recommended">Recommended</option>
