@@ -1,11 +1,17 @@
 import "./Playercard.css"
+import AOS from 'aos';
+import React, {useEffect} from "react";
+
 export default function Playercard(values){
+    useEffect(() => {
+        AOS.init({duration: 2000});
+    }, []); 
     return (
         <div>
-            <div className="player-container">
+            <div className="player-container" data-aos="fade-right">
                 <div className="profile-card">
-                    <img src={require("./Images/dotabg.jpeg")} className="cover-pic"></img>
-                    <img src={require("./Images/heroicon.jpeg")} className="profile-pic"></img>
+                    <img src={require("./Images/dotabg.jpeg")} alt="" className="cover-pic"></img>
+                    <img src={require("./Images/heroicon.jpeg")} alt="" className="profile-pic"></img>
                     <h1 className="name">{values.dotaUsername}</h1>
                     <p>San Diego, California, United States</p>
                     <div className="row">

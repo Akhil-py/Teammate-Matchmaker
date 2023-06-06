@@ -1,8 +1,15 @@
 import "./Playercard.css"
+import AOS from 'aos';
+import React, {useEffect} from "react";
+
+
 export default function Playercard(values){
+    useEffect(() => {
+        AOS.init({duration: 2000});
+    }, []); 
     return (
         <div>
-            <div className="player-container">
+            <div className="player-container" data-aos="fade-right">
                 <div className="profile-card">
                     <img src={require("./Images/leaguebg.jpeg")} className="cover-pic" alt="damn"></img>
                     <img src={require("./Images/leagueicon.jpeg")} className="profile-pic" alt="damn"></img>

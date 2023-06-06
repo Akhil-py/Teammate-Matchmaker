@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Playercard from "./Playercard"
+import LoadingAnimation from "../Profile/loading.jsx";
 import "./index.css"
 import API from "../API";
 
@@ -15,6 +16,8 @@ function Dota() {
     const [currentPage, setCurrentPage] = useState(1);
     const [playerData, setPlayerData] = useState([]);
     const [recommendedPage, setRecommendedPage] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
     
     const initialSearchData = {
         game: "dota",
@@ -29,6 +32,7 @@ function Dota() {
         console.log("Search Data: ", searchData);
         console.log("event: ", e);
         e.preventDefault();
+        setIsLoading(true);
         const req = e.target;
         const payload = {
             searchInfo: searchData
@@ -76,14 +80,22 @@ function Dota() {
             console.error(error);
             alert(error);
         }
-        
+        setIsLoading(false);
     };
     const handleNextPage = () => {
         setCurrentPage((prevPage) => prevPage + 1);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+          });
     };
     
     const handlePreviousPage = () => {
         setCurrentPage((prevPage) => prevPage - 1);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+          });
     };
 
     const handleChange = (e) => {
@@ -175,8 +187,11 @@ function Dota() {
     return(
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
+            <div>
+                {isLoading && (<LoadingAnimation/>)}
+            </div>
             <div className="filter-container">
-                <img className='dota-img' src={require("./Images/dota2.png")}></img>
+                <img className='dota-img' alt="" src={require("./Images/dota2.png")}></img>
                 <form>
                     <select value={recommendation} onChange={handleRecommendationChange}>
                         <option value="recommended">Recommended</option>

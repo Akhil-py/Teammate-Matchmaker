@@ -1,5 +1,5 @@
 .loading-background {
-    z-index: 100000;
+    z-index: 10000000;
     height: 100%;
     width: 100%;
 }
