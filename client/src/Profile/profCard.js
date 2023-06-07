@@ -1,9 +1,25 @@
 import React from 'react';
 import './profile_styles.css';
 import trash from "../Images/trash_can.png";
+import API from '../API';
 
 const ProfCard = (props) => {
-  const { image, role, rank, region, in_game_username } = props;
+
+  const user_id = localStorage.getItem('userid');
+  const { image, role, rank, region, in_game_username, game} = props;
+
+  const cardData = {
+    userid: user_id,
+    game: game
+  }
+
+  const handleDelete = () => {
+    const payload = {
+      card: cardData
+    }
+    const response = API.deleteUser(payload);
+    props.function();
+  }
 
   return (
     <div class="profile-card-profile">
@@ -20,7 +36,8 @@ const ProfCard = (props) => {
             <span>{rank}</span>
             <span>{region}</span>
         </div>
-        {/* <button>
+        <button onClick={handleDelete}>Delete</button>
+        {/* <but ton>
           <img src={trash} alt=""></img>
         </button> */}
     </div>

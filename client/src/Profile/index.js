@@ -180,6 +180,7 @@ const Profile = () => {
     const profileCards = gameArray.map((player, index) => {
         var gameImage;
         var gameUsername;
+        var game;
         if(player == null){
             return null
         }
@@ -187,18 +188,21 @@ const Profile = () => {
             if(player.val_username !== null){
                 gameImage = val_logo;
                 gameUsername = player.val_username;
+                game = "valorant";
             }
         }
         else if(index === 1){
             if(player.lol_username !== null){
                 gameImage = lol_logo;
                 gameUsername = player.lol_username;
+                game = "league";
             }
         }
         else{
             if(player.dota_username !== null){
                 gameImage = dota_logo;
                 gameUsername = player.dota_username;
+                game = "dota";
             }
         }
         console.log("GameUsername: " + gameUsername);
@@ -211,6 +215,8 @@ const Profile = () => {
           rank={player.rank}
           role={player.role}
           region={player.region}
+          game={game}
+          function={displayUserInfo}
           />
         }
 

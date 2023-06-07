@@ -34,6 +34,13 @@ const API = {
     uploadProfilePicture: function(data){
         console.log("Data: ", data);
         return axios.put(`${serverURL}/api/users/profilePicture`,data);
+    },
+
+    deleteUser: function(data) {
+        console.log("DATA!",data)
+        const game = data.card.game;
+        const user_id = data.card.userid;
+        return axios.delete(`${serverURL}/api/users?user_id=${user_id}&game=${game}`);
     }
     /*getLeagueData: function() {
         return axios.get(`${serverURL}/api/league`);
