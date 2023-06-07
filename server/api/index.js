@@ -266,6 +266,44 @@ router.get('/players', async (req, res) => {
         res.status(500).json({ status: 'error', error: 'Failed to retrieve players!' });
     }
   });
+
+router.delete('/users', async (req, res) => {
+    try {
+        const user_id = req.query.user_id;
+        const game = req.query.game;
+    
+        // Find the user in the database
+        const user = await User.findById(user_id);
+    
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        if (game == 'league-of-legends') {
+            // Retrieve the League of Legends data for the user
+            const leagueOfLegendsData = await League.findOne({ userid: user_id });
+            await leagueOfLegendsData.deleteOne();
+        }
+
+        if (game == 'valorant') {
+            // Retrieve the Valorant data for the user
+            const valorantData = await Valorant.findOne({ userid: user_id });
+            await valorantData.deleteOne();
+        }
+
+        if (game == 'dota') {
+            // Retrieve the Valorant data for the user
+            const dotaData = await Dota.findOne({ userid: user_id });
+            await dotaData.deleteOne();
+        }
+  
+        res.status(200).json({ message: 'Game data deleted successfully' });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+  });
+  
   
 
 module.exports = router;    
