@@ -4,7 +4,7 @@ import LoadingAnimation from "./loading.jsx";
 import "./profile_styles.css";
 import ProfCard from "./profCard";
 
-import pikachu from "../Images/surprised.webp";
+//import pikachu from "../Images/surprised.webp";
 import val_logo from "../Images/val.png";
 import lol_logo from "../Images/lol.png";
 import dota_logo from "../Images/dota2.png";
@@ -13,6 +13,7 @@ const Profile = () => {
     const initialRankValue = 'rank';
     const initialRoleValue = 'role';
     const initialRegionValue = 'region';
+    const [image, setImage] = useState(null);
     const [rankValue, setRankValue] = useState(initialRankValue); 
     const [roleValue, setRoleValue] = useState(initialRoleValue); 
     const [regionValue, setRegionValue] = useState(initialRegionValue); 
@@ -30,8 +31,13 @@ const Profile = () => {
         rank: "",
         region: "",
     };
+    const initialProfilePicture = {
+        user_id: user_id,
+        profilePicture: ""
+    }
 
     const [gameData, updateGameData] = useState(initialGameData);
+    const [profilePicture, updateprofilePicture] = useState(initialProfilePicture);
 
     const handleGameChange = (e) => {
         updateGameData({
@@ -56,11 +62,14 @@ const Profile = () => {
 
     const displayUserInfo = async () => {
         try {
+            console.log('SENDING USER ID!!!!!!! ', user_id)
             const user_info = (await API.getUserData(user_id)).data.userData; 
+            console.log('USER INFO!!! ', user_info)
             const username1 = user_info.username;
             const email1 = user_info.email;
             const discord_tag1 = user_info.discord;
             const college1 = user_info.college;
+            const userpfp = user_info.profilePicture;
 
             //Make array of player games
             var player_game_array = [];
@@ -69,7 +78,7 @@ const Profile = () => {
             player_game_array.push(user_info.dota);
             console.log("Player game array: ", player_game_array);
             setGameArray(player_game_array);
-            return {username1, email1, discord_tag1, college1}
+            return {username1, email1, discord_tag1, college1, userpfp}
         } catch(error) {
             console.log(error);
         }
@@ -171,17 +180,26 @@ const Profile = () => {
     const profileCards = gameArray.map((player, index) => {
         var gameImage;
         var gameUsername;
+        if(player == null){
+            return null
+        }
         if(index === 0){
-            gameImage = val_logo;
-            gameUsername = player.val_username;
+            if(player.val_username !== null){
+                gameImage = val_logo;
+                gameUsername = player.val_username;
+            }
         }
         else if(index === 1){
-            gameImage = lol_logo;
-            gameUsername = player.lol_username;
+            if(player.lol_username !== null){
+                gameImage = lol_logo;
+                gameUsername = player.lol_username;
+            }
         }
         else{
-            gameImage = dota_logo;
-            gameUsername = player.dota_username;
+            if(player.dota_username !== null){
+                gameImage = dota_logo;
+                gameUsername = player.dota_username;
+            }
         }
         console.log("GameUsername: " + gameUsername);
 
@@ -198,14 +216,20 @@ const Profile = () => {
 
         return null;
     });
-
+    
+    function decodeBase64ToImage(base64String) {
+        const img = new Image();
+        img.src = `data:image/png;base64,${base64String}`;
+        return img;
+    }
     useEffect(() => {
         async function fetchUserInfo() {
           try {
             const userInfo11 = await displayUserInfo();
             console.log(userInfo11);
-            const { username1, email1, discord_tag1, college1, dota1 } = userInfo11;
-            console.log(dota1);
+            const { username1, email1, discord_tag1, college1, dota1, userpfp } = userInfo11;
+            console.log("PROFILEPICTURE HELP ME",userpfp);
+            setImage(decodeBase64ToImage(userpfp))
             setUserInfo({ username1, email1, discord_tag1, college1, dota1 });
           } catch (error) {
             console.error(error);
@@ -215,24 +239,48 @@ const Profile = () => {
     
         fetchUserInfo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, []); // Run once on component mount
+    }, []); // Run once on component mount
     
-      const handleFileSelection = (event) => {
-        const selectedFile = event.target.files[0];
+    const handleFileSelection = async (e) => {
+        const selectedFile = e.target.files[0];
         const reader = new FileReader();
+
         reader.onloadend = () => {
             const base64String = reader.result;
-            console.log(base64String);
-          };
-        const base64content = reader.readAsDataURL(selectedFile);
-        console.log(base64content);
-        // Perform actions with the selected file
-        console.log("Selected file:", selectedFile);
-      };
+            console.log("I AM BASE64 STRING OF FILE!", base64String);
+            const base64content = base64String.split(",")[1];
+            console.log(base64content);
 
-      const openFilePicker = () => {
+            // Perform actions with the Base64-encoded content
+            console.log("Selected file:", selectedFile);
+            updateprofilePicture({
+              ...initialProfilePicture,
+              user_id: user_id,
+              profilePicture: base64content,
+            });
+            const uploadProfilePictureAsync = async () => {
+                const payload2 = {
+                    user_id: user_id,
+                    profilePicture: base64content,
+                };
+                console.log("I AM PAYLOAD2!", payload2);
+                try {
+                  const response2 = await API.uploadProfilePicture(payload2);
+                  console.log(response2);
+                  alert('Uploaded!');
+                } catch (error) {
+                  console.error(error);
+                }
+            };
+            uploadProfilePictureAsync();
+        }
+          
+        reader.readAsDataURL(selectedFile);
+    };
+
+    const openFilePicker = () => {
         fileInputRef.current.click();
-      };
+    };
       
     //console.log("bruhhhhh111h end" + username2);
     return(
@@ -240,7 +288,7 @@ const Profile = () => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khand&display=swap"></link>
         <div class="left-panel">
             <div class="circle">
-                <img src={pikachu} alt="pikachu"></img>
+                {image && <img src={image.src} alt="profile" />}
                 <input type="file" ref={fileInputRef} onChange={handleFileSelection}></input>
                 <button class="change-button" onClick={openFilePicker}>Change Profile Picture</button>
             </div>

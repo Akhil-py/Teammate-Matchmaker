@@ -31,9 +31,9 @@ const API = {
         
         return axios.get(`${serverURL}/api/players?game=${game}&role=${role}&rank=${rank}&region=${region}`)
     },
-
     uploadProfilePicture: function(data){
-        return axios.put(`${serverURL}/api/profilePicture`,data);
+        console.log("Data: ", data);
+        return axios.put(`${serverURL}/api/users/profilePicture`,data);
     }
     /*getLeagueData: function() {
         return axios.get(`${serverURL}/api/league`);
