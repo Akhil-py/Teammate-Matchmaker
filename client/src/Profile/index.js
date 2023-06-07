@@ -273,9 +273,10 @@ const Profile = () => {
                     const response2 = await API.uploadProfilePicture(payload2);
                     console.log(response2);
                     alert('Uploaded!');
-                    setImage(decodeBase64ToImage(base64content))
+                        
                 } catch (error) {
-                    console.error(error);   
+                    console.error(error);
+                    alert('Error! Likely the file size of the image you put in is too big.') 
                 }
             };
             uploadProfilePictureAsync();
