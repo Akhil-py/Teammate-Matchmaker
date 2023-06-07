@@ -97,3 +97,44 @@
   .filter-container{
     animation: fadeIn 1s ease-out;
   }
+
+.discord-pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.discord-box-info {
+  width: 20%; 
+  height: 150px;
+  border-radius: 40px;
+  border: 4px solid #a9e7f2;
+  background-color: #242a3c;
+  margin: 15px;
+  padding: 20px;
+  z-index: 10000;
+  color: white;
+}
+
+.exit-but {
+  border-radius: 20px;
+  border: none;
+  color:#2D343A;
+  background-color: #a9e7f2;
+  font-size: 1.5rem;
+  width: 40%;
+  height: 50px;
+  transition: background-color 0.3s
+}
+
+.exit-but:hover {
+  background-color: rgb(134, 0, 0);
+  color: white;
+}

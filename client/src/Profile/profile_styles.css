@@ -117,11 +117,15 @@
 }
 
 .hide {
-    display: none;
+    display: none!important;
 }
 
 .show{
-    display: block;
+    display: flex;
+}
+
+.show-block {
+    display: block!important;
 }
 
 .pop-up-card button {
@@ -137,6 +141,7 @@
 }
 
 .profile-card-profile {
+    opacity: 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -147,7 +152,19 @@
     background-color: #242a3c;
     margin: 15px;
     padding: 20px;
+    animation: fade-in-right 1s ease-in forwards;
 }
+
+@keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
 .profile-card-profile img {
     width: auto;
