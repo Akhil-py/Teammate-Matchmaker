@@ -140,7 +140,8 @@ function League() {
             try{
                 const response = await API.getUserData(localStorage.getItem('userid'));
                 const userData = response.data.userData;
-                if (typeof userData.leagueOfLegends == 'undefined') {
+                console.log("USER DATA!", userData)
+                if (userData.leagueOfLegends === null)  {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable

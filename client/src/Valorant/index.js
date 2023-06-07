@@ -126,7 +126,8 @@ function Valorant() {
             try{
                 const response = await API.getUserData(localStorage.getItem('userid'));
                 const userData = response.data.userData;
-                if (typeof userData.valorant == 'undefined') {
+                console.log("USER DATA!:",userData)
+                if (userData.valorant === null) {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
