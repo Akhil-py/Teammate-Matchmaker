@@ -56,7 +56,9 @@ const Profile = () => {
 
     const displayUserInfo = async () => {
         try {
+            console.log("run");
             const user_info = (await API.getUserData(user_id)).data.userData; 
+            console.log("User_info: ", user_info);
             const username1 = user_info.username;
             const email1 = user_info.email;
             const discord_tag1 = user_info.discord;

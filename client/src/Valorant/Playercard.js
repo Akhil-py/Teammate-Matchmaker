@@ -1,5 +1,9 @@
 import "./Playercard.css"
 export default function Playercard(values){
+    const displayDiscord = async () => {
+        values.function(values);
+    }
+
     return (
         <div>
             <div className="player-container">
@@ -23,7 +27,7 @@ export default function Playercard(values){
                         </div>
                     </div>
                     <div className="button-container">
-                        <button>Request Information</button>
+                        <button onClick={displayDiscord}>Request Information</button>
                         <button>Send Message</button>
                     </div>
                 </div>
