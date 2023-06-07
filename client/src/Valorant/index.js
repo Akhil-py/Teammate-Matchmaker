@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import Playercard from "./Playercard"
 import LoadingAnimation from "../Profile/loading.jsx";
 import "./index.css"
@@ -17,6 +17,8 @@ function Valorant() {
     const [playerData, setPlayerData] = useState([]);
     const [recommendedPage, setRecommendedPage] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const discordRef = useRef();
+    const [discord, setDiscord] = useState(null);
     
     const initialSearchData = {
         game: "valorant",
@@ -64,7 +66,8 @@ function Valorant() {
                     site_username: site_player_data.username,
                     rank: site_player_data.valorant.rank,
                     role: site_player_data.valorant.role,
-                    region: site_player_data.valorant.region
+                    region: site_player_data.valorant.region,
+                    userid: site_player_data.valorant.userid
                     // Add more fields as needed
                 };
                 player_info_array.push(player_info);
@@ -159,6 +162,20 @@ function Valorant() {
         setPlayerData([]);
     };
 
+    const displayDiscord = async(discordid) => {
+        console.log("Discord id: ", discordid.userid);
+        const discordUser = (await API.getUserData(discordid.userid)).data.userData; 
+        console.log("Discord User: ", discordUser.discord);
+        setDiscord(discordUser.discord);
+        console.log("discord: ", discord);
+        toggleDiscordRef();
+        return null;
+    }
+
+    const toggleDiscordRef = () => {
+        discordRef.current.classList.toggle("hide");
+    }
+
     const playerCards = playerData.map((player, index) => (
         <Playercard
           key={index}
@@ -167,6 +184,8 @@ function Valorant() {
           rank={player.rank}
           role={player.role}
           region={player.region}
+          function={displayDiscord}
+          userid={player.userid}
         />
       ));
 
@@ -224,6 +243,12 @@ function Valorant() {
                         <button onClick={handleReset}>Reset</button>
                 </div>
             </div>
+
+            <div className="discord-pop-up hide" ref={discordRef}>
+                <h2 ref={discordRef}>{discord}</h2>
+                <button onClick={toggleDiscordRef}>Exit</button>
+            </div>
+
             <div className="playercard-container2">
                 {playerCards.slice(startIndex, endIndex)}
             </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import Playercard from "./Playercard"
 import LoadingAnimation from "../Profile/loading.jsx";
 import "./index.css"
@@ -17,6 +17,8 @@ function League() {
     const [playerData, setPlayerData] = useState([]);
     const [recommendedPage, setRecommendedPage] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const discordRef = useRef();
+    const [discord, setDiscord] = useState(null);
     
     const initialSearchData = {
         game: "league-of-legends",
@@ -69,7 +71,8 @@ function League() {
                     site_username: site_player_data.username,
                     rank: site_player_data.leagueOfLegends.rank,
                     role: site_player_data.leagueOfLegends.role,
-                    region: site_player_data.leagueOfLegends.region
+                    region: site_player_data.leagueOfLegends.region,
+                    userid: site_player_data.leagueOfLegends.userid
                     // Add more fields as needed
                 };
                 console.log('added player')
@@ -173,6 +176,20 @@ function League() {
         setPlayerData([]);
     };
 
+    const displayDiscord = async(discordid) => {
+        console.log("Discord id: ", discordid.userid);
+        const discordUser = (await API.getUserData(discordid.userid)).data.userData; 
+        console.log("Discord User: ", discordUser.discord);
+        setDiscord(discordUser.discord);
+        console.log("discord: ", discord);
+        toggleDiscordRef();
+        return null;
+    }
+
+    const toggleDiscordRef = () => {
+        discordRef.current.classList.toggle("hide");
+    }
+
     const playerCards = playerData.map((player, index) => (
         <Playercard
           key={index}
@@ -181,6 +198,8 @@ function League() {
           rank={player.rank}
           role={player.role}
           region={player.region}
+          function={displayDiscord}
+          userid={player.userid}
         />
       ));
 
@@ -241,6 +260,12 @@ function League() {
                         <button onClick={handleReset}>Reset</button>
                 </div>
             </div>
+
+            <div className="discord-pop-up hide" ref={discordRef}>
+                <h2 ref={discordRef}>{discord}</h2>
+                <button onClick={toggleDiscordRef}>Exit</button>
+            </div>
+
             <div className="playercard-container2">
                 {playerCards.slice(startIndex, endIndex)}
             </div>

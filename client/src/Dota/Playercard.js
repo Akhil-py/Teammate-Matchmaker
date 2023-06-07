@@ -6,6 +6,11 @@ export default function Playercard(values){
     useEffect(() => {
         AOS.init({duration: 2000});
     }, []); 
+
+    const displayDiscord = async () => {
+        values.function(values);
+    }
+
     return (
         <div>
             <div className="player-container" data-aos="fade-right">
@@ -29,7 +34,7 @@ export default function Playercard(values){
                         </div>
                     </div>
                     <div className="button-container">
-                        <button>Request Information</button>
+                        <button onClick={displayDiscord}>Request Information</button>
                         <button>Send Message</button>
                     </div>
                 </div>
