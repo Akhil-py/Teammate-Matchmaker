@@ -13,6 +13,8 @@ client and server, respectively.
 - Cd into client and install `aos` by calling `npm install aos` for animations
 - Cd into client and intall `react-router-dom` as well `axios` with `npm install react-router-dom` and `npm install axios`
 - Cd into server and install `express, nodemon, dotenv, and cors` with `npm install express nodemon dotenv cors`
+- Start the frontend by cd into client and running `npm start`
+- Start the backend by cd into server and running `npm run dev`
 
 ```bash
 DB_URL=mongodb://mongodburl.example.com:portnumber
