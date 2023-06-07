@@ -339,6 +339,7 @@ const Profile = () => {
                         <option value="Rank">Rank</option>
                         <option value="Iron">Iron</option>
                         <option value="Bronze">Bronze</option>
+                        <option value="Silver">Silver</option>
                         <option value="Gold">Gold</option>
                         <option value="Platinum">Platinum</option>
                         <option value="Diamond">Diamond</option>
@@ -367,6 +368,7 @@ const Profile = () => {
                         <option value="Rank">Rank</option>
                         <option value="Iron">Iron</option>
                         <option value="Bronze">Bronze</option>
+                        <option value="Silver">Silver</option>
                         <option value="Gold">Gold</option>
                         <option value="Platinum">Platinum</option>
                         <option value="Diamond">Diamond</option>
