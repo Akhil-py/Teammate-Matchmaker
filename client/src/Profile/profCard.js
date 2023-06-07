@@ -19,6 +19,7 @@ const ProfCard = (props) => {
     }
     const response = API.deleteUser(payload);
     props.function();
+    window.location.reload();
   }
 
   return (
