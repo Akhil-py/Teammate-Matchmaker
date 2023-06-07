@@ -329,14 +329,14 @@ const Profile = () => {
                 </div>
                 <div className="hide" ref={valRef}>
                     <select value={roleValue} name="role" onChange={handleGameChange} className="select-chosen" ref={valRef}>
-                        <option value="Role">Role</option>
+                        <option disabled selected value="Role">Role</option>
                         <option value="Controller">Controller</option>
                         <option value="Duelist">Duelist</option>
                         <option value="Initiator">Initiator</option>
                         <option value="Sentinel">Sentinel</option>
                     </select>
                     <select value={rankValue} name="rank" onChange={handleGameChange} className="select-chosen" ref={valRef}>
-                        <option value="Rank">Rank</option>
+                        <option disabled selected value="Rank">Rank</option>
                         <option value="Iron">Iron</option>
                         <option value="Bronze">Bronze</option>
                         <option value="Silver">Silver</option>
@@ -348,7 +348,7 @@ const Profile = () => {
                         <option value="Radiant">Radiant</option>
                     </select>
                     <select value={regionValue} name="region" onChange={handleGameChange} className="select-chosen" ref={valRef}>
-                        <option value="Region">Region</option>
+                        <option disabled selected value="Region">Region</option>
                         <option value="SEA">SE Asia</option>
                         <option value="Japan">Japan</option>
                         <option value="USWest">US West</option>

@@ -95,7 +95,8 @@ function Register() {
                         </div>
                         <div className="input-container">
                             <img src={college} alt="discord"></img>
-                            <select class="college" id="college" name="college" onChange={handleChange}>
+                            <select class="college" id="college" placeholder="college "name="college" onChange={handleChange}>
+                                <option value="" disabled selected >Select a college</option>
                                 <option value="Revelle">Revelle</option>
                                 <option value="John Muir">John Muir</option>
                                 <option value="Marshall">Marshall</option>
