@@ -218,31 +218,31 @@ function Dota() {
                     </select>
                     <select value={rankValue} name = "rank" disabled={disabled} onChange={handleChange}>
                         <option value="rank" disabled selected>Rank</option>
-                        <option value="herald">Herald</option>
-                        <option value="guardian">Guardian</option>
-                        <option value="crusader">Crusader</option>
-                        <option value="archon">Archon</option>
-                        <option value="legend">Legend</option>
-                        <option value="ancient">Ancient</option>
-                        <option value="divine">Divine</option>
-                        <option value="immortal">Immortal</option>
+                        <option value="Herald">Herald</option>
+                        <option value="Guardian">Guardian</option>
+                        <option value="Crusader">Crusader</option>
+                        <option value="Archon">Archon</option>
+                        <option value="Legend">Legend</option>
+                        <option value="Ancient">Ancient</option>
+                        <option value="Divine">Divine</option>
+                        <option value="Immortal">Immortal</option>
                     </select>                
                 </form>
                 <form>
                     <select value={regionValue} name = "region" disabled={disabled} onChange={handleChange}>
                         <option value="region" disabled selected>Region</option>
-                        <option value="sea">SE Asia</option>
-                        <option value="japan">Japan</option>
-                        <option value="uswest">US West</option>
-                        <option value="useast">US East</option>
+                        <option value="SEA">SE Asia</option>
+                        <option value="Japan">Japan</option>
+                        <option value="USWest">US West</option>
+                        <option value="USEast">US East</option>
                     </select>
                     <select value={roleValue} name = "role" disabled={disabled} onChange={handleChange}>
                         <option value="role" disabled selected>Role</option>
-                        <option value="carry">Carry</option>
-                        <option value="mid">Mid</option>
-                        <option value="offlane">Offlane</option>
-                        <option value="softsupport">Soft Support</option>
-                        <option value="hardsupport">Hard Support</option>
+                        <option value="Carry">Carry</option>
+                        <option value="Mid">Mid</option>
+                        <option value="Offlane">Offlane</option>
+                        <option value="Soft Support">Soft Support</option>
+                        <option value="Hard Support">Hard Support</option>
                     </select>  
                 </form>
                 <div className="btn-container">
