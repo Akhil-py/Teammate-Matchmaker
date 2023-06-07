@@ -7,17 +7,19 @@
 
 .header{
     background-color: #1A1B21;
+    border-radius: 20px;
 }
 
 .profileCard{
     width: 232px;
     margin: 10px;
+    border-radius: 30px;
 }
 
 .header h1{
     color: white;
     text-align: center;
-    font-size: 25px;
+    font-size: 2rem;
     margin-top: 10px;
     margin-bottom: 2px;
 }
@@ -60,7 +62,7 @@
 }
 
 main p {
-    font-size: 10.24px;
+    font-size: 1rem;
     color: #DCDCDC;
     padding: 10px 0;
 }
@@ -92,18 +94,31 @@ footer img{
     color: white;
     background-color: #5093E2;
     height: 16px;
+    transition: transform ease-in 0.2s;
 }
 
 .email-button{
     font-size: 14px;
     color: #374151;
     height: 16px;
+    transition: transform ease-in 0.2s;
+}
+
+.email-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.9);
+}
+
+.linkedin-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.9);
 }
 
 header button img[src="linkedin-logo.png"]{
     width: 16px;
     height: 16px;
     margin-right: 8px;
+    border-radius: 20px;
 }
 
 header button img[src="email-logo.png"]{
@@ -125,6 +140,8 @@ button span{
 
 .profileImage{
     object-fit: cover;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 button:hover{

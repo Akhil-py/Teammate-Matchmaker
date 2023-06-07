@@ -13,6 +13,7 @@ html{
     display: flex;
     background-color:#23252C;
     margin: 30px;
+    border-radius: 20px;
 }
 
 .leftBox{
@@ -21,6 +22,7 @@ html{
     width: 25%;
     margin-right: 30px;
     background-color: #2f3a63;
+    border-radius: 20px;
 }
 
 .rightBox{
@@ -28,6 +30,8 @@ html{
     /* width: 1315px; */
     width: 75%;
     background-color: #d2d2d2;
+    border-radius: 20px;
+
 }
 
 .leftHeading{
@@ -57,6 +61,7 @@ label{
 }
 
 input, select{
+    border-radius: 10px;
     width: 95%;
     height: 50px;
     margin: 0 28px 0;
