@@ -3,6 +3,8 @@
 }
 .profile {
     display: flex;
+    background-color: #2D343A;
+    height: 150vh;
 }
 
 .circle {
@@ -117,11 +119,15 @@
 }
 
 .hide {
-    display: none;
+    display: none!important;
 }
 
 .show{
-    display: block;
+    display: flex;
+}
+
+.show-block {
+    display: block!important;
 }
 
 .pop-up-card button {
@@ -137,17 +143,30 @@
 }
 
 .profile-card-profile {
+    opacity: 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 70%;
+    width: 80%;
     height: 300px;
     border-radius: 40px;
     border: 4px solid #a9e7f2;
     background-color: #242a3c;
     margin: 15px;
     padding: 20px;
+    animation: fade-in-right 1s ease-in forwards;
 }
+
+@keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
 .profile-card-profile img {
     width: auto;
@@ -160,7 +179,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 50%;
+    width: 40%;
     height: 100%;
     font-family: 'Khand';
     font-weight: bold;
@@ -211,4 +230,8 @@
 
   .change-button:hover {
     opacity: 1;
+  }
+
+  .smaller-width {
+    width: 200px!important;
   }

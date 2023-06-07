@@ -252,8 +252,10 @@ function Dota() {
             </div>
 
             <div className="discord-pop-up hide" ref={discordRef}>
-                <h2 ref={discordRef}>{discord}</h2>
-                <button onClick={toggleDiscordRef}>Exit</button>
+                <div className="discord-box-info">
+                    <h2 ref={discordRef}>{discord}</h2>
+                    <button class="exit-but" onClick={toggleDiscordRef}>Exit</button>
+                </div>
             </div>
 
             <div className="playercard-container2">

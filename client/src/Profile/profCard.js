@@ -19,6 +19,7 @@ const ProfCard = (props) => {
     }
     const response = API.deleteUser(payload);
     props.function();
+    window.location.reload();
   }
 
   return (
@@ -36,10 +37,10 @@ const ProfCard = (props) => {
             <span>{rank}</span>
             <span>{region}</span>
         </div>
-        <button onClick={handleDelete}>Delete</button>
-        {/* <but ton>
-          <img src={trash} alt=""></img>
-        </button> */}
+        <button class="exit-but smaller-width" onClick={handleDelete}>
+          Delete
+          Card
+        </button>
     </div>
   );
 };

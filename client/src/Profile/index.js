@@ -159,16 +159,16 @@ const Profile = () => {
         // Perform additional actions based on the selected option
         console.log(selectedValue)
         if (selectedValue === "valorant") {
-            valorantR('show');
+            valorantR('show-block');
        }
         else if (selectedValue === "league-of-legends") {
-            lolR('show');
+            lolR('show-block');
         }
         else if (selectedValue === "dota" ){
-            dotaR('show');
+            dotaR('show-block');
         }
         else if (selectedValue ==="game") {
-            gameR('show');
+            gameR('show-block');
         }
         handleGameChange(event);
         handleReset();
