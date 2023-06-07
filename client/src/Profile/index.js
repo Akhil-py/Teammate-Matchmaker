@@ -195,7 +195,7 @@ const Profile = () => {
             if(player.lol_username !== null){
                 gameImage = lol_logo;
                 gameUsername = player.lol_username;
-                game = "league";
+                game = "league-of-legends";
             }
         }
         else{
