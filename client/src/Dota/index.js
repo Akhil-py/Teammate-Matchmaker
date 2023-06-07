@@ -113,8 +113,6 @@ function Dota() {
                 });
             }
 
-        console.log("event: " , e.target.name);
-
         if(e.target.name === "rank"){
             setRankValue(e.target.value);
         }
@@ -135,7 +133,7 @@ function Dota() {
                 const response = await API.getUserData(localStorage.getItem('userid'));
                 const userData = response.data.userData;
                 console.log(userData.dota)
-                if (typeof userData.dota == 'undefined') {
+                if (userData.dota === null) {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
