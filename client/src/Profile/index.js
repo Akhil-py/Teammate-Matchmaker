@@ -263,13 +263,13 @@ const Profile = () => {
                     user_id: user_id,
                     profilePicture: base64content,
                 };
-                console.log("I AM PAYLOAD2!", payload2);
                 try {
-                  const response2 = await API.uploadProfilePicture(payload2);
-                  console.log(response2);
-                  alert('Uploaded!');
+                    const response2 = await API.uploadProfilePicture(payload2);
+                    console.log(response2);
+                    alert('Uploaded!');
+                    setImage(decodeBase64ToImage(base64content))
                 } catch (error) {
-                  console.error(error);
+                    console.error(error);   
                 }
             };
             uploadProfilePictureAsync();

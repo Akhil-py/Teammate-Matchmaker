@@ -47,7 +47,7 @@ router.post('/users', upload.single('profilePicture'), async (req, res) => {
 
 router.put('/users/profilePicture', upload.single('profilePicture'), async (req, res) => {
     try {
-        const { user_id, profilePicture } = req.body.profilePictureData;
+        const { user_id, profilePicture } = req.body;
 
         // This checks if this user exists
         const existingUser = await User.findById(user_id);
