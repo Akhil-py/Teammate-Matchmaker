@@ -21,6 +21,8 @@ function Register() {
     }; 
 
     const [registerData, updateRegisterData] = useState(initialRegisterData);
+    const [isValidEmail, setIsValidEmail] = useState(true);
+
 
     const handleChange = (e) => {
         updateRegisterData({
@@ -41,14 +43,23 @@ function Register() {
         }
         console.log(JSON.stringify(payload.purchase));
         console.log("Request: ", req);
+        const potential_email = registerData.email;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        console.log("bruhhh" + emailPattern.test(potential_email));
+        setIsValidEmail(emailPattern.test(potential_email));
+
 
         try {
-            await API.sendUserData(payload);
-            alert("Created successfully");
-            window.location.href = "http://localhost:3000/login";
+            if (isValidEmail) {
+                await API.sendUserData(payload);
+                alert("Created successfully"); 
+                window.location.href = "http://localhost:3000/login";
+            } else {
+                throw new Error("Bad Eamil")
+            }
         } catch (error) {
             console.error(error);
-            alert("An error occurred while trying to create the user. Please try again later.");
+            alert("An error occurred while trying to create the user. Please try again later or use an actual email.");
         }
     };
 
@@ -95,6 +106,7 @@ function Register() {
                                 <option value="Seventh">Seventh</option>
                             </select>
                         </div>
+                        {!isValidEmail && <p class="error-msg">Please enter a valid email address.</p>}
                         <Link to="/login">
                             <button value="signup" className="signup-but" onClick={handleRegister}>Signup</button>
                         </Link>
