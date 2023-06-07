@@ -18,6 +18,7 @@ const ProfCard = (props) => {
       card: cardData
     }
     const response = API.deleteUser(payload);
+    console.log("response ", response);
     props.function();
     window.location.reload();
   }
