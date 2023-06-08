@@ -18,8 +18,8 @@ const Team = () => {
        website="sithusoe.website"
        email="ssoe@ucsd.edu"
        linkedin="https://www.linkedin.com/in/sithu-soe-86ba34219/?originalSubdomain=mm"
-       about="I am a frontend developer with a particular interest in creating and developing new features. I hope to learn more about back-end development this summer so that I can be a full-stack engineer. I feel grateful to be able to pursue my passion in college and life."
-       interests="Soccer. Wrestling. Programming. Sleeping. Talking to friends. Playing Dota 2."
+       about="I am a Math-CS major from Muir and worked as a frontend developer for this project. I enjoy creating and developing new features. I hope to learn more about back-end development this summer so that I can become a full-stack engineer."
+       interests="Soccer. Wrestling. Programming. Sleeping. Talking. Playing Dota 2."
        facebook = "https://www.facebook.com/si.thusoe.125"
        instagram = "https://www.instagram.com/sithusoe04/"
        github = "https://github.com/SithuSoe04"/>
@@ -54,8 +54,8 @@ const Team = () => {
         website="akhil.website"
         email="aramshankar@ucsd.edu"
         linkedin="https://www.linkedin.com/in/akhil-ramshankar/"
-        about="Hi! My name is Akhil and I'm a first-year international studednt from Sri Lanka. I'm majoring in math-cs at Muir with hopes of becoming a software engineer in the future which fueled my motivation to participate in ACM Hack."
-        interests="Snorkeling, cycling, gaming, and binging TV shows"
+        about="Hi! My name is Akhil and I'm a first-year international student from Sri Lanka. I'm majoring in math-cs at Muir with hopes of becoming a software engineer in the future which fueled my motivation to participate in ACM Hack."
+        interests="Programming. Snorkeling. Cycling. Gaming. Binging TV shows. Formula 1."
         facebook = ""
         instagram = "https://www.instagram.com/akhil_ramshankar/"
         github = "https://github.com/Akhil-py"/>
@@ -66,8 +66,8 @@ const Team = () => {
         website="kane.website"
         email="kal036@ucsd.edu"
         linkedin="https://linkedin.com/in/kane-li-b5153125b"
-        about="I am a first-year Computer Science major and work as this team's full-stack developer.  I enjoy creating and being a part of projects which not only hone my skills but also help me to contribute to the world. With a beginner's mindset, I seek to always be learning."
-        interests="Swimming, Journaling, Playing brawl stars, Playing taiko, and Traveling"
+        about="I am a first-year Computer Science major and work as this team's full-stack developer.  I enjoy creating and being a part of projects which has helped me hone my skills and contribute to the world. With a beginner's mindset, I seek to always be learning."
+        interests="Swimming, Journaling, Gaming, and Traveling"
         facebook = "https://www.facebook.com/profile.php?id=100015210068746&mibextid=ZbWKwL"
         instagram = "https://www.instagram.com/kane.nak/"
         github = " https://github.com/Li-Kane"/>
@@ -79,7 +79,7 @@ const Team = () => {
         email="kec021@ucsd.edu"
         linkedin="https://www.linkedin.com/in/kevin-chan-a832b9255/"
         about="I am a 2nd-year data science major working as a full-stack engineer for this project.  I feel excited to be working on a project that is so close to what I love.  I'm always open to work on things related to gaming, software engineering, or machine learning!"
-        interests="Food, Programming, Playing League of Legends, Gaming, Sleeping"
+        interests="Food, Programming, Playing League of Legends, Gaming"
         facebook = ""
         instagram = "https://www.instagram.com/k_chachan/"
         github = "https://github.com/kchan2203"/>

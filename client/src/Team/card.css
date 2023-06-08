@@ -7,7 +7,8 @@
 
 .header{
     background-color: #1A1B21;
-    border-radius: 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .profileCard{
