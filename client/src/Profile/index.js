@@ -9,7 +9,7 @@ import val_logo from "../Images/val.png";
 import lol_logo from "../Images/lol.png";
 import dota_logo from "../Images/dota2.png";
 
-const Profile = () => {
+const Profile = (values) => {
     const initialRankValue = 'rank';
     const initialRoleValue = 'role';
     const initialRegionValue = 'region';
@@ -168,6 +168,11 @@ const Profile = () => {
     const createNewCard = () => {
         cardRef.current.classList.toggle("hide");
     }
+
+    const getOut = () => {
+        values.logout();
+        window.location.href = "https://ucsdgamed.onrender.com/";
+      } 
 
     const profileCards = gameArray.map((player, index) => {
         var gameImage;
@@ -342,9 +347,11 @@ const Profile = () => {
                 <li>Email: {userInfo.email1}</li>
                 <li>Discord Tag: {userInfo.discord_tag1}</li>
                 <li>College: {userInfo.college1}</li>
-                <li>Only one profile card per game for an account!</li>
                 </>
             )}
+            </div>
+            <div className="center-but">
+                <button className="log-out-but" onClick={getOut}>Log Out</button>
             </div>
         </div>
         <div class="right-panel">
