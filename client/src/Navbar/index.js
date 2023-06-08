@@ -25,7 +25,7 @@ function Navbar(values) {
 
   const getOut = () => {
     values.logout();
-    window.location.href = "http://localhost:3000/home";
+    window.location.href = "https://ucsdgamed.onrender.com/";
   } 
 
   function decodeBase64ToImage(base64String) {
