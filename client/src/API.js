@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const serverURL = "https://gamed.onrender.com";
+const serverURL = "http://localhost:8000";
 
 const API = {
     sendUserData: function(data) {
@@ -31,6 +31,7 @@ const API = {
         
         return axios.get(`${serverURL}/api/players?game=${game}&role=${role}&rank=${rank}&region=${region}`)
     },
+    
     uploadProfilePicture: function(data){
         console.log("Data: ", data);
         return axios.put(`${serverURL}/api/users/profilePicture`,data);
