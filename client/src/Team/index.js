@@ -35,18 +35,18 @@ const Team = () => {
        facebook = "https://www.facebook.com/profile.php?id=100009305797500"
        instagram = "https://www.instagram.com/calvinn.fornia/"
        github = "https://github.com/Neniflight"/>
-       {/* <Profilecard
-        image={require("./images/sithuprofilepic.png")}
+       <Profilecard
+        image={require("./images/shreyprofilepic.JPG")}
         name="Shreya"
         role="Back-end Developer"
-        website="kevin.website"
-        email="kevin@ucsd.edu"
-        linkedin="www.google.com"
-        about="I am a frontend developer with a particular interest in creating and developing new features. I have fallen in love with the art of programming and coding. I feel grateful to be able to pursue my passion in college and life."
-        interests="Soccer. Wrestling. Programming. Sleeping. Talking to friends. Playing Dota 2. Learning and exploring new things."
-        facebook = "https://www.facebook.com/profile.php?id=100009305797500"
+        website="shreya.website"
+        email="s9kumar@ucsd.edu"
+        linkedin="https://www.linkedin.com/in/shrey-kumar-b99470221/"
+        about="I am a backend developer on this project and have a strong passion for computer science as a whole. I am very grateful to be given the opportunity to participate in ACM Projects where I have had the opportunity to further my interest in the field."
+        interests="Soccer, Tennis, Basketball, Hiking, Trying out different Foods. Going out"
+        facebook = ""
         instagram = "https://www.instagram.com/calvinn.fornia/"
-        github = "https://github.com/Neniflight"/> */}
+        github = "https://github.com/Neniflight"/>
        <Profilecard
         image={require("./images/akhilprofilepic.jpg")}
         name="Akhil"
@@ -57,8 +57,8 @@ const Team = () => {
         about="Hi! My name is Akhil and I'm a first-year international student from Sri Lanka. I'm majoring in math-cs at Muir with hopes of becoming a software engineer in the future which fueled my motivation to participate in ACM Hack."
         interests="Programming. Snorkeling. Cycling. Gaming. Binging TV shows. Formula 1."
         facebook = ""
-        instagram = "https://www.instagram.com/akhil_ramshankar/"
-        github = "https://github.com/Akhil-py"/>
+        instagram = "https://www.instagram.com/shrey_kumar14/"
+        github = "https://github.com/shreykumar18"/>
        <Profilecard
         image={require("./images/kaneprofilepic.png")}
         name="Kane"
