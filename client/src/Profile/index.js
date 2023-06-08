@@ -338,7 +338,7 @@ const Profile = () => {
             <div class="profile-info">
             {isLoading ? (<LoadingAnimation />): userInfo && (
                 <>
-                <li>Username: {userInfo.username1}</li>
+                <li><span class="special-username">{userInfo.username1}</span></li>
                 <li>Email: {userInfo.email1}</li>
                 <li>Discord Tag: {userInfo.discord_tag1}</li>
                 <li>College: {userInfo.college1}</li>

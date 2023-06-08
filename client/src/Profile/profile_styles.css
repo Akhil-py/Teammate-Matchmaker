@@ -238,3 +238,10 @@
   .smaller-width {
     width: 200px!important;
   }
+
+  .special-username {
+    font-weight: bold;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+  }
