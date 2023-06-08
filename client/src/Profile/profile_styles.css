@@ -12,21 +12,24 @@
     width: 300px; /* Set the desired width */
     height: 300px; /* Set the desired height */
     overflow: hidden; /* Hide any overflow */
-    border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10;
     display: inline-block;
-
+    border: 10px solid #c1f5ff;
+    border-radius: 50%;
 }
 
 .circle img{
     width: 100%;
     height: 100%;
-    border: 10px solid #c1f5ff;
     border-image-slice: 50%;
     border-image-repeat: stretch;
     border-image-outset: 0;
-    border-radius: 50%;
     object-fit: cover;
     /* border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10; */
+}
+
+.circle:hover {
+    border-width: 10px!important;
+    animation: rainbow 5s linear infinite;
 }
 
 .profile-info {

@@ -58,7 +58,7 @@
 }
 
 .underline-hover-effect {
-  font-size: 1.35rem;
+  font-size: 1.7rem;
   font-family: "ABeeZee";
   font-weight: bold;
   display: inline-block;
@@ -161,3 +161,41 @@
     right: 2%;
   }
 }
+
+.navbar-profile-pic {
+  width: 80px;
+  height: 80px;
+  border: 5px solid #c1f5ff;
+  border-image-slice: 50%;
+  border-image-repeat: stretch;
+  border-image-outset: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-profile-pic:hover {
+  border-width: 5px!important;
+  animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {border: solid #c1f5ff; }
+  12% { border: solid #1100ff; }
+  24% { border:solid #ff00f2; }
+  36% { border: solid #ff0000; }
+  48% { border: solid #ff8400; }
+  60% { border: solid #e1f603; }
+  72% { border: solid #00ff15; } 
+  84% { border: solid #00ffb7; }
+  100% { border: solid #c1f5ff; }
+}
+
+.navbar-circle {
+  position: relative;
+  width: 80px; 
+  height: 80px; 
+  overflow: hidden; 
+  border-image: linear-gradient(to right, #c1f5ff, #0038FF) 10;
+  display: inline-block;
+}
+

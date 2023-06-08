@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./style.css";
+import API from "../API";
 
 import logo from "../Images/logo.png";
 import logo_only from "../Images/logo_only.png";
@@ -10,15 +11,40 @@ function Navbar(values) {
   console.log("v: ", values.values);
   console.log('nav_user_id:', localStorage.getItem('userid'));
   const navRef = useRef();
+
+  const user_id = localStorage.getItem('userid');
+
+  const [image, setImage] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
+
   const showNavBar = () => {
     console.log("ono");
     navRef.current.classList.toggle('open');
   }
 
+
   const getOut = () => {
     values.logout();
-    window.location.href = "http://localhost:3000/";
+    window.location.href = "http://localhost:3000/home";
   } 
+
+  function decodeBase64ToImage(base64String) {
+    const img = new Image();
+    img.src = `data:image/png;base64,${base64String}`;
+    return img;
+  }
+
+  const displayProfPic = async() => {
+    if(user_id !== null){
+      const user_info = (await API.getUserData(user_id)).data.userData; 
+      const prof_pic = user_info.profilePicture;
+      setImage(decodeBase64ToImage(prof_pic));
+    }
+  }
+
+  useEffect(() => {
+    displayProfPic();
+}, []); 
 
   
     return(
@@ -53,7 +79,7 @@ function Navbar(values) {
             </h2>
           </a>
 
-          {values.values ? <a class="navlinks underline-hover-effect" href="/profile">Profile</a> : <a class="navlinks underline-hover-effect" href="/login">Login</a>}
+          {values.values ? <a href="/profile">{image &&<div class="navbar-circle"><img src={image.src} class="navbar-profile-pic" alt=""></img></div>}</a> : <a class="navlinks underline-hover-effect" href="/login">Login</a>}
           {values.values ? <a className="navlinks" href="/about" onClick={getOut}><h2 className="underline-hover-effect">Logout</h2></a>:<></>}
         </nav>
         <button className="hamburger-btn" onClick={showNavBar}>
