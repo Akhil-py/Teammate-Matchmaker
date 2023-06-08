@@ -67,7 +67,8 @@ function Valorant() {
                     rank: site_player_data.valorant.rank,
                     role: site_player_data.valorant.role,
                     region: site_player_data.valorant.region,
-                    userid: site_player_data.valorant.userid
+                    userid: site_player_data.dota.userid,
+                    profilepic: site_player_data.profilePicture
                     // Add more fields as needed
                 };
                 player_info_array.push(player_info);
@@ -187,6 +188,7 @@ function Valorant() {
           region={player.region}
           function={displayDiscord}
           userid={player.userid}
+          profilepic={player.profilepic} 
         />
       ));
 

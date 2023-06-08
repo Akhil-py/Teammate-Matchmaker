@@ -1,15 +1,32 @@
 import "./Playercard.css"
+import React, {useState, useEffect} from "react";
+import AOS from 'aos';
+
 export default function Playercard(values){
+    const [image, setImage] = useState(null);
+    //const [profilePicture, updateprofilePicture] = useState(values.profilepic);
+
+    function decodeBase64ToImage(base64String) {
+        const img = new Image();
+        img.src = `data:image/png;base64,${base64String}`;
+        return img;
+    }
+
     const displayDiscord = async () => {
         values.function(values);
     }
+
+    useEffect(() => {
+        AOS.init({duration: 2000});
+        setImage(decodeBase64ToImage(values.profilepic))
+    }, []); 
 
     return (
         <div>
             <div className="player-container">
                 <div className="profile-card">
                     <img src={require("./Images/valorantbg.jpeg")} className="cover-pic" alt="damn"></img>
-                    <img src={require("./Images/valoranticon.jpeg")} className="profile-pic" alt="damn"></img>
+                    {image && <img src={image.src} alt="profile" className="profile-pic" />}
                     <h1 className="name">{values.valUsername}</h1>
                     <p>San Diego, California, United States</p>
                     <div className="row">

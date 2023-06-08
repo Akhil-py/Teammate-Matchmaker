@@ -1,11 +1,21 @@
 import "./Playercard.css"
 import AOS from 'aos';
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 
 
 export default function Playercard(values){
+    const [image, setImage] = useState(null);
+    //const [profilePicture, updateprofilePicture] = useState(values.profilepic);
+
+    function decodeBase64ToImage(base64String) {
+        const img = new Image();
+        img.src = `data:image/png;base64,${base64String}`;
+        return img;
+    }
+
     useEffect(() => {
         AOS.init({duration: 2000});
+        setImage(decodeBase64ToImage(values.profilepic))
     }, []); 
 
     const displayDiscord = async () => {
@@ -17,7 +27,7 @@ export default function Playercard(values){
             <div className="player-container" data-aos="fade-right">
                 <div className="profile-card">
                     <img src={require("./Images/leaguebg.jpeg")} className="cover-pic" alt="damn"></img>
-                    <img src={require("./Images/leagueicon.jpeg")} className="profile-pic" alt="damn"></img>
+                    {image && <img src={image.src} alt="profile" className="profile-pic" />}
                     <h1 className="name">{values.lolUsername}</h1>
                     <p>San Diego, California, United States</p>
                     <div className="row">

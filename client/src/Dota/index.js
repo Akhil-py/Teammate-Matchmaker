@@ -60,14 +60,15 @@ function Dota() {
             for (var i = 0; i < players.length; i++) {
                 var player = players[i];
                 const site_player_data = (await API.getUserData(player.userid)).data.userData; 
-                //console.log(site_player_data)
+                //console.log("Siteplayerdata: ", site_player_data)
                 var player_info = {
                     dota_username: player.dota_username,
                     site_username: site_player_data.username,
                     rank: site_player_data.dota.rank,
                     role: site_player_data.dota.role,
                     region: site_player_data.dota.region,
-                    userid: site_player_data.dota.userid
+                    userid: site_player_data.dota.userid,
+                    profilepic: site_player_data.profilePicture
                 };
                 console.log('added player')
                 player_info_array.push(player_info);
@@ -191,6 +192,7 @@ function Dota() {
           region={player.region}
           function={displayDiscord}
           userid={player.userid}
+          profilepic={player.profilepic} 
         />
       ));
 

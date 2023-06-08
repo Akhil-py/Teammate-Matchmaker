@@ -72,7 +72,8 @@ function League() {
                     rank: site_player_data.leagueOfLegends.rank,
                     role: site_player_data.leagueOfLegends.role,
                     region: site_player_data.leagueOfLegends.region,
-                    userid: site_player_data.leagueOfLegends.userid
+                    userid: site_player_data.dota.userid,
+                    profilepic: site_player_data.profilePicture
                     // Add more fields as needed
                 };
                 console.log('added player')
@@ -201,6 +202,7 @@ function League() {
           region={player.region}
           function={displayDiscord}
           userid={player.userid}
+          profilepic={player.profilepic} 
         />
       ));
 
