@@ -30,8 +30,7 @@ function League() {
     const [searchData, updateSearchData] = useState(initialSearchData);
 
     const handleSearch = async (e) => {
-        console.log("Search Data: ", searchData);
-        console.log("event: ", e);
+        setCurrentPage(1)
         e.preventDefault();
         setIsLoading(true);
         try {
@@ -40,20 +39,15 @@ function League() {
             }
             console.log("recommendation!!", recommendation)
             if(recommendation === "recommended"){
-                console.log("UPDATING SEARCH DATA TO RECOMMENDED")
-
                 console.log(searchData);
             }
             const payload = {
                 searchInfo: searchData
             }
             const req = e.target;
-            console.log("Request: ", req);
-            console.log(JSON.stringify(payload.searchInfo));
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
             var response_data = response;
-            console.log(response.data)
             
             // Extract the 'players' array from the response
             var players = response_data.data.players;
@@ -76,12 +70,9 @@ function League() {
                     profilepic: site_player_data.profilePicture
                     // Add more fields as needed
                 };
-                console.log('added player')
                 player_info_array.push(player_info);
             }
-            console.log("playerinfoarr: ", player_info_array)
             setPlayerData(player_info_array);
-            console.log("playerData: ", playerData)
 
             // Now you have an array containing the information of all players
         } catch (error) {
@@ -147,14 +138,12 @@ function League() {
                     setRecommendedPage(true); // Update the state variable
                     const response1 = await API.getUserData(localStorage.getItem('userid'));
                     const userData = response1.data.userData;
-                    console.log(userData.leagueOfLegends.region);
     
                     updateSearchData({
                         ...initialSearchData,
                         region: userData.leagueOfLegends.region,
                         rank: userData.leagueOfLegends.rank
                     });;
-                    console.log('Updated searchData:', userData.leagueOfLegends); // Log the updated searchData
 
                 }
             } catch (error) {
@@ -178,11 +167,8 @@ function League() {
     };
 
     const displayDiscord = async(discordid) => {
-        console.log("Discord id: ", discordid.userid);
         const discordUser = (await API.getUserData(discordid.userid)).data.userData; 
-        console.log("Discord User: ", discordUser.discord);
         setDiscord(discordUser.discord);
-        console.log("discord: ", discord);
         toggleDiscordRef();
         return null;
     }
@@ -203,7 +189,7 @@ function League() {
           userid={player.userid}
           profilepic={player.profilepic} 
         />
-      ));
+    ));
 
     const itemsPerPage = 6;
     const startIndex = (currentPage - 1) * itemsPerPage;

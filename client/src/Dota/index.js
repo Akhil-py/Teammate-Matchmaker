@@ -31,16 +31,12 @@ function Dota() {
     const [searchData, updateSearchData] = useState(initialSearchData);
 
     const handleSearch = async (e) => {
-        console.log("Search Data: ", searchData);
-        console.log("event: ", e);
         e.preventDefault();
         setIsLoading(true);
         const req = e.target;
         const payload = {
             searchInfo: searchData
         }
-        console.log(JSON.stringify(payload.searchInfo));
-        console.log("Request: ", req);
         try {
             if(recommendedPage === false){
                 throw new Error('No Player Card for game created, please create one in profile for recommended options');
@@ -48,7 +44,6 @@ function Dota() {
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
             var response_data = response;
-            console.log(response.data)
             
             // Extract the 'players' array from the response
             var players = response_data.data.players;
@@ -70,12 +65,12 @@ function Dota() {
                     userid: site_player_data.dota.userid,
                     profilepic: site_player_data.profilePicture
                 };
-                console.log('added player')
+                //console.log('added player')
                 player_info_array.push(player_info);
             }
-            console.log("playerinfoarr: ", player_info_array)
+            //console.log("playerinfoarr: ", player_info_array)
             setPlayerData(player_info_array);
-            console.log("playerData: ", playerData)
+            //console.log("playerData: ", playerData)
 
             // Now you have an array containing the information of all players
 
@@ -132,7 +127,7 @@ function Dota() {
             try{
                 const response = await API.getUserData(localStorage.getItem('userid'));
                 const userData = response.data.userData;
-                console.log(userData.dota)
+                //console.log(userData.dota)
                 if (userData.dota === null) {
                     setRecommendedPage(false); // Update the state variable
                 } else {
@@ -145,7 +140,7 @@ function Dota() {
                         rank: userData.dota.rank
                         
                     });
-                    console.log('Updated searchData:', searchData); // Log the updated searchData
+                    //console.log('Updated searchData:', searchData); // Log the updated searchData
                 }
             } catch (error) {
                 console.error('Failed to fetch user data:', error);
@@ -168,11 +163,8 @@ function Dota() {
     };
 
     const displayDiscord = async(discordid) => {
-        console.log("Discord id: ", discordid.userid);
         const discordUser = (await API.getUserData(discordid.userid)).data.userData; 
-        console.log("Discord User: ", discordUser.discord);
         setDiscord(discordUser.discord);
-        console.log("discord: ", discord);
         toggleDiscordRef();
         return null;
     }

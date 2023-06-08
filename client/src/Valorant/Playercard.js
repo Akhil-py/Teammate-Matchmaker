@@ -19,7 +19,7 @@ export default function Playercard(values){
     useEffect(() => {
         AOS.init({duration: 2000});
         setImage(decodeBase64ToImage(values.profilepic))
-    }, []); 
+    }, [values.profilepic]); 
 
     return (
         <div>
