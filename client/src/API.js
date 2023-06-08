@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const serverURL = "http://localhost:8000";
+const serverURL = "https://gamed.onrender.com";
 
 const API = {
     sendUserData: function(data) {
