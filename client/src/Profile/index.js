@@ -234,7 +234,6 @@ const Profile = () => {
             const userInfo11 = await displayUserInfo();
             console.log(userInfo11);
             const { username1, email1, discord_tag1, college1, dota1, userpfp } = userInfo11;
-            console.log("PROFILEPICTURE HELP ME",userpfp);
             setImage(decodeBase64ToImage(userpfp))
             setUserInfo({ username1, email1, discord_tag1, college1, dota1 });
           } catch (error) {
@@ -246,43 +245,102 @@ const Profile = () => {
         fetchUserInfo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); // Run once on component mount
-    
+      
     const handleFileSelection = async (e) => {
-        const selectedFile = e.target.files[0];
+        const file = e.target.files[0];
         const reader = new FileReader();
-
-        reader.onloadend = () => {
-            const base64String = reader.result;
-            console.log("I AM BASE64 STRING OF FILE!", base64String);
-            const base64content = base64String.split(",")[1];
-            console.log(base64content);
-
-            // Perform actions with the Base64-encoded content
-            console.log("Selected file:", selectedFile);
-            updateprofilePicture({
-              ...initialProfilePicture,
-              user_id: user_id,
-              profilePicture: base64content,
-            });
-            const uploadProfilePictureAsync = async () => {
-                const payload2 = {
-                    user_id: user_id,
-                    profilePicture: base64content,
+        const maxSize = 50 * 1024; // 50KB (in bytes)
+        console.log('HELLO!', file.size)
+        reader.onloadend = (event) => {
+            console.log('HELLO222!')
+            if (file && file.size <= maxSize) {
+                console.log('HE222LO!')
+                const base64String = reader.result;
+                console.log("I AM BASE64 STRING OF FILE!", base64String);
+                const base64content = base64String.split(",")[1];
+                console.log(base64content);
+    
+                // Perform actions with the Base64-encoded content
+                console.log("Selected file:", file);
+                updateprofilePicture({
+                  ...initialProfilePicture,
+                  user_id: user_id,
+                  profilePicture: base64content,
+                });
+                const uploadProfilePictureAsync = async () => {
+                    const payload2 = {
+                        user_id: user_id,
+                        profilePicture: base64content,
+                    };
+                    try {
+                        const response2 = await API.uploadProfilePicture(payload2);
+                        console.log(response2);
+                        alert('Uploaded!');
+                        setImage(decodeBase64ToImage(base64content))
+                    } catch (error) {
+                        console.error(error);
+                        alert('Error! Likely the file size of the image you put in is too big.') 
+                    }
                 };
-                try {
-                    const response2 = await API.uploadProfilePicture(payload2);
-                    console.log(response2);
-                    alert('Uploaded!');
-                    setImage(decodeBase64ToImage(base64content))
-                } catch (error) {
-                    console.error(error);
-                    alert('Error! Likely the file size of the image you put in is too big.') 
-                }
-            };
-            uploadProfilePictureAsync();
+                uploadProfilePictureAsync();
+
+            } else if (file) {
+                console.log('HELLO222!HERE!!!')
+                const img = new Image();
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    const maxWidth = 400; // Adjust the desired maximum width of the image
+                    const scale = maxWidth / img.width;
+                    const newWidth = img.width * scale;
+                    const newHeight = img.height * scale;
+        
+                    canvas.width = newWidth;
+                    canvas.height = newHeight;
+            
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, newWidth, newHeight);
+                    console.log('DOWNSCALING IMAGE!')
+                    canvas.toBlob(
+                        (blob) => {
+                        const downscaledImage = new File([blob], file.name, {
+                            type: file.type,
+                            lastModified: Date.now(),
+                        });
+                        // Use the downscaledImage as the new file to upload
+                        // Your upload logic here
+                        const downscaledReader = new FileReader();
+                        downscaledReader.onload = function (event) {
+                            const base64String = downscaledReader.result;
+                            const base64content = base64String.split(",")[1];
+                            // Perform actions with the Base64-encoded content
+                            const uploadProfilePictureAsync = async () => {
+                                const payload2 = {
+                                    user_id: user_id,
+                                    profilePicture: base64content,
+                                };
+                                try {
+                                    const response2 = await API.uploadProfilePicture(payload2);
+                                    console.log(response2);
+                                    alert('Uploaded!');
+                                    setImage(decodeBase64ToImage(base64content))
+                                } catch (error) {
+                                    console.error(error);
+                                    alert('Error! Likely the file size of the image you put in is too big.') 
+                                }
+                            };
+                            uploadProfilePictureAsync();
+                        };
+                
+                        downscaledReader.readAsDataURL(downscaledImage);
+                        },
+                    file.type,
+                    0.75 // Adjust the desired image quality (0.0 to 1.0)
+                    );
+                };
+                img.src = event.target.result;
+            }
         }
-          
-        reader.readAsDataURL(selectedFile);
+        reader.readAsDataURL(file);
     };
 
     const openFilePicker = () => {
