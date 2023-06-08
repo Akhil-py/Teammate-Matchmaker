@@ -79,7 +79,6 @@ function Valorant() {
 
             // Now you have an array containing the information of all players
             setIsLoading(false);
-            alert("Searched successfully");
         } catch (error) {
             console.error(error);
             alert(error);

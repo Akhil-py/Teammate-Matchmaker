@@ -53,7 +53,7 @@ function Register() {
             if (isValidEmail) {
                 await API.sendUserData(payload);
                 alert("Created successfully"); 
-                window.location.href = "http://localhost:3000/login";
+                window.location.href = "https://ucsdgamed.onrender.com/login";
             } else {
                 throw new Error("Bad Eamil")
             }

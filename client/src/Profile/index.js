@@ -99,7 +99,6 @@ const Profile = () => {
             await API.sendGameData(payload);
             cardRef.current.classList.toggle("hide");
             //console.log("Response: ", response);
-            alert("Made successfully");
             displayUserInfo();
         } catch(error) {
             console.error(error);
@@ -275,7 +274,6 @@ const Profile = () => {
                     try {
                         const response2 = await API.uploadProfilePicture(payload2);
                         console.log(response2);
-                        alert('Uploaded!');
                         setImage(decodeBase64ToImage(base64content))
                     } catch (error) {
                         console.error(error);
@@ -321,7 +319,6 @@ const Profile = () => {
                                 try {
                                     const response2 = await API.uploadProfilePicture(payload2);
                                     console.log(response2);
-                                    alert('Uploaded!');
                                     setImage(decodeBase64ToImage(base64content))
                                 } catch (error) {
                                     console.error(error);

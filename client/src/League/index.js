@@ -84,7 +84,6 @@ function League() {
             console.log("playerData: ", playerData)
 
             // Now you have an array containing the information of all players
-            alert("Searched successfully");
         } catch (error) {
             console.error(error);
             alert(error);
