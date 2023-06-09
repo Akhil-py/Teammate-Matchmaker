@@ -37,7 +37,7 @@ const Team = () => {
        github = "https://github.com/Neniflight"/>
        <Profilecard
         image={require("./images/shreyprofilepic.JPG")}
-        name="Shreya"
+        name="Shrey"
         role="Back-end Developer"
         website="shreya.website"
         email="s9kumar@ucsd.edu"
