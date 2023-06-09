@@ -20,7 +20,10 @@ const ProfCard = (props) => {
     const response = API.deleteUser(payload);
     console.log("response ", response);
     props.function();
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 250);
+
   }
 
   return (

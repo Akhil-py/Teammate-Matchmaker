@@ -25,21 +25,14 @@ function MemberLogin({sendData}) {
     };
 
     const handleLogin = async (e) => {
-        console.log("Login Data: ", loginData);
-        console.log("event: ", e);
         e.preventDefault();
         const req = e.target;
         const payload = {
             loginInfo: loginData
         }
-        console.log(JSON.stringify(payload.loginInfo));
-        console.log("Request: ", req);
 
         try {
             const response = await API.sendLoginData(payload);
-            console.log("response: ", response);
-            console.log("response data success: ", response.data.success);
-            console.log("userID: ", response.data.userId);
             //const UID = response.data.userId;
             if(response.data.success){
                 //alert("Now logged in");

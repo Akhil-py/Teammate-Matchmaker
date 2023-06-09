@@ -54,7 +54,6 @@ router.put('/users/profilePicture', upload.single('profilePicture'), async (req,
         if (!existingUser) {
         return res.status(400).json({ status: 'error', error: 'User does not exist!' });
         }
-        console.log(profilePicture)
         const buffer = Buffer.from(profilePicture, 'base64');
         existingUser.profilePicture = buffer;
         await existingUser.save();

@@ -61,7 +61,7 @@ function Navbar(values) {
           </div>
         </a>
         <nav className="nav-container" ref={navRef}>
-
+          {values.values && <a className="navlinks" href="/"><h2 className="underline-hover-effect">Find Players</h2></a>}
           {/* {values.values ? <button className="navlinks"  onClick={getOut}> Logout</button> : <></>} */}
           <a className="navlinks" href="/about">
             <h2 className="underline-hover-effect">
@@ -80,7 +80,7 @@ function Navbar(values) {
           </a>
 
           {values.values ? <a href="/profile">{image &&<div class="navbar-circle"><img src={image.src} class="navbar-profile-pic" alt=""></img></div>}</a> : <a class="navlinks underline-hover-effect" href="/login">Login</a>}
-          {values.values ? <a className="navlinks" href="/" onClick={getOut}><h2 className="underline-hover-effect">Logout</h2></a>:<></>}
+          {/*values.values ? <a className="navlinks" href="/" onClick={getOut}><h2 className="underline-hover-effect">Logout</h2></a>:<></>*/}
         </nav>
         <button className="hamburger-btn" onClick={showNavBar}>
             <img className="hamburger" src={hamburger} alt="more"></img>

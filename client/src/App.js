@@ -51,7 +51,7 @@ const handleLogout = () => {
             <Route path="/login" element={<MemberLogin sendData={handleLogin}/>} />
             <Route path="/team" element={<Team />} />
             <Route path="/" element={ isLoggedIn ? <MemberLanding  /> : <Home />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile values={isLoggedIn} logout={handleLogout}/>} />
             <Route path="/register" element={<Register />} />
             <Route path="/memberlanding" element={<MemberLanding />}/>
             <Route path="/dota" element={<Dota />} />

@@ -30,25 +30,25 @@ function Valorant() {
     const [searchData, updateSearchData] = useState(initialSearchData);
 
     const handleSearch = async (e) => {
-        console.log("Search Data: ", searchData);
-        console.log("event: ", e);
+        //console.log("Search Data: ", searchData);
+        //console.log("event: ", e);
         e.preventDefault();
         setIsLoading(true);
         try {
             if(recommendedPage === false){
                 throw new Error('No Player Card for game created, please create one in profile for recommended options');
             }
-            console.log("recommendation!!", recommendation)
+            //console.log("recommendation!!", recommendation)
             const payload = {
                 searchInfo: searchData
             }
             const req = e.target;
-            console.log("Request: ", req);
-            console.log(JSON.stringify(payload.searchInfo));
+            //console.log("Request: ", req);
+            //console.log(JSON.stringify(payload.searchInfo));
             const response = await API.searchUser(payload);
             // Assuming you have the JSON response stored in a variable called 'response'
             var response_data = response;
-            console.log(response.data)
+            //console.log(response.data)
             
             // Extract the 'players' array from the response
             var players = response_data.data.players;
@@ -69,14 +69,10 @@ function Valorant() {
                     region: site_player_data.valorant.region,
                     userid: site_player_data.valorant.userid,
                     profilepic: site_player_data.profilePicture
-                    // Add more fields as needed
                 };
                 player_info_array.push(player_info);
             }
-            console.log("playerinfoarr: ", player_info_array)
             setPlayerData(player_info_array);
-            console.log("playerData: ", playerData)
-
             // Now you have an array containing the information of all players
             setIsLoading(false);
         } catch (error) {
@@ -126,21 +122,21 @@ function Valorant() {
             try{
                 const response = await API.getUserData(localStorage.getItem('userid'));
                 const userData = response.data.userData;
-                console.log("USER DATA!:",userData)
+                //console.log("USER DATA!:",userData)
                 if (userData.valorant === null) {
                     setRecommendedPage(false); // Update the state variable
                 } else {
                     setRecommendedPage(true); // Update the state variable
                     const response1 = await API.getUserData(localStorage.getItem('userid'));
                     const userData = response1.data.userData;
-                    console.log(userData.valorant.region);
+                    //console.log(userData.valorant.region);
     
                     updateSearchData({
                         ...initialSearchData,
                         region: userData.valorant.region,
                         rank: userData.valorant.rank
                     });;
-                    console.log('Updated searchData:', userData.valorant); // Log the updated searchData
+                    //console.log('Updated searchData:', userData.valorant); // Log the updated searchData
 
                 }
             } catch (error) {
@@ -164,11 +160,8 @@ function Valorant() {
     };
 
     const displayDiscord = async(discordid) => {
-        console.log("Discord id: ", discordid.userid);
         const discordUser = (await API.getUserData(discordid.userid)).data.userData; 
-        console.log("Discord User: ", discordUser.discord);
         setDiscord(discordUser.discord);
-        console.log("discord: ", discord);
         toggleDiscordRef();
         return null;
     }

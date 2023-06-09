@@ -9,7 +9,7 @@ import val_logo from "../Images/val.png";
 import lol_logo from "../Images/lol.png";
 import dota_logo from "../Images/dota2.png";
 
-const Profile = () => {
+const Profile = (values) => {
     const initialRankValue = 'rank';
     const initialRoleValue = 'role';
     const initialRegionValue = 'region';
@@ -62,9 +62,7 @@ const Profile = () => {
 
     const displayUserInfo = async () => {
         try {
-            console.log('SENDING USER ID!!!!!!! ', user_id)
             const user_info = (await API.getUserData(user_id)).data.userData; 
-            console.log('USER INFO!!! ', user_info)
             const username1 = user_info.username;
             const email1 = user_info.email;
             const discord_tag1 = user_info.discord;
@@ -76,7 +74,6 @@ const Profile = () => {
             player_game_array.push(user_info.valorant);
             player_game_array.push(user_info.leagueOfLegends);
             player_game_array.push(user_info.dota);
-            console.log("Player game array: ", player_game_array);
             setGameArray(player_game_array);
             return {username1, email1, discord_tag1, college1, userpfp}
         } catch(error) {
@@ -85,16 +82,12 @@ const Profile = () => {
     }
 
     const handleGameSubmit = async (e) => {
-        console.log("Game Data: ", gameData);
-        console.log("event: ", e);
         e.preventDefault();
         const req = e.target;
         const payload = {
             gameInfo: gameData
         }
         JSON.stringify(payload.gameInfo);
-        console.log("Payload: ", payload.gameInfo);
-        console.log("Request: ", req);
         try {
             await API.sendGameData(payload);
             cardRef.current.classList.toggle("hide");
@@ -176,6 +169,11 @@ const Profile = () => {
         cardRef.current.classList.toggle("hide");
     }
 
+    const getOut = () => {
+        values.logout();
+        window.location.href = "https://ucsdgamed.onrender.com/";
+      } 
+
     const profileCards = gameArray.map((player, index) => {
         var gameImage;
         var gameUsername;
@@ -231,7 +229,6 @@ const Profile = () => {
         async function fetchUserInfo() {
           try {
             const userInfo11 = await displayUserInfo();
-            console.log(userInfo11);
             const { username1, email1, discord_tag1, college1, dota1, userpfp } = userInfo11;
             setImage(decodeBase64ToImage(userpfp))
             setUserInfo({ username1, email1, discord_tag1, college1, dota1 });
@@ -249,18 +246,11 @@ const Profile = () => {
         const file = e.target.files[0];
         const reader = new FileReader();
         const maxSize = 50 * 1024; // 50KB (in bytes)
-        console.log('HELLO!', file.size)
         reader.onloadend = (event) => {
-            console.log('HELLO222!')
             if (file && file.size <= maxSize) {
-                console.log('HE222LO!')
                 const base64String = reader.result;
-                console.log("I AM BASE64 STRING OF FILE!", base64String);
-                const base64content = base64String.split(",")[1];
-                console.log(base64content);
-    
+                const base64content = base64String.split(",")[1];    
                 // Perform actions with the Base64-encoded content
-                console.log("Selected file:", file);
                 updateprofilePicture({
                   ...initialProfilePicture,
                   user_id: user_id,
@@ -273,8 +263,7 @@ const Profile = () => {
                     };
                     try {
                         const response2 = await API.uploadProfilePicture(payload2);
-                        console.log(response2);
-                        setImage(decodeBase64ToImage(base64content))
+                        window.location.reload();
                     } catch (error) {
                         console.error(error);
                         alert('Error! Likely the file size of the image you put in is too big.') 
@@ -283,7 +272,6 @@ const Profile = () => {
                 uploadProfilePictureAsync();
 
             } else if (file) {
-                console.log('HELLO222!HERE!!!')
                 const img = new Image();
                 img.onload = function () {
                     const canvas = document.createElement('canvas');
@@ -297,7 +285,6 @@ const Profile = () => {
             
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, newWidth, newHeight);
-                    console.log('DOWNSCALING IMAGE!')
                     canvas.toBlob(
                         (blob) => {
                         const downscaledImage = new File([blob], file.name, {
@@ -318,8 +305,7 @@ const Profile = () => {
                                 };
                                 try {
                                     const response2 = await API.uploadProfilePicture(payload2);
-                                    console.log(response2);
-                                    setImage(decodeBase64ToImage(base64content))
+                                    window.location.reload();
                                 } catch (error) {
                                     console.error(error);
                                     alert('Error! Likely the file size of the image you put in is too big.') 
@@ -357,13 +343,15 @@ const Profile = () => {
             <div class="profile-info">
             {isLoading ? (<LoadingAnimation />): userInfo && (
                 <>
-                <li>Username: {userInfo.username1}</li>
+                <li><span class="special-username">{userInfo.username1}</span></li>
                 <li>Email: {userInfo.email1}</li>
                 <li>Discord Tag: {userInfo.discord_tag1}</li>
                 <li>College: {userInfo.college1}</li>
-                <li>Only one profile card per game for an account!</li>
                 </>
             )}
+            </div>
+            <div className="center-but">
+                <button className="log-out-but" onClick={getOut}>Log Out</button>
             </div>
         </div>
         <div class="right-panel">

@@ -238,3 +238,31 @@
   .smaller-width {
     width: 200px!important;
   }
+
+  .special-username {
+    font-weight: bold;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .center-but {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+  }
+
+  .log-out-but {
+    background-color: #a9e7f2;
+    font-size: 2rem;
+    color:#282828;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: background-color 0.5s;
+  }
+
+  .log-out-but:hover {
+    background-color: rgb(141, 0, 0);
+    color: white;
+  }
